@@ -16,7 +16,7 @@ public class Rutina
     [JsonProperty]
     public int IdUsuario {get; private set;}
 
-    public Rutina (bool Rutinas, string RutinaFinal, int IdUsuario)
+public Rutina (bool Rutinas, string RutinaFinal, int IdUsuario)
 {
     this.Rutinas = Rutinas;
     this.RutinaFinal = RutinaFinal;

@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="site.css">
-</head>
-<body>
-    <header>
-    </header>
-    <main>
+@{
+    ViewData["Title"] = "Registro";
+}
+ <main>
         <section class="imagen">
             <img src="imagenes/skin3.jpg" alt="Piel">
         </section>
@@ -25,18 +17,9 @@
             <input type="password" name="contraseña" placeholder="Password"/>
             <button type="submit">Registrarse</button>
         
-        <p>¿Ya eres miembro? <a href="login.html"> Inicia Sesion</a></p>
+        <p>¿Ya eres miembro? <a href='@Url.Action("Login","Home")' alt = "Login"> Inicia Sesion</a></p>
         <p>Al tener una cuenta, podrás recibir notificaciones de DERMAI.COM</p>
         </form>
     </section>
     </main>
-
-    <footer>
-        <ul>
-            <li><a href="index.html">¿NECESITAS AYUDA?</a></li>
-            <li><p>- DERMAI - </p></li>
-            <li><p>2025</p></li>
-        </ul>
-    </footer>
-</body>
-</html>
+    

@@ -18,20 +18,36 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = z:\Info360\Programacion\ProjectDermai\dermai
 build_property._RazorSourceGeneratorDebug = 
 
-[z:/Info360/Programacion/ProjectDermai/dermai/Views/Home/Home.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb21lLmNzaHRtbA==
+[z:/Info360/Programacion/ProjectDermai/dermai/Views/Home/HacerRutina.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIYWNlclJ1dGluYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [z:/Info360/Programacion/ProjectDermai/dermai/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[z:/Info360/Programacion/ProjectDermai/dermai/Views/Home/InfoTipoDePiel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmZvVGlwb0RlUGllbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [z:/Info360/Programacion/ProjectDermai/dermai/Views/Home/IngresoPiel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmdyZXNvUGllbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[z:/Info360/Programacion/ProjectDermai/dermai/Views/Home/Inicio.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmljaW8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [z:/Info360/Programacion/ProjectDermai/dermai/Views/Home/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[z:/Info360/Programacion/ProjectDermai/dermai/Views/Home/MostrarRutina.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNb3N0cmFyUnV0aW5hLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[z:/Info360/Programacion/ProjectDermai/dermai/Views/Home/Recomendacion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWNvbWVuZGFjaW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [z:/Info360/Programacion/ProjectDermai/dermai/Views/Home/Registro.cshtml]
