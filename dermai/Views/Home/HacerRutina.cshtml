@@ -1,60 +1,59 @@
 @using dermai.Models;
 
-<section class = "hacerRutina">
+<form asp-action="guardarInfoUser" asp-controller="Home" method="post">
+
+<section class="hacerRutina">
   <div class="características">
-  <h2>❓¿Qué características tenés?</h2>
-  <h3>(Podes elegir varias opciones)</h3>
+    <h2>❓¿Qué características tenés?</h2>
+    <h3>(Podés elegir varias opciones)</h3>
     <div>
-    <label><input type="checkbox"> Piel sensible</label>
-    <label><input type="checkbox"> Enrojecimiento frecuente</label>
-    <label><input type="checkbox"> Tendencia al acné</label>
-    <label><input type="checkbox"> Sequedad / descamación</label>
-    <label><input type="checkbox"> Opacidad / falta de luminosidad</label>
-    <label><input type="checkbox"> Poros dilatados</label>
-    <label><input type="checkbox"> Puntos negros</label>
-    <label><input type="checkbox"> Manchas oscuras / hiperpigmentación</label>
-    <label><input type="checkbox"> Textura irregular</label>
-    <label><input type="checkbox"> Exceso de grasa / brillo</label>
-    <label><input type="checkbox"> Líneas de expresión / arrugas</label>
-</div>
-</div>
+      <label><input type="checkbox" name="caracteristicas" value="Piel sensible"> Piel sensible</label>
+      <label><input type="checkbox" name="caracteristicas" value="Enrojecimiento frecuente"> Enrojecimiento frecuente</label>
+      <label><input type="checkbox" name="caracteristicas" value="Tendencia al acné"> Tendencia al acné</label>
+      <label><input type="checkbox" name="caracteristicas" value="Sequedad / descamación"> Sequedad / descamación</label>
+      <label><input type="checkbox" name="caracteristicas" value="Opacidad / falta de luminosidad"> Opacidad / falta de luminosidad</label>
+      <label><input type="checkbox" name="caracteristicas" value="Poros dilatados"> Poros dilatados</label>
+      <label><input type="checkbox" name="caracteristicas" value="Puntos negros"> Puntos negros</label>
+      <label><input type="checkbox" name="caracteristicas" value="Manchas oscuras / hiperpigmentación"> Manchas oscuras / hiperpigmentación</label>
+      <label><input type="checkbox" name="caracteristicas" value="Textura irregular"> Textura irregular</label>
+      <label><input type="checkbox" name="caracteristicas" value="Exceso de grasa / brillo"> Exceso de grasa / brillo</label>
+      <label><input type="checkbox" name="caracteristicas" value="Líneas de expresión / arrugas"> Líneas de expresión / arrugas</label>
+    </div>
+  </div>
  
   <div class="preferencias">
     <h2>❓¿Qué preferencias de productos tenés?</h2>
-    <h3>(Podes elegir varias opciones)</h3>
+    <h3>(Podés elegir varias opciones)</h3>
     <div>
-    <label><input type="checkbox"> Productos sin fragancia</label>
-    <label><input type="checkbox"> Alcohol</label>
-    <label><input type="checkbox"> Sin alcohol</label>
-    <label><input type="checkbox"> Silicona</label>
-    <label><input type="checkbox"> Ingredientes naturales / orgánicos</label>
-    <label><input type="checkbox"> Fragancia artificial</label>
-    <label><input type="checkbox"> Sin parabenos</label>
-    <label><input type="checkbox"> Parabenos</label>
-    <label><input type="checkbox"> Cruelty-Free</label>
-    <label><input type="checkbox"> Sulfatos</label>
-    <label><input type="checkbox"> No comedogénico</label>
-    <label><input type="checkbox"> Bajo en residuos / envases reciclables</label>
-    <label><input type="checkbox"> Vegano</label>
-</div>
+      <label><input type="checkbox" name="preferencias" value="Productos sin fragancia"> Productos sin fragancia</label>
+      <label><input type="checkbox" name="preferencias" value="Sin alcohol"> Sin alcohol</label>
+      <label><input type="checkbox" name="preferencias" value="Silicona"> Silicona</label>
+      <label><input type="checkbox" name="preferencias" value="Ingredientes naturales / orgánicos"> Ingredientes naturales / orgánicos</label>
+      <label><input type="checkbox" name="preferencias" value="Sin parabenos"> Sin parabenos</label>
+      <label><input type="checkbox" name="preferencias" value="Cruelty-Free"> Cruelty-Free</label>
+      <label><input type="checkbox" name="preferencias" value="Vegano"> Vegano</label>
+    </div>
   </div>
  
   <div class="presupuesto">
     <h2>❓¿Cuál es tu presupuesto estimado?</h2>
     <div>
-    <label><input type="checkbox"> Económico (hasta $50 USD)</label>
-    <label><input type="checkbox"> Medio (hasta $120 USD)</label>
-    <label><input type="checkbox"> Premium (desde $120 USD)</label>
-</div>
+      <label><input type="radio" name="presupuesto" value="Económico"> Económico (hasta $50 USD)</label>
+      <label><input type="radio" name="presupuesto" value="Medio"> Medio (hasta $120 USD)</label>
+      <label><input type="radio" name="presupuesto" value="Premium"> Premium (desde $120 USD)</label>
+    </div>
   </div>
  
   <div class="frecuenciaRutinaria">
     <h2>❓¿Cuál es tu frecuencia de rutina ideal?</h2>
     <div>
-    <label><input type="checkbox"> Rutina simple (1-3 pasos)</label>
-    <label><input type="checkbox"> Rutina intermedia (4-5 pasos)</label>
-    <label><input type="checkbox"> Rutina completa (6+ pasos)</label>
-</div>
-</div>
-  <button>Enviar ✔️</button>
+      <label><input type="radio" name="frecuencia" value="Simple"> Rutina simple (1-3 pasos)</label>
+      <label><input type="radio" name="frecuencia" value="Intermedia"> Rutina intermedia (4-5 pasos)</label>
+      <label><input type="radio" name="frecuencia" value="Completa"> Rutina completa (6+ pasos)</label>
+    </div>
+  </div>
+  
+  <input type="submit" value="Enviar">
 </section>
+
+</form>
