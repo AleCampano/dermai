@@ -1,71 +1,79 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\css\\site.css",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\favicon.ico",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\imagenes\\skin3.jpg",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\imagenes\\Skin2.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Skin2.jpg"
+    },
+    {
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\imagenes\\skin3.jpg",
       "PackagePath": "staticwebassets\\imagenes\\skin3.jpg"
     },
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\js\\site.js",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\imagenes\\skincare.jfif",
+      "PackagePath": "staticwebassets\\imagenes\\skincare.jfif"
+    },
+    {
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\js\\validaciones.js",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\js\\validaciones.js",
       "PackagePath": "staticwebassets\\js\\validaciones.js"
     },
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\48855001\\dermai\\dermai\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {

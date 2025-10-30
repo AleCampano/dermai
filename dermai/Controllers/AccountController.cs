@@ -16,12 +16,15 @@ public class AccountController : Controller
         _logger = logger;
     }
 
-    [HttpPost]
-    public IActionResult Login(string Nombre, string Email, string Contraseña, DateTime FechaDeNacimiento, int IdPerfil)
+    public IActionResult Login(){
+        return View("InicioSesion");
+    }
+
+    public IActionResult Comenzar(string Nombre, string Email, string Contraseña, DateTime FechaDeNacimiento, int IdPerfil)
     {
         Usuario usu = new Usuario (Nombre, Email, Contraseña, FechaDeNacimiento, IdPerfil);
         HttpContext.Session.SetString("usu", Objeto.ObjectToString(usu));
-        return View("Login");
+        return View("InicioSesion");
     }
 
     [HttpPost]
@@ -30,7 +33,7 @@ public class AccountController : Controller
         if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Contraseña))
         {
             ViewBag.Error = "Por favor, complete todos los campos.";
-            return View("Login");
+            return View("InicioSesion");
         }
 
         Usuario usu = BD.Login(Email, Contraseña);
@@ -38,7 +41,7 @@ public class AccountController : Controller
         if(usu == null)
         {
             ViewBag.No = "Tu usuario no existe, por favor registrate.";
-            return View("Login");
+            return View("InicioSesion");
         }
         else
         {
@@ -50,24 +53,24 @@ public class AccountController : Controller
     public IActionResult CerrarSesion()
     {
         HttpContext.Session.Clear();
-        return View("Login");
+        return View("InicioSesion");
     }
     public IActionResult Registro()
     {
-        return View("Registro");
+        return View("Registrarse");
     }
     public IActionResult GuardarRegistro(string Nombre, string Email, string Contraseña, DateTime FechaDeNacimiento)
     {
         if (string.IsNullOrEmpty(Nombre) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Contraseña) || DateTime.MinValue == (FechaDeNacimiento))
         {
             ViewBag.Error = "Por favor, complete todos los campos.";
-            return View("Registro");
+            return View("Registrarse");
         }
 
         if (BD.ValidarRegistro(Email))
         {
             ViewBag.Ya = "Este usuario ya está registrado, inicie sesión.";
-            return View("Login");
+            return View("InicioSesion");
         }
 
         Perfil newPerfil = new Perfil (null, null, null, null);

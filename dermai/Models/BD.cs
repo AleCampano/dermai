@@ -52,11 +52,12 @@ public class BD
 
    public static int CrearPerfil(Perfil perfil)
     {
-    using (SqlConnection connection = new SqlConnection(_connectionString))
-    {
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
         string sp = "SP_CrearPerfil";
         var idPerfil = connection.QuerySingleOrDefault<int>(sp, new
         {
+            IdUsuario = perfil.IdUsuario,
             CaracteristicasPiel = perfil.CaracteristicasPiel,
             PreferenciaProducto = perfil.PreferenciaProducto,
             Presupuesto = perfil.Presupuesto,
@@ -64,6 +65,6 @@ public class BD
         }, commandType: System.Data.CommandType.StoredProcedure);
 
         return idPerfil;
-    }
+        }
     }
 }

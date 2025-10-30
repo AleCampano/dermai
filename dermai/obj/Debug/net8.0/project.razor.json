@@ -19327,6 +19327,72 @@
     "CSharpLanguageVersion": 1100
   },
   "RootNamespace": "dermai",
-  "Documents": [],
+  "Documents": [
+    {
+      "FilePath": "z:\\Info360\\Programacion\\ProjectDermai\\dermai\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "z:\\Info360\\Programacion\\ProjectDermai\\dermai\\Views\\Account\\InicioSesion.cshtml",
+      "TargetPath": "Views\\Account\\InicioSesion.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "z:\\Info360\\Programacion\\ProjectDermai\\dermai\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "z:\\Info360\\Programacion\\ProjectDermai\\dermai\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "z:\\Info360\\Programacion\\ProjectDermai\\dermai\\Views\\Home\\Inicio.cshtml",
+      "TargetPath": "Views\\Home\\Inicio.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "z:\\Info360\\Programacion\\ProjectDermai\\dermai\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "z:\\Info360\\Programacion\\ProjectDermai\\dermai\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "z:\\Info360\\Programacion\\ProjectDermai\\dermai\\Views\\Home\\MostrarRutina.cshtml",
+      "TargetPath": "Views\\Home\\MostrarRutina.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "z:\\Info360\\Programacion\\ProjectDermai\\dermai\\Views\\User\\IngresoPiel.cshtml",
+      "TargetPath": "Views\\User\\IngresoPiel.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "z:\\Info360\\Programacion\\ProjectDermai\\dermai\\Views\\Home\\Recomendacion.cshtml",
+      "TargetPath": "Views\\Home\\Recomendacion.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "z:\\Info360\\Programacion\\ProjectDermai\\dermai\\Views\\Account\\Registrarse.cshtml",
+      "TargetPath": "Views\\Account\\Registrarse.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "z:\\Info360\\Programacion\\ProjectDermai\\dermai\\Views\\Home\\InfoTipoDePiel.cshtml",
+      "TargetPath": "Views\\Home\\InfoTipoDePiel.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "z:\\Info360\\Programacion\\ProjectDermai\\dermai\\Views\\Home\\HacerRutina.cshtml",
+      "TargetPath": "Views\\Home\\HacerRutina.cshtml",
+      "FileKind": "mvc"
+    }
+  ],
   "SerializationFormat": "0.3"
 }

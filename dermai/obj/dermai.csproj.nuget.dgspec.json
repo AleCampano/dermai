@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\48855001\\dermai\\dermai\\dermai.csproj": {}
+    "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\dermai.csproj": {}
   },
   "projects": {
-    "C:\\Users\\48855001\\dermai\\dermai\\dermai.csproj": {
+    "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\dermai.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\48855001\\dermai\\dermai\\dermai.csproj",
+        "projectUniqueName": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\dermai.csproj",
         "projectName": "dermai",
-        "projectPath": "C:\\Users\\48855001\\dermai\\dermai\\dermai.csproj",
-        "packagesPath": "C:\\Users\\48855001\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\48855001\\dermai\\dermai\\obj\\",
+        "projectPath": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\dermai.csproj",
+        "packagesPath": "C:\\Users\\49094340\\.nuget\\packages\\",
+        "outputPath": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\48855001\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\49094340\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
