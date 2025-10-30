@@ -18,6 +18,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = z:\Info360\Programacion\ProjectDermai\dermai
 build_property._RazorSourceGeneratorDebug = 
 
+[z:/Info360/Programacion/ProjectDermai/dermai/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[z:/Info360/Programacion/ProjectDermai/dermai/Views/Account/Registro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Ryby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [z:/Info360/Programacion/ProjectDermai/dermai/Views/Home/HacerRutina.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIYWNlclJ1dGluYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -30,16 +38,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmZvVGlwb0RlUGllbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[z:/Info360/Programacion/ProjectDermai/dermai/Views/Home/IngresoPiel.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmdyZXNvUGllbC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [z:/Info360/Programacion/ProjectDermai/dermai/Views/Home/Inicio.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmljaW8uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[z:/Info360/Programacion/ProjectDermai/dermai/Views/Home/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [z:/Info360/Programacion/ProjectDermai/dermai/Views/Home/MostrarRutina.cshtml]
@@ -50,16 +50,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWNvbWVuZGFjaW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[z:/Info360/Programacion/ProjectDermai/dermai/Views/Home/Registro.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3Ryby5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [z:/Info360/Programacion/ProjectDermai/dermai/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [z:/Info360/Programacion/ProjectDermai/dermai/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[z:/Info360/Programacion/ProjectDermai/dermai/Views/User/IngresoPiel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmdyZXNvUGllbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [z:/Info360/Programacion/ProjectDermai/dermai/Views/_ViewImports.cshtml]

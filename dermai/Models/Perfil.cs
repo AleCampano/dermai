@@ -21,13 +21,12 @@ public class Perfil
     public string FrecuenciaRutina {get; private set;}
 
 
-    public Perfil (int IdUsuario, string CaracteristicasPiel, string PreferenciaProducto, string Presupuesto, string FrecuenciaRutina)
-{
-    this.IdUsuario = IdUsuario;
+    public Perfil (string CaracteristicasPiel, string PreferenciaProducto, string Presupuesto, string FrecuenciaRutina)
+    {
     this.CaracteristicasPiel = CaracteristicasPiel;
     this.PreferenciaProducto = PreferenciaProducto;
     this.Presupuesto = Presupuesto;
     this.FrecuenciaRutina = FrecuenciaRutina;
-}
+    }
 }
 

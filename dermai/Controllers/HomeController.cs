@@ -21,19 +21,19 @@ public class HomeController : Controller
         return RedirectToAction("Login", "Account");
     }
 
-    public IActionResult Inicio()
+    public IActionResult InicioA()
     {
         return View();
     }
 
     public IActionResult CrearRutina()
     {
-        return View();
+        return View("HacerRutina");
     }
 
     public IActionResult GuardarRutina()
     {
-        return View(Inicio);
+        return View();
     }
 
     public IActionResult VerRutina()

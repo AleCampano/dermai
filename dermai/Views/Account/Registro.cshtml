@@ -1,0 +1,23 @@
+@using dermai.Models;
+
+<section class="Registro">
+    <div class="imagen">
+        <img src="imagenes/skin3.jpg" alt="Piel">
+    </div>
+    <form method="post" action="Registro.html">
+        <h3>Correo Electronico</h3>
+        <input type="email" id="name" name="name" placeholder="Email"/>
+        <h3>Nombre usuario</h3>
+        <input t ype="text" id="name" name="name" placeholder="Username"/>
+        <h3>FechaDe Nacimiento</h3>
+        <input type="date" id="name" name="name" placeholder="Fecha De Nacimiento"/>
+        <h3>Contraseña</h3>
+        <input type="password" name="contraseña" placeholder="Password"/>
+        <button type="submit">Registrarse</button>
+        
+        <p>¿Ya eres miembro? <a href='@Url.Action("Login","Home")' alt = "Login"> Inicia Sesion</a></p>
+        <p>Al tener una cuenta, podrás recibir notificaciones de DERMAI.COM</p>
+        </form>
+        <script src="~/js/validaciones.js"></script>
+</section>
+    

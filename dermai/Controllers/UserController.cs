@@ -21,9 +21,47 @@ public class UserController : Controller
         return View("IngresoPiel");
     }
 
-    public IActionResult GuardarFormularioPiel()
+    [HttpPost]
+    public IActionResult GuardarFormularioPiel(int NivelGrasaPiel, string AlergiaProductos, string IrritacionFrecuencia, string AparicionGranos)
     {
-        return View();
+        string tipoPiel;
+
+            
+            if (NivelGrasaPiel < 33)
+            {
+                tipoPiel = "Piel seca";
+            }
+            else if (NivelGrasaPiel < 66)
+            {
+                tipoPiel = "Piel mixta";
+            }
+            else
+            {
+                tipoPiel = "Piel grasa";
+            }
+
+            // 🔹 Construir los detalles del perfil
+            string detalles = $"Tipo: {tipoPiel}. " +
+                              $"Alergia a productos: {AlergiaProductos}. " +
+                              $"Irritación: {IrritacionFrecuencia}. " +
+                              $"Granos: {AparicionGranos}.";
+
+
+            // 🔹 Crear el perfil
+            var perfil = new Perfil(
+                detalles,
+                "", // PreferenciaProducto
+                "", // Presupuesto
+                ""  // FrecuenciaRutina
+            );
+
+            // 🔹 Guardar en la BD a través del modelo BD
+            int idPerfil = BD.CrearPerfil(perfil);
+
+            TempData["Mensaje"] = "¡Datos de tu piel guardados correctamente!";
+
+            // 🔹 Redirigir al siguiente formulario
+            return RedirectToAction("CompletarFormularioRutina");
     }
 
     public IActionResult CompletarFormularioRutina()

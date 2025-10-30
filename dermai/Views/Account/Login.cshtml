@@ -1,0 +1,23 @@
+@using dermai.Models;
+
+<section class="Login">
+    <div class="imagen">
+        <img src="imagenes/skin3.jpg" alt="Piel">
+    </div>
+    <form id="loginForm" method="post" asp-action="GuardarLogin">
+        <h1>Nombre usuario</h1>
+        <input type="text" id="Email" name="Email" placeholder="Correo electrónico" />
+
+        <h1>Contraseña</h1>
+        <input type="password" id="Contraseña" name="Contraseña" placeholder="Password" />
+
+        <button type="submit">Iniciar Sesión</button>
+
+        <div>
+            <p>¿No tenés cuenta? 
+            <a href='@Url.Action("Registro", "Account")' alt="Registrarse">Registrarse aquí</a>
+            </p>
+        </div>
+    </form>
+    <script src="~/js/validaciones.js"></script>
+</section>
