@@ -70,7 +70,7 @@ public class AccountController : Controller
             return View("Login");
         }
 
-        Perfil newPerfil = new Perfil (null, null, null, null, null);
+        Perfil newPerfil = new Perfil (null, null, null, null);
         int NuevoPerfil = BD.CrearPerfil(newPerfil);
         Usuario newUser = new Usuario (Nombre, Email, Contraseña, FechaDeNacimiento, NuevoPerfil);
         BD.Registrarse(newUser);

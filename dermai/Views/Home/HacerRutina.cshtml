@@ -1,8 +1,7 @@
+@using dermai.Models;
 
-@{
-    ViewData["Title"] = "HacerRutina";
-}
-  <section class="características">
+<section class = "hacerRutina">
+  <div class="características">
   <h2>❓¿Qué características tenés?</h2>
   <h3>(Podes elegir varias opciones)</h3>
     <div>
@@ -18,9 +17,9 @@
     <label><input type="checkbox"> Exceso de grasa / brillo</label>
     <label><input type="checkbox"> Líneas de expresión / arrugas</label>
 </div>
-  </section>
+</div>
  
-  <section class="preferencias">
+  <div class="preferencias">
     <h2>❓¿Qué preferencias de productos tenés?</h2>
     <h3>(Podes elegir varias opciones)</h3>
     <div>
@@ -38,23 +37,24 @@
     <label><input type="checkbox"> Bajo en residuos / envases reciclables</label>
     <label><input type="checkbox"> Vegano</label>
 </div>
-  </section>
+  </div>
  
-  <section class="presupuesto">
+  <div class="presupuesto">
     <h2>❓¿Cuál es tu presupuesto estimado?</h2>
     <div>
     <label><input type="checkbox"> Económico (hasta $50 USD)</label>
     <label><input type="checkbox"> Medio (hasta $120 USD)</label>
     <label><input type="checkbox"> Premium (desde $120 USD)</label>
 </div>
-  </section>
+  </div>
  
-  <section class="frecuenciaRutinaria">
+  <div class="frecuenciaRutinaria">
     <h2>❓¿Cuál es tu frecuencia de rutina ideal?</h2>
     <div>
     <label><input type="checkbox"> Rutina simple (1-3 pasos)</label>
     <label><input type="checkbox"> Rutina intermedia (4-5 pasos)</label>
     <label><input type="checkbox"> Rutina completa (6+ pasos)</label>
 </div>
-</section>
+</div>
   <button>Enviar ✔️</button>
+</section>
