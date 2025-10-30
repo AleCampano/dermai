@@ -1,0 +1,42 @@
+@using dermai.Models;
+
+<section class="IngresoPiel">
+    <img src="fotos/info.png" alt="info">
+    <h2>¡Completa con tus datos para descubrir tu tipo de piel!</h2>
+
+<form action='@Url.Action("GuardarFormularioPiel", "User")' method="post">
+    <h3>1. ¿Cómo se siente tu piel justo después de lavarla sin aplicar ningún producto?</h3>
+    <input type="range" name="NivelGrasaPiel" max="100" min="0" step="1"/>
+
+    <h3>2. ¿Has tenido alguna vez problemas de alergia con productos cosméticos?</h3>
+    <select name="AlergiaProductos" class="form-select">
+        <option selected disabled>Seleccionar...</option>
+        <option value="No">No</option>
+        <option value="A veces">Algunas veces con productos muy fuertes</option>
+        <option value="Sí">Sí</option>
+    </select>
+
+    <h3>3. ¿Cada cuánto suele irritarse tu piel?</h3>
+    <select name="IrritacionFrecuencia" class="form-select">
+        <option selected disabled>Seleccionar...</option>
+        <option value="Casi nunca">Casi nunca</option>
+        <option value="A veces">A veces</option>
+        <option value="Frecuentemente">Muchas veces</option>
+    </select>
+
+    <h3>4. ¿Con qué frecuencia te suelen salir granos en la cara?</h3>
+    <select name="AparicionGranos" class="form-select">
+        <option selected disabled>Seleccionar...</option>
+        <option value="Rara vez">Muy rara vez</option>
+        <option value="Ocasionalmente">Ocasionalmente (a causa de estrés u otros)</option>
+        <option value="Constantemente">Constantemente</option>
+    </select>
+
+    <div>
+        <input type="submit" value="Enviar datos">
+        <input type="reset" value="Reset form">
+    </div>
+</form>
+
+    <a href='@Url.Action("Inicio", "Home")'>Inicio</a>
+</section>

@@ -28,7 +28,7 @@ public class HomeController : Controller
 
     public IActionResult CrearRutina()
     {
-        return View();
+        return View("HacerRutina");
     }
 
     public IActionResult GuardarRutina()
