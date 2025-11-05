@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "X2TWcsm7H0opK8iS7DLQO1WeRMJsjsbkdUQ6dkV7MPL13xnjhoAmmZMoyd6SFJvAMlitIlqW8czD4NzFpQcqXg==",
+  "dgSpecHash": "fNfsNY/+cs+a6sikXWpjlvT2xbSrOfMTEmWFZfg5/1bunYh9XutELPpyR9fkeTjR8+Qzw1bsJZcoa4Aj9+GwNg==",
   "success": true,
-  "projectFilePath": "Z:\\Info360\\Programacion\\ProjectDermai\\dermai\\dermai.csproj",
+  "projectFilePath": "C:\\Users\\49094340\\dermai\\dermai\\dermai.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\49094340\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\49094340\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",

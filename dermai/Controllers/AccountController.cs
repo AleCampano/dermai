@@ -16,7 +16,8 @@ public class AccountController : Controller
         _logger = logger;
     }
 
-    public IActionResult Login(){
+    public IActionResult Login()
+    {
         return View("InicioSesion");
     }
 
@@ -43,25 +44,27 @@ public class AccountController : Controller
             ViewBag.No = "Tu usuario no existe, por favor registrate.";
             return View("InicioSesion");
         }
-        else
-        {
-            HttpContext.Session.SetString("usuId", usu.Email.ToString());
-            return RedirectToAction("CompletarFormularioPiel", "User");
-        }
+            
+        HttpContext.Session.SetString("usuId", usu.Email);
+        return RedirectToAction("CompletarFormularioPiel", "User");
     }
 
     public IActionResult CerrarSesion()
     {
         HttpContext.Session.Clear();
-        return View("InicioSesion");
+        return RedirectToAction("Login");
     }
+    
+    [HttpGet]
     public IActionResult Registro()
     {
         return View("Registrarse");
     }
+
+    [HttpPost]
     public IActionResult GuardarRegistro(string Nombre, string Email, string Contraseña, DateTime FechaDeNacimiento)
     {
-        if (string.IsNullOrEmpty(Nombre) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Contraseña) || DateTime.MinValue == (FechaDeNacimiento))
+        if (string.IsNullOrEmpty(Nombre) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Contraseña) || FechaDeNacimiento == DateTime.MinValue)
         {
             ViewBag.Error = "Por favor, complete todos los campos.";
             return View("Registrarse");
@@ -81,4 +84,5 @@ public class AccountController : Controller
         HttpContext.Session.SetString("usu", JsonConvert.SerializeObject(newUser));
         return RedirectToAction("CompletarFormularioPiel", "User");
     }
+
 }

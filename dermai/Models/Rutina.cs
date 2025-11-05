@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Microsoft.Data.SqlClient;
 using Dapper;
 
-namespace dermai;
+namespace dermai.Models;
 
 public class Rutina
 {

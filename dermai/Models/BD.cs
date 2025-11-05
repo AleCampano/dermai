@@ -4,8 +4,10 @@ using dermai.Models;
 using Newtonsoft.Json;
 using Microsoft.Data.SqlClient;
 using Dapper;
+using System;
+using System.Data;     
 
-namespace dermai;
+namespace dermai.Models;
 
 public class BD
 {
@@ -16,7 +18,7 @@ public class BD
         Usuario usu = null;
         using(SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "SELECT Email, Contraseña FROM Usuarios WHERE Email = @pEmail AND Contraseña = @pContraseña";
+            string query = "SELECT * FROM Usuario WHERE Email = @pEmail AND Contraseña = @pContraseña";
             usu = connection.QueryFirstOrDefault<Usuario>(query, new {pEmail = Email, pContraseña = Contraseña});
         }
         return usu;
@@ -36,19 +38,28 @@ public class BD
    {
     using (SqlConnection connection = new SqlConnection(_connectionString))
     {
-        connection.Execute("SP_RegistrarUsuario",
-            new
+        var parametros = new
+                {
+                    Nombre = usuario.Nombre,
+                    Email = usuario.Email,
+                    Contraseña = usuario.Contraseña,
+                    FechaDeNacimiento = usuario.FechaDeNacimiento,
+                    IdPerfil = usuario.IdPerfil
+                };
+
+        connection.Execute("SP_RegistrarUsuario", parametros, commandType: CommandType.StoredProcedure);
+    }
+    }
+
+    public static Usuario ObtenerUsuarioPorEmail(string email)
+        {
+            using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                Nombre = usuario.Nombre,
-                Email = usuario.Email,
-                Contraseña = usuario.Contraseña,
-                FechaDeNacimiento = usuario.FechaDeNacimiento,
-                IdPerfil = usuario.IdPerfil
-            },
-            commandType: System.Data.CommandType.StoredProcedure
-        );
-    }
-    }
+                return db.QueryFirstOrDefault<Usuario>(
+                    "SELECT * FROM Usuario WHERE Email = @Email",
+                    new { Email = email });
+            }
+        }
 
    public static int CrearPerfil(Perfil perfil)
     {

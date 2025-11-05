@@ -4,8 +4,8 @@
     <div class="imagen">
         <img src="imagenes/skin3.jpg" alt="Piel">
     </div>
-    <form id="loginForm" method="post" asp-action="GuardarLogin">
-        <h1>Nombre usuario</h1>
+    <form asp-action="GuardarLogin" asp-controller="Account" method="post">
+        <h1>Email</h1>
         <input type="text" id="Email" name="Email" placeholder="Correo electrónico" />
 
         <h1>Contraseña</h1>

@@ -6,13 +6,13 @@
     </div>
     <form method="post" asp-action="GuardarRegistro">
         <h3>Correo Electronico</h3>
-        <input type="email" id="name" name="name" placeholder="Email"/>
+        <input type="email" name="Email" placeholder="Email" required />
         <h3>Nombre usuario</h3>
-        <input t ype="text" id="name" name="name" placeholder="Username"/>
+        <input t ype="text" name="Nombre" placeholder="Username" required />
         <h3>FechaDe Nacimiento</h3>
-        <input type="date" id="name" name="name" placeholder="Fecha De Nacimiento"/>
+        <input type="date" name="Fecha De Nacimiento" placeholder="Fecha De Nacimiento" required/>
         <h3>Contraseña</h3>
-        <input type="password" name="contraseña" placeholder="Password"/>
+        <input type="password" name="Contraseña" placeholder="Password" required />
         <button type="submit">Registrarse</button>
         
         <p>¿Ya eres miembro? <a href='@Url.Action("Login","Account")' alt = "Login"> Inicia Sesion</a></p>
