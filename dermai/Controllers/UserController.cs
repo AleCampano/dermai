@@ -25,43 +25,26 @@ public class UserController : Controller
     public IActionResult GuardarFormularioPiel(int NivelGrasaPiel, string AlergiaProductos, string IrritacionFrecuencia, string AparicionGranos)
     {
         string tipoPiel;
+        if (NivelGrasaPiel < 33)
+        {
+            tipoPiel = "Piel seca";
+        }
+        else if (NivelGrasaPiel < 66)
+        {
+            tipoPiel = "Piel mixta";
+        }
+        else
+        {
+            tipoPiel = "Piel grasa";
+        }
 
-            
-            if (NivelGrasaPiel < 33)
-            {
-                tipoPiel = "Piel seca";
-            }
-            else if (NivelGrasaPiel < 66)
-            {
-                tipoPiel = "Piel mixta";
-            }
-            else
-            {
-                tipoPiel = "Piel grasa";
-            }
+        string detalles = $"Tipo: {tipoPiel}. " + $"Alergia a productos: {AlergiaProductos}. " + $"Irritación: {IrritacionFrecuencia}. " + $"Granos: {AparicionGranos}.";
 
-            // 🔹 Construir los detalles del perfil
-            string detalles = $"Tipo: {tipoPiel}. " +
-                              $"Alergia a productos: {AlergiaProductos}. " +
-                              $"Irritación: {IrritacionFrecuencia}. " +
-                              $"Granos: {AparicionGranos}.";
+        var perfil = new Perfil(detalles, "", "", "");
+        int idPerfil = BD.CrearPerfil(perfil);
 
-
-            // 🔹 Crear el perfil
-            var perfil = new Perfil(
-                detalles,
-                "", // PreferenciaProducto
-                "", // Presupuesto
-                ""  // FrecuenciaRutina
-            );
-
-            // 🔹 Guardar en la BD a través del modelo BD
-            int idPerfil = BD.CrearPerfil(perfil);
-
-            TempData["Mensaje"] = "¡Datos de tu piel guardados correctamente!";
-
-            // 🔹 Redirigir al siguiente formulario
-            return RedirectToAction("CompletarFormularioRutina");
+        TempData["Mensaje"] = "¡Datos de tu piel guardados correctamente!";
+        return RedirectToAction("CompletarFormularioRutina");
     }
 
     public IActionResult CompletarFormularioRutina()
@@ -69,8 +52,17 @@ public class UserController : Controller
         return View("HacerRutina");
     }
 
-    public IActionResult GuardarFormularioRutina()
+    [HttpPost]
+    public IActionResult GuardarFormularioRutina(string[] caracteristicas, string[] preferencias, string presupuesto, string frecuencia)
     {
-        return View();
+        string caracteristicasStr = Objeto.ListToString(caracteristicas.ToList());
+        string preferenciasStr = Objeto.ListToString(preferencias.ToList());
+
+        var perfil = new Perfil(caracteristicasStr, preferenciasStr, presupuesto, frecuencia);
+
+        int idPerfil = BD.CrearPerfil(perfil);
+
+        TempData["Mensaje"] = "¡Tu rutina fue guardada correctamente!";
+        return RedirectToAction("GenerarRutina", "Home", new { idPerfil = idPerfil });
     }
 }

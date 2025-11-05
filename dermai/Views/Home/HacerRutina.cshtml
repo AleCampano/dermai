@@ -1,8 +1,9 @@
-@using dermai.Models;
+@model dermai.Models.PielFormModel
 
 <form asp-action="guardarInfoUser" asp-controller="Home" method="post">
 
 <section class="hacerRutina">
+  <!-- 🧴 CARACTERÍSTICAS -->
   <div class="características">
     <h2>❓¿Qué características tenés?</h2>
     <h3>(Podés elegir varias opciones)</h3>
@@ -20,7 +21,8 @@
       <label><input type="checkbox" name="caracteristicas" value="Líneas de expresión / arrugas"> Líneas de expresión / arrugas</label>
     </div>
   </div>
- 
+
+  <!-- 💄 PREFERENCIAS -->
   <div class="preferencias">
     <h2>❓¿Qué preferencias de productos tenés?</h2>
     <h3>(Podés elegir varias opciones)</h3>
@@ -34,7 +36,8 @@
       <label><input type="checkbox" name="preferencias" value="Vegano"> Vegano</label>
     </div>
   </div>
- 
+
+  <!-- 💰 PRESUPUESTO -->
   <div class="presupuesto">
     <h2>❓¿Cuál es tu presupuesto estimado?</h2>
     <div>
@@ -43,7 +46,8 @@
       <label><input type="radio" name="presupuesto" value="Premium"> Premium (desde $120 USD)</label>
     </div>
   </div>
- 
+
+  <!-- ⏰ FRECUENCIA -->
   <div class="frecuenciaRutinaria">
     <h2>❓¿Cuál es tu frecuencia de rutina ideal?</h2>
     <div>
@@ -53,7 +57,6 @@
     </div>
   </div>
   
-  <input type="submit" value="Enviar">
+  <input type="submit" value="Enviar" class="btn btn-primary mt-3">
 </section>
-
 </form>

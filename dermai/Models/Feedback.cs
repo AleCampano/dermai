@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Microsoft.Data.SqlClient;
 using Dapper;
 
-namespace dermai;
+namespace dermai.Models;
 
 public class Feedback
 {
@@ -13,4 +13,12 @@ public class Feedback
     public int IdUsuario {get; private set;}
     [JsonProperty]
     public int IdRutina {get; private set;}
+
+    public Feedback() { }
+
+    public Feedback(int idUsuario, int idRutina)
+    {
+        IdUsuario = idUsuario;
+        IdRutina = idRutina;
+    }
 }

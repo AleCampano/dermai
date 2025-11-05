@@ -65,17 +65,26 @@ public class BD
     {
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-        string sp = "SP_CrearPerfil";
-        var idPerfil = connection.QuerySingleOrDefault<int>(sp, new
-        {
-            IdUsuario = perfil.IdUsuario,
-            CaracteristicasPiel = perfil.CaracteristicasPiel,
-            PreferenciaProducto = perfil.PreferenciaProducto,
-            Presupuesto = perfil.Presupuesto,
-            FrecuenciaRutina = perfil.FrecuenciaRutina
-        }, commandType: System.Data.CommandType.StoredProcedure);
-
-        return idPerfil;
+            string sp = "SP_CrearPerfil";
+            var parametros = new
+            {
+                CaracteristicasPiel = perfil.CaracteristicasPiel,
+                PreferenciaProducto = perfil.PreferenciaProducto,
+                Presupuesto = perfil.Presupuesto,
+                FrecuenciaRutina = perfil.FrecuenciaRutina
+            };
+            
+            int idPerfil = connection.QuerySingleOrDefault<int>(sp, parametros, commandType: System.Data.CommandType.StoredProcedure);
+            return idPerfil;
         }
     }
+
+    public static Perfil ObtenerPerfilPorId(int idPerfil)
+{
+    using (SqlConnection db = new SqlConnection(_connectionString))
+    {
+        string sql = "SELECT * FROM Perfil WHERE IdPerfil = @idPerfil";
+        return db.QueryFirstOrDefault<Perfil>(sql, new { idPerfil });
+    }
+}
 }

@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using Microsoft.Data.SqlClient;
 using Dapper;
 
-namespace dermai;
 
 public class Perfil
 {
@@ -27,6 +26,14 @@ public class Perfil
     this.PreferenciaProducto = PreferenciaProducto;
     this.Presupuesto = Presupuesto;
     this.FrecuenciaRutina = FrecuenciaRutina;
+    }
+    public Perfil(int idUsuario, string caracteristicasPiel, string preferenciaProducto, string presupuesto, string frecuenciaRutina)
+    {
+        IdUsuario = idUsuario;
+        CaracteristicasPiel = caracteristicasPiel;
+        PreferenciaProducto = preferenciaProducto;
+        Presupuesto = presupuesto;
+        FrecuenciaRutina = frecuenciaRutina;
     }
 }
 
