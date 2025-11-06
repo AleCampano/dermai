@@ -44,7 +44,7 @@ public class UserController : Controller
         int idPerfil = BD.CrearPerfil(perfil);
 
         TempData["Mensaje"] = "¡Datos de tu piel guardados correctamente!";
-        return RedirectToAction("CompletarFormularioRutina");
+        return RedirectToAction("InicioA", "Home");
     }
 
     public IActionResult CompletarFormularioRutina()

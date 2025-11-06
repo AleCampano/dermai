@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Validación de Registro
     const registroForm = document.getElementById("registroForm");
     if (registroForm) {
         registroForm.addEventListener("submit", function (event) {

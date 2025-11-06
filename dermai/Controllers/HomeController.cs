@@ -6,15 +6,16 @@ using Microsoft.Data.SqlClient;
 using Dapper;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
+using Microsoft.SemanticKernel.Connectors.Google;
 
 namespace dermai.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly IKernel _kernel;
+    private readonly Kernel _kernel;
 
-    public HomeController(ILogger<HomeController> logger, IKernel kernel)
+    public HomeController(ILogger<HomeController> logger, Kernel kernel)
     {
         _logger = logger;
         _kernel = kernel;
@@ -27,7 +28,7 @@ public class HomeController : Controller
 
     public IActionResult InicioA()
     {
-        return View();
+        return View("Inicio");
     }
 
     [HttpPost]
@@ -51,17 +52,28 @@ public class HomeController : Controller
 
         Devuelve una rutina dividida en pasos de mañana y noche, con recomendaciones de tipos de productos (no marcas).";
 
-        var chat = _kernel.GetRequiredService<IChatCompletionService>();
-        var chatSession = chat.CreateNewChat();
-        var respuesta = await chatSession.SendMessageAsync(prompt);
+        var chatService = _kernel.GetRequiredService<IChatCompletionService>();
+
+        var history = new ChatHistory();
+        history.AddSystemMessage("Eres un dermatólogo experto en cuidado de la piel.");
+        history.AddUserMessage(prompt);
+
+        var promptSettings = new GeminiPromptExecutionSettings
+        {
+            Temperature = 0.7,
+            TopP = 0.95
+        };
+
+        var respuesta = await chatService.GetChatMessageContentAsync(history, promptSettings);
+
 
         ViewBag.Rutina = respuesta.Content;
-        return View("MostrarRutina");
+        return RedirectToAction("GuardarRutina", "Home");
     }
 
     public IActionResult GuardarRutina()
     {
-        return View();
+        return View("MostrarRutina");
     }
 
     public IActionResult VerRutina()

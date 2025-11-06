@@ -63,7 +63,11 @@
             },
             "Microsoft.SemanticKernel": {
               "target": "Package",
-              "version": "[1.67.0, )"
+              "version": "[1.16.1, )"
+            },
+            "Microsoft.SemanticKernel.Connectors.Google": {
+              "target": "Package",
+              "version": "[1.66.0-alpha, )"
             },
             "NewtonSoft.Json": {
               "target": "Package",
