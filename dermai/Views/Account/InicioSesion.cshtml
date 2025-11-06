@@ -2,22 +2,22 @@
 
 <section class="Login">
     <div class="imagen">
-        <img src="imagenes/skin3.jpg" alt="Piel">
+        <img src="im.jpg" alt="Piel">
     </div>
-    <form asp-action="GuardarLogin" asp-controller="Account" method="post">
-        <h1>Email</h1>
-        <input type="text" id="Email" name="Email" placeholder="Correo electrónico" />
+    <form id="loginForm">
+    <h1>Email</h1>
+    <input type="text" id="Email" name="Email" placeholder="Correo electrónico" />
 
-        <h1>Contraseña</h1>
-        <input type="password" id="Contraseña" name="Contraseña" placeholder="Password" />
+    <h1>Contraseña</h1>
+    <input type="password" id="Contraseña" name="Contraseña" placeholder="Password" />
 
-        <button type="submit">Iniciar Sesión</button>
+    <button type="submit">Iniciar Sesión</button>
 
-        <div>
-            <p>¿No tenés cuenta? 
-            <a href='@Url.Action("Registro", "Account")' alt="Registro">Registrarse aquí</a>
-            </p>
-        </div>
+    <div>
+        <p>¿No tenés cuenta? 
+        <a href='@Url.Action("Registro", "Account")'>Registrarse aquí</a>
+        </p>
+    </div>
     </form>
     <script src="~/js/validaciones.js"></script>
 </section>

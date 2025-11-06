@@ -20,12 +20,10 @@ header {
   gap: 1%;
 }
 
-
 header img {
   width: 4%;
   height: auto;
 }
-
 
 header h3 {
   margin-top: 0;
@@ -39,6 +37,84 @@ header h3 {
   background-position: center;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+}
+
+.login {
+ 
+  border: #333;
+  width: 100%;
+  margin-right: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFF7E2;
+}
+
+.Login form {
+  width: 85%;
+  height: 71%;
+  margin-right: 5%;
+  max-width: 400px;
+  background-color: #f7f3ea;
+  border-radius: 15px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  padding: 32px 30px 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.login h2 {
+  text-align: center;
+  margin-bottom: 5px;
+  font-family: 'Georgia', serif;
+  color: #d2a67a;
+  font-weight: bold;
+}
+
+.login h3 {
+  margin-bottom: 2px;
+  color: #333;
+  font-size: 15px;
+  margin-right: 10%;
+}
+
+.login input{
+  width: 100%;
+  margin-right: 50%;
+  padding: 10px 12px;
+  border: 1px solid #d2a67a;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  background: #FFF7E2;
+  font-size: 15px;
+}
+
+.login button {
+  color: white;
+  background: #d2a67a;
+  cursor: pointer;
+  padding: 3%;
+  width: 100%;
+  border: none;
+  border-radius: 7px;
+  margin-top: 5%;
+  font-size: 16px;
+  font-weight: bold;
+}
+.login button:hover {
+  background: #ebad7a;
+}
+
+.login div p {
+  text-align: center;
+  margin-top: 2%;
+  font-size: 13px;
+}
+
+.login a {
+  color: #85b9ff;
+  text-decoration: underline;
 }
 
 .Registro {
@@ -118,29 +194,7 @@ header h3 {
   text-decoration: underline;
 }
 
-footer {
-  background-color: #ebad7a;
-  margin-top: 1%;
-  border: 1px solid black;
-  clear: both;
-}
-footer ul {
-  padding-left: 0;
-  margin: 0;
-  list-style: none;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-footer ul li {
-  text-align: center;
-  color: #fff;
-}
-footer ul li a {
-  color: #85b9ff;
-}
-
-.imagen{
+.imagen2{
   align-content: center;
   margin-left: 30%;
 }
@@ -185,92 +239,149 @@ footer ul li a {
       font-size: 14px;
   }
 }
-.login {
- 
-  border: #333;
-  width: 100%;
-  margin-right: 25%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #FFF7E2;
-}
 
-.login form {
-  width: 85%;
-  height: 71%;
-  margin-right: 5%;
-  max-width: 400px;
-  background-color: #f7f3ea;
+.hacerRutina {
+  width: 95%;
+  max-width: 900px; /* Un poco más ancho para las 3 columnas de opciones */
+  margin: 20px auto;
+  padding: 0; /* Quitamos padding aquí, se lo damos a los divs internos */
+  background-color: transparent; /* Fondo transparente, el color va en los divs */
   border-radius: 15px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
-  padding: 32px 30px 20px 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
+  box-shadow: none;
 }
 
-.login h2 {
-  text-align: center;
+.hacerRutina > div {
+  padding: 25px 40px;
+  margin-bottom: 20px; /* Espacio entre las secciones */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Sombra suave para separar */
+}
+
+/* Colores de fondo de las secciones */
+.características {
+  background-color: #F7F3EA; /* Beige claro */
+}
+
+.preferencias {
+  background-color: #E1F5FE; /* Azul claro */
+}
+
+.presupuesto {
+  background-color: #F7F3EA; /* Beige claro */
+}
+
+.frecuenciaRutinaria {
+  background-color: #E1F5FE; /* Azul claro */
+}
+
+.hacerRutina h2 {
+  color: #333; /* Texto más oscuro */
+  font-size: 1.6rem;
+  border-bottom: none; /* Quitamos la línea divisoria */
+  padding-bottom: 0;
+  margin-top: 0;
   margin-bottom: 5px;
-  font-family: 'Georgia', serif;
-  color: #d2a67a;
   font-weight: bold;
 }
 
-.login h3 {
-  margin-bottom: 2px;
+.hacerRutina h3 {
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+/* Estilos para las opciones de Checkbox/Radio */
+.características > div, .preferencias > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 15px 30px; 
+}
+
+.presupuesto > div, .frecuenciaRutinaria > div {
+  display: flex;
+  gap: 40px;
+  justify-content: flex-start;
+}
+
+.hacerRutina label {
+  display: flex; 
+  align-items: center;
+  margin-bottom: 0; 
+  font-size: 1rem;
   color: #333;
-  font-size: 15px;
-  margin-right: 10%;
 }
 
-.login input{
-  width: 100%;
-  margin-right: 50%;
-  padding: 10px 12px;
-  border: 1px solid #d2a67a;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  background: #FFF7E2;
-  font-size: 15px;
-}
-
-.login button {
-  color: white;
-  background: #d2a67a;
+.hacerRutina input[type="checkbox"], 
+.hacerRutina input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  margin-bottom: 0;
+  appearance: none; 
+  border: 2px solid #d2a67a; 
+  border-radius: 4px; 
+  background-color: white;
+  position: relative;
   cursor: pointer;
-  padding: 3%;
-  width: 100%;
-  border: none;
-  border-radius: 7px;
-  margin-top: 5%;
-  font-size: 16px;
-  font-weight: bold;
-}
-.login button:hover {
-  background: #ebad7a;
 }
 
-.login div p {
-  text-align: center;
-  margin-top: 2%;
-  font-size: 13px;
+.hacerRutina input[type="checkbox"]:checked {
+  background-color: #ebad7a; /* Color de relleno al seleccionar */
+  border-color: #ebad7a;
+}
+/* Radio (presupuesto y frecuencia) - Marcado */
+.hacerRutina input[type="radio"] {
+  border-radius: 50%; /* Círculo para radio */
+}
+.hacerRutina input[type="radio"]:checked {
+  background-color: #ebad7a;
+  border-color: #ebad7a;
 }
 
-.login a {
-  color: #85b9ff;
-  text-decoration: underline;
+/* El punto blanco en el centro de los radio buttons */
+.hacerRutina input[type="radio"]:checked::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.imagen {
-  width: 50%;
-  background-size: cover;
-  background-position: center;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+/* Botón de Enviar */
+.hacerRutina .btn-primary {
+  width: auto;
+  min-width: 120px;
+  padding: 8px 20px;
+  align-self: flex-end; /* Lo alinea a la derecha como en el prototipo */
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: 40px; /* Alineado con el padding de las secciones */
+  border-radius: 20px; /* Más redondeado */
+  background-color: #ebad7a;
+  border-color: #ebad7a;
+  font-size: 1rem;
 }
 
+/* Media Query para móvil: 1 columna */
+@media (max-width: 768px) {
+  .características > div, .preferencias > div {
+    grid-template-columns: 1fr; /* 1 columna */
+    gap: 10px;
+  }
+  .presupuesto > div, .frecuenciaRutinaria > div {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .hacerRutina > div {
+    padding: 20px;
+  }
+}
 
 footer{
   background-color: #ebad7a;
@@ -281,6 +392,15 @@ footer{
   position: fixed;
   left: 0;
   bottom: 0;
+}
+
+footer ul {
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 footer ul li{

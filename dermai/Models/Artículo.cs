@@ -6,15 +6,14 @@ using Microsoft.Data.SqlClient;
 using Dapper;
 
 namespace dermai.Models;
+    public class Articulo
+    {
+        [JsonProperty]
+        public int IdPerfil {get; private set;}
 
-public class Articulo
-{
-    [JsonProperty]
-    public int IdPerfil {get; private set;}
+        public Articulo (int IdPerfil)
+        {
+            this.IdPerfil = IdPerfil;
+        }
 
-    public Articulo (int IdPerfil)
-{
-    this.IdPerfil = IdPerfil;
-}
-
-}
+    }

@@ -29,24 +29,23 @@ public class AccountController : Controller
     }
 
     [HttpPost]
-    public IActionResult GuardarLogin(string Email, string Contraseña)
-    {
-        if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Contraseña))
+    [Route("api/account/login")]
+    public IActionResult LoginApi([FromBody] UsuarioLoginDTO login)
+    {   
+        if (string.IsNullOrEmpty(login.Email) || string.IsNullOrEmpty(login.Contraseña))
         {
-            ViewBag.Error = "Por favor, complete todos los campos.";
-            return View("InicioSesion");
+            return BadRequest(new { error = "Por favor, complete todos los campos." });
         }
 
-        Usuario usu = BD.Login(Email, Contraseña);
+        Usuario usu = BD.Login(login.Email, login.Contraseña);
 
-        if(usu == null)
+        if (usu == null)
         {
-            ViewBag.No = "Tu usuario no existe, por favor registrate.";
-            return View("InicioSesion");
+            return NotFound(new { error = "Tu usuario no existe, por favor registrate." });
         }
-            
-        HttpContext.Session.SetString("usuId", usu.Email);
-        return RedirectToAction("CompletarFormularioPiel", "User");
+
+        HttpContext.Session.SetString("usu", usu.Email);
+        return Ok(new { mensaje = "Login exitoso", redireccion = Url.Action("CompletarFormularioPiel", "User") });
     }
 
     public IActionResult CerrarSesion()
@@ -81,7 +80,7 @@ public class AccountController : Controller
         Usuario newUser = new Usuario (Nombre, Email, Contraseña, FechaDeNacimiento, NuevoPerfil);
         BD.Registrarse(newUser);
 
-        HttpContext.Session.SetString("usu", JsonConvert.SerializeObject(newUser));
+        HttpContext.Session.SetString("usu", Objeto.ObjectToString(newUser));
         return RedirectToAction("CompletarFormularioPiel", "User");
     }
 

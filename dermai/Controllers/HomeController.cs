@@ -73,21 +73,90 @@ public class HomeController : Controller
 
     public IActionResult GuardarRutina()
     {
+        string rutinaTexto = "";
+        if (TempData["RutinaGenerada"] != null)
+        {
+            rutinaTexto = TempData["RutinaGenerada"].ToString();
+        }
+        else if (TempData["RutinaGenerada"] != null)
+        {
+            rutinaTexto = TempData["RutinaGenerada"].ToString();        
+
+        }        
+        if (string.IsNullOrEmpty(rutinaTexto))
+        {
+            ViewBag.Error = "No se pudo recuperar la rutina generada.";
+            return View("MostrarRutina");
+        }
+
+        string email = HttpContext.Session.GetString("usu");
+        if (string.IsNullOrEmpty(email))
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
+        Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
+        if (usuario == null)
+        {
+            ViewBag.Error = "Usuario no encontrado.";
+            return View("MostrarRutina");
+        }
+
+        Rutina rutina = new Rutina(true, rutinaTexto, usuario.IdUsuario);
+        BD.GuardarRutina(rutina);
+
+        TempData["RutinaGenerada"] = respuesta.Content;
         return View("MostrarRutina");
     }
 
     public IActionResult VerRutina()
     {
+        string email = HttpContext.Session.GetString("usu");
+        Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
+        Rutina rutina = BD.ObtenerRutinaPorUsuario(usuario.IdUsuario);
+
+        if (rutina == null)
+        {
+            ViewBag.Mensaje = "No se encontró una rutina guardada.";
+            return View("MostrarRutina");
+        }
+
+        ViewBag.Rutina = rutina.RutinaFinal;
         return View("MostrarRutina");
     }
 
     public IActionResult ModificarRutina()
     {
-        return RedirectToAction("CompletarFormularioRutina", "Account");
+        return RedirectToAction("CompletarFormularioRutina", "User");
     }
 
-    public IActionResult GuardarTareaModificada()
+    [HttpPost]
+    public IActionResult GuardarRutinaModificada(List<string> caracteristicas, List<string> preferencias, string presupuesto, string frecuencia)
     {
+        if ((caracteristicas == null || caracteristicas.Count == 0) ||
+        (preferencias == null || preferencias.Count == 0) ||
+        string.IsNullOrEmpty(presupuesto) ||
+        string.IsNullOrEmpty(frecuencia))
+        {
+            ViewBag.Error = "Por favor completá todos los campos.";
+            return View("HacerRutina");
+        }
+
+        string email = HttpContext.Session.GetString("usu");
+        if (string.IsNullOrEmpty(email))
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
+        Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
+        if (usuario == null)
+        {
+            ViewBag.Error = "Usuario no encontrado.";
+            return RedirectToAction("Login", "Account");
+        }
+
+        Perfil perfil = new Perfil(Objeto.ListToString(caracteristicas), Objeto.ListToString(preferencias), presupuesto, frecuencia);
+        BD.ModificarPerfil(usuario.IdPerfil, perfil);
         return View("Inicio");
     }
 }

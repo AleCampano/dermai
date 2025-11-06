@@ -18,6 +18,15 @@ builder.Services.AddSingleton<Kernel>(sp =>
     return kernelBuilder.Build();
 });
 
+app.UseSession();
+
+builder.Services.AddSession(options =>
+{
+    // Opcional: Configurar el tiempo de espera de inactividad, etc.
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true; 
+});
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -33,7 +42,10 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.UseSession();
+builder.Services.AddDistributedMemoryCache();
+
+
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

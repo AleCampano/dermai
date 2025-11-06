@@ -7,18 +7,18 @@ using Dapper;
 
 namespace dermai.Models;
 
-public class Feedback
-{
-     [JsonProperty]
-    public int IdUsuario {get; private set;}
-    [JsonProperty]
-    public int IdRutina {get; private set;}
-
-    public Feedback() { }
-
-    public Feedback(int idUsuario, int idRutina)
+    public class Feedback
     {
-        IdUsuario = idUsuario;
-        IdRutina = idRutina;
+        [JsonProperty]
+        public int IdUsuario {get; private set;}
+        [JsonProperty]
+        public int IdRutina {get; private set;}
+
+        public Feedback() { }
+
+        public Feedback(int idUsuario, int idRutina)
+        {
+            IdUsuario = idUsuario;
+            IdRutina = idRutina;
+        }
     }
-}

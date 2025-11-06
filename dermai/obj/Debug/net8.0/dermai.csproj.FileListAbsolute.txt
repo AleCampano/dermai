@@ -199,3 +199,15 @@ C:\Users\48855001\dermai\dermai\obj\Debug\net8.0\dermai.MvcApplicationPartsAssem
 C:\Users\48855001\dermai\dermai\obj\Debug\net8.0\dermai.RazorAssemblyInfo.cache
 C:\Users\48855001\dermai\dermai\obj\Debug\net8.0\dermai.RazorAssemblyInfo.cs
 C:\Users\48855001\dermai\dermai\obj\Debug\net8.0\dermai.sourcelink.json
+C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\Azure.AI.OpenAI.dll
+C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\Microsoft.Bcl.HashCode.dll
+C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\Microsoft.Extensions.AI.dll
+C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\Microsoft.Extensions.AI.Abstractions.dll
+C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\Microsoft.Extensions.VectorData.Abstractions.dll
+C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\Microsoft.SemanticKernel.dll
+C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\Microsoft.SemanticKernel.Abstractions.dll
+C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\Microsoft.SemanticKernel.Connectors.Google.dll
+C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\Microsoft.SemanticKernel.Connectors.OpenAI.dll
+C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\Microsoft.SemanticKernel.Core.dll
+C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\System.Numerics.Tensors.dll
