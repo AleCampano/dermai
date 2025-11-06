@@ -211,3 +211,15 @@ C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\Microsoft.SemanticKernel.Connec
 C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\Microsoft.SemanticKernel.Connectors.OpenAI.dll
 C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\Microsoft.SemanticKernel.Core.dll
 C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\System.Numerics.Tensors.dll
+C:\Users\49122259\dermai\dermai\obj\Debug\net8.0\dermai.csproj.AssemblyReference.cache
+C:\Users\49122259\dermai\dermai\obj\Debug\net8.0\dermai.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\49122259\dermai\dermai\obj\Debug\net8.0\dermai.AssemblyInfoInputs.cache
+C:\Users\49122259\dermai\dermai\obj\Debug\net8.0\dermai.AssemblyInfo.cs
+C:\Users\49122259\dermai\dermai\obj\Debug\net8.0\dermai.csproj.CoreCompileInputs.cache
+C:\Users\49122259\dermai\dermai\obj\Debug\net8.0\dermai.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\49122259\dermai\dermai\obj\Debug\net8.0\dermai.RazorAssemblyInfo.cache
+C:\Users\49122259\dermai\dermai\obj\Debug\net8.0\dermai.RazorAssemblyInfo.cs
+C:\Users\49122259\dermai\dermai\obj\Debug\net8.0\dermai.sourcelink.json
+C:\Users\49122259\dermai\dermai\obj\Debug\net8.0\dermai.dll
+C:\Users\49122259\dermai\dermai\obj\Debug\net8.0\refint\dermai.dll
+C:\Users\49122259\dermai\dermai\obj\Debug\net8.0\dermai.pdb
