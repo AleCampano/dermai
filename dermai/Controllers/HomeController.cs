@@ -73,16 +73,18 @@ public class HomeController : Controller
 
     public IActionResult GuardarRutina()
     {
+        // Rutina respuesta; //NO
         string rutinaTexto = "";
         if (TempData["RutinaGenerada"] != null)
         {
             rutinaTexto = TempData["RutinaGenerada"].ToString();
         }
-        else if (TempData["RutinaGenerada"] != null)
-        {
-            rutinaTexto = TempData["RutinaGenerada"].ToString();        
+      //Qué es esto?
+        // else if (TempData["RutinaGenerada"] != null)
+        // {
+        //     rutinaTexto = TempData["RutinaGenerada"].ToString();        
 
-        }        
+        // }        
         if (string.IsNullOrEmpty(rutinaTexto))
         {
             ViewBag.Error = "No se pudo recuperar la rutina generada.";
@@ -102,10 +104,10 @@ public class HomeController : Controller
             return View("MostrarRutina");
         }
 
-        Rutina rutina = new Rutina(true, rutinaTexto, usuario.IdUsuario);
+        Rutina rutina = new Rutina(true, rutinaTexto, usuario.IdPerfil);
         BD.GuardarRutina(rutina);
 
-        TempData["RutinaGenerada"] = respuesta.Content;
+        TempData["RutinaGenerada"] = rutina.Content;
         return View("MostrarRutina");
     }
 
@@ -113,7 +115,7 @@ public class HomeController : Controller
     {
         string email = HttpContext.Session.GetString("usu");
         Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
-        Rutina rutina = BD.ObtenerRutinaPorUsuario(usuario.IdUsuario);
+        Rutina rutina = BD.ObtenerRutinaPorUsuario(usuario.IdPerfil);
 
         if (rutina == null)
         {

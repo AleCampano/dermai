@@ -18,7 +18,6 @@ builder.Services.AddSingleton<Kernel>(sp =>
     return kernelBuilder.Build();
 });
 
-app.UseSession();
 
 builder.Services.AddSession(options =>
 {
@@ -44,10 +43,12 @@ app.UseAuthorization();
 
 builder.Services.AddDistributedMemoryCache();
 
-
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+
