@@ -23,7 +23,7 @@
                 <img src="imagenes/logo-removebg-preview.png" alt="Logo">
               </div>
             </div>
-            <p>En dermai, no solo cuidamos la piel; cuidamos a las personas.</p>
+            <p>En dermai no solo cuidamos la piel, cuidamos a las personas.</p>
         </div>
   
     </header>
@@ -32,7 +32,13 @@
         @RenderBody()
     </main>
 
-    <footer>
+  
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+  <footer>
        <footer>
         <ul>
             <li><a href="index.html">¿NECESITAS AYUDA?</a></li>
@@ -41,10 +47,5 @@
         </ul>
     </footer>
     </footer>
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-
+    
 </html>
