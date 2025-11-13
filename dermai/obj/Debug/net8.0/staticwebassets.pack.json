@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\imagenes\\Login.png"
     },
     {
+      "Id": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\imagenes\\Logo.png",
+      "PackagePath": "staticwebassets\\imagenes\\Logo.png"
+    },
+    {
+      "Id": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\imagenes\\inicio.png",
+      "PackagePath": "staticwebassets\\imagenes\\inicio.png"
+    },
+    {
       "Id": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\imagenes\\skincare.jfif",
       "PackagePath": "staticwebassets\\imagenes\\skincare.jfif"
     },

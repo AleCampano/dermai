@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "O3f4hR4a2QIyRHRkorcacA7U6s65dz87jMnCkFVP8GQ=",
+  "Hash": "8UZAn022y4GdxwBhfzwTGaKGCqTYfn7/4haOyMO2hfQ=",
   "Source": "dermai",
   "BasePath": "_content/dermai",
   "Mode": "Default",
@@ -55,6 +55,25 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\imagenes\\inicio.png",
+      "SourceId": "dermai",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\",
+      "BasePath": "_content/dermai",
+      "RelativePath": "imagenes/inicio.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\inicio.png"
+    },
+    {
       "Identity": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\imagenes\\Login.png",
       "SourceId": "dermai",
       "SourceType": "Discovered",
@@ -72,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\imagenes\\Login.png"
+    },
+    {
+      "Identity": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\imagenes\\Logo.png",
+      "SourceId": "dermai",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\",
+      "BasePath": "_content/dermai",
+      "RelativePath": "imagenes/Logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\Logo.png"
     },
     {
       "Identity": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\imagenes\\skincare.jfif",

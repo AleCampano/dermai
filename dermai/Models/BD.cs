@@ -45,7 +45,7 @@ namespace dermai.Models;
                     Email = usuario.Email,
                     Contraseña = usuario.Contraseña,
                     FechaDeNacimiento = usuario.FechaDeNacimiento,
-                    IdPerfil = usuario.IdPerfil
+                    IdPerfil = 0 // Inicialmente sin perfil
                 };
 
                 int idUsuario = connection.QuerySingle<int>(sp, parametros, commandType: CommandType.StoredProcedure);
@@ -63,14 +63,14 @@ namespace dermai.Models;
                 }
             }
 
-        public static int CrearPerfil(int idUsuario, Perfil perfil)
+        public static int CrearPerfil(Perfil perfil)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string sp = "SP_CrearPerfil";
                 var parametros = new
                 {
-                    IdUsuario = idUsuario,
+                    IdUsuario = (int?) null, //creando un int que puede ser nulo y le asignas el valor null.
                     CaracteristicasPiel = perfil.CaracteristicasPiel,
                     PreferenciaProducto = perfil.PreferenciaProducto,
                     Presupuesto = perfil.Presupuesto,
@@ -95,12 +95,29 @@ namespace dermai.Models;
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "INSERT INTO Rutina (Rutinas, RutinaFinal, IdUsuario) VALUES (@Rutinas, @RutinaFinal, @IdUsuario)";
-                connection.Execute(query, new {
+                string checkQuery = "SELECT COUNT(*) FROM Rutinas WHERE IdUsuario = @IdUsuario";
+            int count = connection.QueryFirstOrDefault<int>(checkQuery, new { IdUsuario = rutina.IdUsuario });
+
+            if (count > 0)
+            {
+                // Actualizar rutina existente
+                string updateQuery = "UPDATE Rutinas SET Rutinas = @Rutinas, RutinaFinal = @RutinaFinal WHERE IdUsuario = @IdUsuario";
+                connection.Execute(updateQuery, new {
                     Rutinas = rutina.Rutinas,
                     RutinaFinal = rutina.RutinaFinal,
                     IdUsuario = rutina.IdUsuario
                 });
+            }
+            else
+            {
+                // Insertar nueva rutina
+                string insertQuery = "INSERT INTO Rutinas (Rutinas, RutinaFinal, IdUsuario) VALUES (@Rutinas, @RutinaFinal, @IdUsuario)";
+                connection.Execute(insertQuery, new {
+                    Rutinas = rutina.Rutinas,
+                    RutinaFinal = rutina.RutinaFinal,
+                    IdUsuario = rutina.IdUsuario
+                });
+            }
             }
         }
 
@@ -147,12 +164,12 @@ namespace dermai.Models;
             }
         }
 
-        public static void AsignarPerfilAUsuario(int idUsuario, int idPerfil)
+        public static void AsignarPerfilAUsuario(string email, int idPerfil)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "UPDATE Usuario SET IdPerfil = @IdPerfil WHERE IdUsuario = @IdUsuario";
-                connection.Execute(query, new { IdPerfil = idPerfil, IdUsuario = idUsuario });
+                string query = "UPDATE Usuario SET IdPerfil = @IdPerfil WHERE Email = @Email";
+                connection.Execute(query, new { IdPerfil = idPerfil, Email = email });
             }
         }
     }

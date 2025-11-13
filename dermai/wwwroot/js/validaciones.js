@@ -23,7 +23,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (response.ok) {
                     alert(result.mensaje);
-                    window.location.href = result.redireccion;
+                    if (result.redireccion) {
+                        window.location.href = result.redireccion;
+                    } else {
+                        window.location.href = "/User/CompletarFormularioPiel"; // ✅ Fallback
+                    }
                 } else {
                     alert(result.error || "Error al iniciar sesión.");
                 }

@@ -43,8 +43,16 @@ public class UserController : Controller
         string email = HttpContext.Session.GetString("usu");
         var usu = BD.ObtenerUsuarioPorEmail(email);
         var perfil = new Perfil(detalles, "", "", "");
-        int idPerfil = BD.CrearPerfil(usu.IdUsuario, perfil); // MAL, error CS7036: No se ha dado ningún argumento que corresponda al parámetro requerido "perfil" de "BD.CrearPerfil(int, Perfil)"    
-        int idPerfil = BD.CrearPerfil(perfil);
+
+        if (usu.IdPerfil > 0)
+        {
+            BD.ModificarPerfil(usu.IdPerfil, perfil);
+        }
+        else
+        {
+            int idPerfil = BD.CrearPerfil(perfil);
+            BD.AsignarPerfilAUsuario(usu.Email, idPerfil);
+        }
 
         TempData["Mensaje"] = "¡Datos de tu piel guardados correctamente!";
         return RedirectToAction("InicioA", "Home");
@@ -58,14 +66,28 @@ public class UserController : Controller
     [HttpPost]
     public IActionResult GuardarFormularioRutina(string[] caracteristicas, string[] preferencias, string presupuesto, string frecuencia)
     {
+        string email = HttpContext.Session.GetString("usu");
+        var usu = BD.ObtenerUsuarioPorEmail(email);
+    
         string caracteristicasStr = Objeto.ListToString(caracteristicas.ToList());
         string preferenciasStr = Objeto.ListToString(preferencias.ToList());
 
         var perfil = new Perfil(caracteristicasStr, preferenciasStr, presupuesto, frecuencia);
 
-        int idPerfil = BD.CrearPerfil(perfil);
+        int idPerfil = 0;
+        
+        if (usu.IdPerfil > 0)
+        {
+            BD.ModificarPerfil(usu.IdPerfil, perfil);
+            idPerfil = usu.IdPerfil;
+        }
+        else
+        {
+            idPerfil = BD.CrearPerfil(perfil);
+            BD.AsignarPerfilAUsuario(usu.Email, idPerfil);
+        }
 
         TempData["Mensaje"] = "¡Tu rutina fue guardada correctamente!";
-        return RedirectToAction("GenerarRutina", "Home", new { idPerfil = idPerfil });
+        return RedirectToAction("GenerarRutina", "Home", new {IdPerfil = idPerfil});
     }
 }

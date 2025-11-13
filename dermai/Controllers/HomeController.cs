@@ -32,11 +32,26 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> GenerarRutina(int idPerfil)
+    public async Task<IActionResult> GenerarRutina()
     {
-        Perfil perfil = BD.ObtenerPerfilPorId(idPerfil);
+        string email = HttpContext.Session.GetString("usu");
+        if (string.IsNullOrEmpty(email))
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
+        Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
+        if (usuario == null || usuario.IdPerfil == 0)
+        {
+            TempData["Error"] = "Primero debes completar tu perfil.";
+            return RedirectToAction("CompletarFormularioRutina", "User");
+        }
+
+        Perfil perfil = BD.ObtenerPerfilPorId(usuario.IdPerfil);
         if (perfil == null)
-        {return NotFound("Perfil no encontrado.");}
+        {
+            return NotFound("Perfil no encontrado.");
+        }
 
         var caracteristicasList = Objeto.StringToList<string>(perfil.CaracteristicasPiel);
         var preferenciasList = Objeto.StringToList<string>(perfil.PreferenciaProducto);
@@ -66,56 +81,57 @@ public class HomeController : Controller
 
         var respuesta = await chatService.GetChatMessageContentAsync(history, promptSettings);
 
+        Rutina rutina = new Rutina(true, respuesta.Content, perfil.IdUsuario);
+        BD.GuardarRutina(rutina);
 
         ViewBag.Rutina = respuesta.Content;
         return RedirectToAction("GuardarRutina", "Home");
     }
 
-    public IActionResult GuardarRutina()
-    {
-        // Rutina respuesta; //NO
-        string rutinaTexto = "";
-        if (TempData["RutinaGenerada"] != null)
-        {
-            rutinaTexto = TempData["RutinaGenerada"].ToString();
-        }
-      //Qué es esto?
-        // else if (TempData["RutinaGenerada"] != null)
-        // {
-        //     rutinaTexto = TempData["RutinaGenerada"].ToString();        
+    // public IActionResult GuardarRutina()
+    // {
+    //     string rutinaTexto = TempData["RutinaGenerada"]?.ToString();
+    //     string idPerfilStr = TempData["IdPerfil"]?.ToString();    
+    //     if (string.IsNullOrEmpty(rutinaTexto) || string.IsNullOrEmpty(idPerfilStr))
+    //     {
+    //         ViewBag.Error = "No se pudo recuperar la rutina generada.";
+    //         return View("MostrarRutina");
+    //     }
 
-        // }        
-        if (string.IsNullOrEmpty(rutinaTexto))
-        {
-            ViewBag.Error = "No se pudo recuperar la rutina generada.";
-            return View("MostrarRutina");
-        }
+    //     string email = HttpContext.Session.GetString("usu");
+    //     if (string.IsNullOrEmpty(email))
+    //     {
+    //         return RedirectToAction("Login", "Account");
+    //     }
 
-        string email = HttpContext.Session.GetString("usu");
-        if (string.IsNullOrEmpty(email))
-        {
-            return RedirectToAction("Login", "Account");
-        }
+    //     Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
+    //     if (usuario == null)
+    //     {
+    //         ViewBag.Error = "Usuario no encontrado.";
+    //         return View("MostrarRutina");
+    //     }
 
-        Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
-        if (usuario == null)
-        {
-            ViewBag.Error = "Usuario no encontrado.";
-            return View("MostrarRutina");
-        }
+    //     Rutina rutina = new Rutina(true, rutinaTexto, usuario.IdUsuario);
+    //     BD.GuardarRutina(rutina);
 
-        Rutina rutina = new Rutina(true, rutinaTexto, usuario.IdPerfil);
-        BD.GuardarRutina(rutina);
-
-        TempData["RutinaGenerada"] = rutina.Content;
-        return View("MostrarRutina");
-    }
+    //     ViewBag.Rutina = rutinaTexto; 
+    //     return View("MostrarRutina");
+    // }
 
     public IActionResult VerRutina()
     {
         string email = HttpContext.Session.GetString("usu");
         Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
-        Rutina rutina = BD.ObtenerRutinaPorUsuario(usuario.IdPerfil);
+        
+        Perfil perfil = BD.ObtenerPerfilPorId(usuario.IdPerfil);
+    
+        if (perfil == null)
+        {
+            ViewBag.Mensaje = "No se encontró el perfil del usuario.";
+            return View("MostrarRutina");
+        }
+
+        Rutina rutina = BD.ObtenerRutinaPorUsuario(perfil.IdUsuario);
 
         if (rutina == null)
         {
@@ -158,7 +174,18 @@ public class HomeController : Controller
         }
 
         Perfil perfil = new Perfil(Objeto.ListToString(caracteristicas), Objeto.ListToString(preferencias), presupuesto, frecuencia);
-        BD.ModificarPerfil(usuario.IdPerfil, perfil);
-        return View("Inicio");
+        
+        if (usuario.IdPerfil > 0)
+        {
+            BD.ModificarPerfil(usuario.IdPerfil, perfil);
+        }
+        else
+        {
+            int idPerfil = BD.CrearPerfil( perfil);
+            BD.AsignarPerfilAUsuario(email, idPerfil);
+        }
+
+        TempData["Mensaje"] = "¡Perfil actualizado correctamente!";
+        return RedirectToAction("InicioA", "Home");
     }
 }

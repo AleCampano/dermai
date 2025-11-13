@@ -18,6 +18,8 @@ public class Rutina
     [JsonProperty]
         public int Content {get; private set;} //ver
 
+public Rutina() { }
+
 public Rutina (bool Rutinas, string RutinaFinal, int IdUsuario)
 {
     this.Rutinas = Rutinas;

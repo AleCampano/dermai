@@ -78,9 +78,9 @@ public class AccountController : Controller
         Usuario newUser = new Usuario(Nombre, Email, Contraseña, FechaDeNacimiento, 0);
         int idUsuario = BD.Registrarse(newUser);
 
-        Perfil newPerfil = new Perfil (idUsuario, null, null, null, null);
-        int idPerfil = BD.CrearPerfil(idUsuario, newPerfil);
-        BD.AsignarPerfilAUsuario(idUsuario, idPerfil);
+        Perfil newPerfil = new Perfil (idUsuario, "", "", "", "");
+        int idPerfil = BD.CrearPerfil(newPerfil);
+        BD.AsignarPerfilAUsuario(Email, idPerfil);
 
         HttpContext.Session.SetString("usu", Objeto.ObjectToString(newUser));
         return RedirectToAction("CompletarFormularioPiel", "User");
