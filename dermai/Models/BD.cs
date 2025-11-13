@@ -44,8 +44,7 @@ namespace dermai.Models;
                     Nombre = usuario.Nombre,
                     Email = usuario.Email,
                     Contraseña = usuario.Contraseña,
-                    FechaDeNacimiento = usuario.FechaDeNacimiento,
-                    IdPerfil = 0 // Inicialmente sin perfil
+                    FechaDeNacimiento = usuario.FechaDeNacimiento
                 };
 
                 int idUsuario = connection.QuerySingle<int>(sp, parametros, commandType: CommandType.StoredProcedure);
@@ -54,23 +53,30 @@ namespace dermai.Models;
         }
 
         public static Usuario ObtenerUsuarioPorEmail(string email)
+        {
+            using(SqlConnection connection = new SqlConnection(_connectionString))
             {
-                using (SqlConnection db = new SqlConnection(_connectionString))
-                {
-                    return db.QueryFirstOrDefault<Usuario>(
-                        "SELECT * FROM Usuario WHERE Email = @Email",
-                        new { Email = email });
-                }
+                string query = "SELECT * FROM Usuario WHERE Email = @Email";
+                return connection.QueryFirstOrDefault<Usuario>(query, new { Email = email });
             }
+        }
 
-        public static int CrearPerfil(Perfil perfil)
+        public static int ObtenerIdUsuarioPorEmail(string email)
+        {
+            using(SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT IdUsuario FROM Usuario WHERE Email = @Email";
+                return connection.QueryFirstOrDefault<int>(query, new { Email = email });
+            }
+        }
+        public static int CrearPerfil(int idUsuario, Perfil perfil)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string sp = "SP_CrearPerfil";
                 var parametros = new
                 {
-                    IdUsuario = (int?) null, //creando un int que puede ser nulo y le asignas el valor null.
+                    IdUsuario = idUsuario,
                     CaracteristicasPiel = perfil.CaracteristicasPiel,
                     PreferenciaProducto = perfil.PreferenciaProducto,
                     Presupuesto = perfil.Presupuesto,

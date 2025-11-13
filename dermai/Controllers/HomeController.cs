@@ -181,7 +181,8 @@ public class HomeController : Controller
         }
         else
         {
-            int idPerfil = BD.CrearPerfil( perfil);
+            int idUsuario = BD.ObtenerIdUsuarioPorEmail(email);
+            int idPerfil = BD.CrearPerfil(idUsuario, perfil);
             BD.AsignarPerfilAUsuario(email, idPerfil);
         }
 

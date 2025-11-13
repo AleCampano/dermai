@@ -79,7 +79,7 @@ public class AccountController : Controller
         int idUsuario = BD.Registrarse(newUser);
 
         Perfil newPerfil = new Perfil (idUsuario, "", "", "", "");
-        int idPerfil = BD.CrearPerfil(newPerfil);
+        int idPerfil = BD.CrearPerfil(idUsuario, newPerfil);
         BD.AsignarPerfilAUsuario(Email, idPerfil);
 
         HttpContext.Session.SetString("usu", Objeto.ObjectToString(newUser));

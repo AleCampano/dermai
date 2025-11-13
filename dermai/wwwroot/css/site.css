@@ -23,7 +23,7 @@ main {
 
 header {
   border-bottom: 1px solid #E0E0E0;
-  background-color: rgb(218, 169, 129);
+  background-color:rgb(241, 211, 186);
   padding: 15px 30px;
   display: flex;
   align-items: center;
@@ -47,60 +47,59 @@ header {
   font-size: 2rem;
 }
 
-/* --- Contenedor Principal de Login --- */
-.Login { /* Usamos .Login ya que es la clase del <section> en tu HTML */
+
+.Login { 
   display: flex;
   width: 100%;
-  min-height: 700px; /* Altura mínima para asegurar el diseño */
-  margin: 50px auto; /* Centra el contenedor de la sección Login */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra prominente */
+  min-height: 700px; 
+  margin: 50px auto; 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
   border-radius: 15px;
-  overflow: hidden; /* Importante para que los bordes redondeados se apliquen */
-  background-color: #F6C7B4; /* Fondo del contenedor */
-
+  overflow: hidden; 
+  background-color: #F6C7B4; 
 }
 
-/* --- Sección de la Imagen --- */
+
 .imagen {
-  width: 45%; /* La imagen ocupa menos espacio, dando más al formulario */
+  width: 45%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #A0A0A0; /* Color de fondo mientras carga la imagen */
+  background-color: #A0A0A0;
   overflow: hidden;
 }
 
 .imagen img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Asegura que la imagen cubra todo el espacio sin distorsionarse */
+  object-fit: cover; 
 }
 
-/* --- Estilos del Formulario --- */
+
 .Login form {
-  width: 55%; /* El formulario ocupa más espacio */
-  max-width: none; /* Quitamos la limitación para que use el 55% */
-  padding: 60px 50px; /* Más padding para airear el contenido */
+  width: 55%; 
+  max-width: none; 
+  padding: 60px 50px; 
   background-color: #F6C7B4;
-  border-radius: 0; /* Ya tiene borde redondeado el .Login */
-  box-shadow: none; /* Quitamos la sombra, ya la tiene el .Login */
+  border-radius: 0; 
+  box-shadow: none;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centra verticalmente el contenido del formulario */
-  gap: 15px; /* Espacio más uniforme entre elementos */
+  justify-content: center; 
+  gap: 15px; 
 
 }
 
-.Login form h1 { /* Para los títulos 'Email' y 'Contraseña' */
+.Login form h1 { 
   font-size: 1.1rem;
   color: #444444;
-  margin: 0 0 5px 0; /* Ajustamos el margen */
+  margin: 0 0 5px 0; 
   font-weight: 600;
 }
-.Login form h2 { /* Para los títulos 'Email' y 'Contraseña' */
+.Login form h2 { 
   font-size: 1.1rem;
   color: #444444;
-  margin: 0 0 5px 0; /* Ajustamos el margen */
+  margin: 0 0 5px 0; 
   font-weight: 600;
   padding-bottom: 2%;
 }
@@ -108,31 +107,31 @@ header {
 .Login input {
   width: 100%;
   padding: 12px 15px;
-  border: 1px solid #D1D1D1; /* Borde más sutil */
+  border: 1px solid #D1D1D1; 
   border-radius: 8px;
-  background: #FFF7E2; /* Fondo muy claro */
+  background: #FFF7E2; 
   font-size: 16px;
   transition: border-color 0.3s ease;
-  box-sizing: border-box; /* Incluye padding y borde en el ancho */
+  box-sizing: border-box; 
 }
 
 .Login button {
   color: white;
-  background: #C4ECF5; /* Color original */
+  background: #C4ECF5; 
   cursor: pointer;
   padding: 14px;
   width: 100%;
   border: none;
   border-radius: 8px;
-  margin-top: 20px; /* Más espacio */
+  margin-top: 20px; 
   font-size: 17px;
   font-weight: bold;
   letter-spacing: 0.5px;
 }
 
 .Login button:hover {
-  background: #74a7b3; /* Color más claro en hover */
-  transform: translateY(-1px); /* Efecto sutil al pasar el mouse */
+  background: #74a7b3; 
+  transform: translateY(-1px); 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -144,8 +143,8 @@ header {
 }
 
 .Login a {
-  color: #f58b8b; /* Usamos el color de acento */
-  text-decoration: none; /* Quitamos el subrayado */
+  color: #f58b8b; 
+  text-decoration: none; 
   font-weight: bold;
   transition: color 0.3s ease;
 }
@@ -156,21 +155,20 @@ header {
 }
 
 
-/* --- Media Queries para hacerlo responsivo --- */
 
-/* Para tablets y pantallas más pequeñas */
+
 @media (max-width: 900px) {
   .Login {
-      flex-direction: column; /* Apila la imagen y el formulario */
+      flex-direction: column; 
       margin: 30px auto;
       width: 90%;
       min-height: initial;
   }
 
   .imagen {
-      width: 100%; /* La imagen ocupa todo el ancho */
-      height: 200px; /* Altura fija para la imagen */
-      border-radius: 15px 15px 0 0; /* Redondea solo la parte superior */
+      width: 100%; 
+      height: 200px; 
+      border-radius: 15px 15px 0 0; 
   }
 
   .Login form {
@@ -179,7 +177,7 @@ header {
   }
 }
 
-/* Para móviles */
+
 @media (max-width: 600px) {
   header {
       padding: 10px 20px;
@@ -188,7 +186,7 @@ header {
   .Login {
       margin: 0;
       width: 100%;
-      border-radius: 0; /* Sin bordes redondeados en móvil */
+      border-radius: 0; 
       box-shadow: none;
   }
 
@@ -197,141 +195,20 @@ header {
       gap: 10px;
   }
 }
-
-/* body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background: #FFF7E2;
-}
-
-main {
-  display: flex;
-  min-height: 85vh;
-  width: 100%;
-}
-
-header {
-  border-bottom: 1px solid #000;
-  background-color: #ebad7a;
-  padding: 1% 2%;
-  display: flex;
-  align-items: center;
-  gap: 1%;
-}
-
-header img {
-  width: 4%;
-  height: auto;
-}
-
-header h3 {
-  margin-top: 0;
-  font-weight: normal;
-  font-size: 1.2rem;
-}
-
-.imagen {
-  width: 50%;
-  background-size: cover;
-  background-position: center;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-}
-
-.login {
- 
-  border: #333;
-  width: 100%;
-  margin-right: 25%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #FFF7E2;
-}
-
-.Login form {
-  width: 85%;
-  height: 71%;
-  margin-right: 5%;
-  max-width: 400px;
-  background-color: #f7f3ea;
-  border-radius: 15px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
-  padding: 32px 30px 20px 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.login h2 {
-  text-align: center;
-  margin-bottom: 5px;
-  font-family: 'Georgia', serif;
-  color: #d2a67a;
-  font-weight: bold;
-}
-
-.login h3 {
-  margin-bottom: 2px;
-  color: #333;
-  font-size: 15px;
-  margin-right: 10%;
-}
-
-.login input{
-  width: 100%;
-  margin-right: 50%;
-  padding: 10px 12px;
-  border: 1px solid #d2a67a;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  background: #FFF7E2;
-  font-size: 15px;
-}
-
-.login button {
-  color: white;
-  background: #d2a67a;
-  cursor: pointer;
-  padding: 3%;
-  width: 100%;
-  border: none;
-  border-radius: 7px;
-  margin-top: 5%;
-  font-size: 16px;
-  font-weight: bold;
-}
-.login button:hover {
-  background: #ebad7a;
-}
-
-.login div p {
-  text-align: center;
-  margin-top: 2%;
-  font-size: 13px;
-}
-
-.login a {
-  color: #85b9ff;
-  text-decoration: underline;
-} */
-
-/* --- Contenedor Principal de Registro (Basado en el diseño anterior) --- */
 .Registro {
   display: flex;
   width: 100%;
-  min-height: 700px; /* Altura mínima similar al Login */
+  min-height: 700px; 
   margin: 50px auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   overflow: hidden;
   background-color: #F6C7B4;
-  max-width: 1200px; /* Limita el ancho del contenedor Registro/Login */
+  max-width: 1200px; 
 }
 
-/* --- Sección de la Imagen --- */
-.imagen2 { /* Usando la clase de tu HTML */
+
+.imagen2 { 
   width: 45%;
   display: flex;
   justify-content: center;
@@ -346,61 +223,61 @@ header h3 {
   object-fit: cover;
 }
 
-/* --- Estilos del Formulario de Registro --- */
+/* Registro  */
 .Registro form {
   width: 55%;
   max-width: none;
-  padding: 40px 50px 50px 50px; /* Ajuste de padding para más contenido */
-  background-color: #F6C7B4; /* Color de fondo beige claro de la imagen */
+  padding: 40px 50px 50px 50px; 
+  background-color: #F6C7B4;        
   border-radius: 0;
   box-shadow: none;
   display: flex;
   flex-direction: column;
-  /* Alineación de ítems al inicio para que el texto de bienvenida quede arriba */
+  
   align-items: flex-start;
-  gap: 10px; /* Espacio uniforme entre elementos */
+  gap: 10px; 
 }
 
-/* --- Estilos para el Encabezado y Mensaje de Bienvenida --- */
+
 .Registro .header-content {
   margin-bottom: 20px;
 }
 
-.Registro h1 { /* Para el "Te damos la bienvenida a dermai" */
+.Registro h1 { 
   font-size: 2.2rem;
   font-weight: 400;
   color: #444444;
   margin: 0 0 5px 0;
 }
 
-.Registro h3 { /* Para los títulos de los campos (Email, Nombre, etc.) */
+.Registro h3 {
   font-size: 1rem;
   color: #444444;
   margin: 10px 0 5px 0;
   font-weight: 600;
-  align-self: flex-start; /* Asegura que se alineen a la izquierda */
+  align-self: flex-start; 
 }
 
-.Registro .subtitle { /* Si añades un subtítulo como en la imagen */
+.Registro .subtitle { 
   font-size: 1.1rem;
   color: #666666;
   margin-bottom: 25px;
 }
 
-/* --- Estilos de Inputs --- */
+
 .Registro input {
   width: 100%;
   padding: 12px 15px;
   border: 1px solid #D1D1D1;
   border-radius: 8px;
-  background: #FFF7E2; /* Fondo blanco para el input en el fondo beige */
+  background: #FFF7E2; 
   font-size: 16px;
   transition: border-color 0.3s ease;
   box-sizing: border-box;
 }
 
 .Registro input[type="date"] {
-  /* Estilo específico para el campo de fecha si se quiere diferente */
+
   color: #333333;
   cursor: text;
 }
@@ -411,10 +288,10 @@ header h3 {
   box-shadow: 0 0 5px rgba(235, 173, 122, 0.3);
 }
 
-/* --- Botón Principal de Registro --- */
+
 .Registro button[type="submit"] {
   color: white;
-  background: #C4ECF5; /* Un azul claro/celeste para el botón principal, como en la imagen */
+  background: #C4ECF5; 
   cursor: pointer;
   padding: 14px;
   width: 100%;
@@ -431,7 +308,7 @@ header h3 {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Enlaces de Sesión y Aviso Legal --- */
+
 .Registro p {
   text-align: center;
   margin-top: 10px;
@@ -441,7 +318,7 @@ header h3 {
 }
 
 .Registro a {
-  color: #f58b8b; /* Mismo color del botón principal */
+  color: #f58b8b;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
@@ -452,12 +329,6 @@ header h3 {
   text-decoration: underline;
 }
 
-/* --- Botones de Inicio de Sesión con Redes Sociales (Simulación) --- */
-/*
-  Nota: Si quieres implementar estos, necesitas añadirlos al HTML
-  con una estructura similar a:
-  <button class="social-btn apple"><img src="apple_logo.svg"> Continuar con Apple</button>
-*/
 
 .Registro .social-btn-container {
   display: flex;
@@ -493,7 +364,7 @@ header h3 {
 }
 
 
-/* --- Media Queries (Ajustes para móviles y tabletas) --- */
+
 @media (max-width: 900px) {
   .Registro {
       flex-direction: column;
@@ -531,167 +402,114 @@ header h3 {
       font-size: 1.8rem;
   }
 }
-/* .Registro {
-  border: #333;
-  width: 100%;
-  margin-right: 25%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #FFF7E2;
-}
 
-.Registro form {
-  width: 85%;
-  height: 71%;
-  margin-right: 5%;
-  max-width: 400px;
-  background-color: #f7f3ea;
-  border-radius: 15px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
-  padding: 32px 30px 20px 30px;
+/*INGRESO TIPO PIEL */
+.IngresoPiel {
+  max-width: 600px;
+  margin: 6% auto;
+  padding: 30px;
+  background-color: #F6C7B4;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 20px;
 }
 
-.Registro h2 {
+.IngresoPiel img {
+  width: 30px;
+  align-self: center;
+  margin-bottom: 5%;
+}
+
+.IngresoPiel h2 {
+  font-size: 24px;
+  color: #444444;
   text-align: center;
+  margin-top: 0;
   margin-bottom: 5px;
-  font-family: 'Georgia', serif;
-  color: #d2a67a;
-  font-weight: bold;
+  font-weight: 600;
 }
 
-.Registro h3 {
-  margin-bottom: 2px;
-  color: #333;
-  font-size: 15px;
-  margin-right: 10%;
+.IngresoPiel h3 {
+  font-size: 18px;
+  color: #555555;
+  margin: 3% 0 1% 0;
+  font-weight: 500;
 }
 
-.Registro input{
+.IngresoPiel select {
   width: 100%;
-  margin-right: 50%;
-  padding: 10px 12px;
-  border: 1px solid #d2a67a;
-  border-radius: 6px;
-  margin-bottom: 10px;
+  padding: 12px 15px;
+  border: 1px solid rgb(146, 133, 133);
+  border-radius: 8px;
   background: #FFF7E2;
-  font-size: 15px;
-}
-
-.Registro button {
-  color: white;
-  background: #d2a67a;
-  cursor: pointer;
-  padding: 3%;
-  width: 100%;
-  border: none;
-  border-radius: 7px;
-  margin-top: 5%;
   font-size: 16px;
-  font-weight: bold;
-}
-.Registro button:hover {
-  background: #ebad7a;
+  color: #444444;
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
-.Registro div p {
+.IngresoPiel div {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 5%;
+}
+
+.IngresoPiel a {
   text-align: center;
-  margin-top: 2%;
-  font-size: 13px;
+  margin-top: 3%;
+  color: #C4A484;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
 }
 
-.Registro a {
-  color: #85b9ff;
+.IngresoPiel a:hover {
+  color: #A98B75;
   text-decoration: underline;
 }
 
-.imagen2{
-  align-content: center;
-  margin-left: 30%;
-}
-
-@media (max-width: 500px) {
-  main {
-      flex-direction: column;
-  }
-  .imagen {
-      width: 100%;
-      min-height: 20%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-  .imagen img {
-      width: 70%;
-      max-width: 250px;
-      height: auto;
-      max-height: 160px;
-      border-radius: 8px;
-      margin: 3% auto 3% auto;
-      display: block;
-  }
-  .Registro {
-      width: 100%;
-      justify-content: center;
-      align-items: center;
-      background: #FFF7E2;
-  }
-  .Registro form {
-      width: 98%;
-      max-width: 98%;
-      margin: 0% auto;
-      padding: 4% 2%;
-      border-radius: 8px;
-      box-shadow: none;
-      display: flex;
-      flex-direction: column;
-  }
-  .Registro h3, .Registro input, .Registro button, .Registro p {
-      font-size: 14px;
-  }
-} */
+/* HACER RUTINA */
 
 .hacerRutina {
   width: 95%;
   max-width: 900px;
   margin: 20px auto;
-  padding: 0; /* Quitamos padding aquí, se lo damos a los divs internos */
-  background-color: transparent; /* Fondo transparente, el color va en los divs */
+  padding: 0; 
+  background-color: transparent; 
   border-radius: 15px;
   box-shadow: none;
 }
 
 .hacerRutina > div {
   padding: 25px 40px;
-  margin-bottom: 20px; /* Espacio entre las secciones */
+  margin-bottom: 20px; 
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Sombra suave para separar */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
 }
 
-/* Colores de fondo de las secciones */
 .características {
-  background-color: #F7F3EA; /* Beige claro */
+  background-color: #F7F3EA; 
 }
 
 .preferencias {
-  background-color: #E1F5FE; /* Azul claro */
+  background-color: #E1F5FE; 
 }
 
 .presupuesto {
-  background-color: #F7F3EA; /* Beige claro */
+  background-color: #F7F3EA; 
 }
 
 .frecuenciaRutinaria {
-  background-color: #E1F5FE; /* Azul claro */
+  background-color: #E1F5FE; 
 }
 
 .hacerRutina h2 {
-  color: #333; /* Texto más oscuro */
+  color: #333;
   font-size: 1.6rem;
-  border-bottom: none; /* Quitamos la línea divisoria */
+  border-bottom: none; 
   padding-bottom: 0;
   margin-top: 0;
   margin-bottom: 5px;
@@ -705,7 +523,7 @@ header h3 {
   margin-bottom: 20px;
 }
 
-/* Estilos para las opciones de Checkbox/Radio */
+
 .características > div, .preferencias > div {
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
@@ -741,19 +559,19 @@ header h3 {
 }
 
 .hacerRutina input[type="checkbox"]:checked {
-  background-color: #ebad7a; /* Color de relleno al seleccionar */
+  background-color: #ebad7a; 
   border-color: #ebad7a;
 }
-/* Radio (presupuesto y frecuencia) - Marcado */
+
 .hacerRutina input[type="radio"] {
-  border-radius: 50%; /* Círculo para radio */
+  border-radius: 50%;
 }
 .hacerRutina input[type="radio"]:checked {
   background-color: #ebad7a;
   border-color: #ebad7a;
 }
 
-/* El punto blanco en el centro de los radio buttons */
+
 .hacerRutina input[type="radio"]:checked::before {
   content: '';
   display: block;
@@ -767,25 +585,25 @@ header h3 {
   transform: translate(-50%, -50%);
 }
 
-/* Botón de Enviar */
+
 .hacerRutina .btn-primary {
   width: auto;
   min-width: 120px;
   padding: 8px 20px;
-  align-self: flex-end; /* Lo alinea a la derecha como en el prototipo */
+  align-self: flex-end; 
   margin-top: 10px;
   margin-bottom: 20px;
-  margin-right: 40px; /* Alineado con el padding de las secciones */
-  border-radius: 20px; /* Más redondeado */
+  margin-right: 40px; 
+  border-radius: 20px;  
   background-color: #ebad7a;
   border-color: #ebad7a;
   font-size: 1rem;
 }
 
-/* Media Query para móvil: 1 columna */
+ 
 @media (max-width: 768px) {
   .características > div, .preferencias > div {
-    grid-template-columns: 1fr; /* 1 columna */
+    grid-template-columns: 1fr;  
     gap: 10px;
   }
   .presupuesto > div, .frecuenciaRutinaria > div {
@@ -798,7 +616,7 @@ header h3 {
 }
 
 footer{
-  background-color: rgb(218, 169, 129);
+  background-color: rgb(241, 211, 186);
   border: 1px solid black;
   clear: both;
   width: 100%;
@@ -823,157 +641,4 @@ color: rgb(255, 255, 255);
 footer ul li a{
   color: rgb(7, 111, 247);
   }
-/* Recomendación
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #333;
-  text-align: center; 
-}
-
-.recomendacion {
-  width: 800px; 
-  margin: 0 auto; 
-  padding: 20px;
-  text-align: left; 
-}
-
-h1 {
-  font-size: 28px;
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 30px;
-  font-weight: normal;
-}
-
-.header {
-  width: 800px;
-  margin: 0;
-  padding: 10px 0;
-}
-
-.logo {
-  font-weight: bold;
-  font-size: 18px;
-  float: left;
-}
-
-.menu-icono {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #333;
-  border-radius: 3px;
-  float: right;
-}
-
-.header::after {
-  clear: both;
-}
-
-
-.recomendacion div h2 { 
-  font-size: 16px;
-  font-weight: bold;
-  border-bottom: 1px solid #ccc;
-  display: inline-block;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
-}
-
-.recomendacion ul {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 20px;
-}
-
-.recomendacion li {
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.recomendacion ul li:last-child {
-  padding-left: 0;
-  margin-left: -16px; 
-}
-
-
-.productos-imagenes {
-  margin-bottom: 40px;
-}
-
-.imagen-box {
-  width: 30%; 
-  border: 1px solid #ccc;
-  padding: 5px;
-  background-color: white;
-  float: left; 
-  margin-right: 3%; 
-}
-
-.imagen-box:last-child {
-  margin-right: 0;
-}
-
-.imagen-box img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.productos-imagenes::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.feedback-boton {
-  background-color: #f7dac4;
-  border: none;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: bold;
-  display: block; 
-  margin: 20px auto; 
-}
-
-
-.contacto-footer {
-  border-top: 1px solid #ccc;
-  padding: 20px 0;
-  margin-top: 40px;
-  text-align: center;
-}
-
-.footer-content {
-  width: 800px;
-  margin: 0 auto;
-  text-align: left; 
-}
-
-.logo-footer {
-  float: left;
-  width: 25%;
-}
-
-.contact {
-  float: left;
-  width: 25%;
-  font-size: 12px;
-}
-
-.contact p{
-  margin: 2px 0;
-}
-
-.footer-content::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.copyright {
-  font-size: 10px;
-  color: #666;
-  margin-top: 5px;
-} */
+ 

@@ -22,6 +22,7 @@ public class UserController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult GuardarFormularioPiel(int NivelGrasaPiel, string AlergiaProductos, string IrritacionFrecuencia, string AparicionGranos)
     {
         string tipoPiel;
@@ -42,6 +43,13 @@ public class UserController : Controller
 
         string email = HttpContext.Session.GetString("usu");
         var usu = BD.ObtenerUsuarioPorEmail(email);
+
+        if (usu == null)
+        {
+            TempData["Error"] = "Usuario no encontrado";
+            return RedirectToAction("Login", "Account");
+        }
+
         var perfil = new Perfil(detalles, "", "", "");
 
         if (usu.IdPerfil > 0)
@@ -50,7 +58,8 @@ public class UserController : Controller
         }
         else
         {
-            int idPerfil = BD.CrearPerfil(perfil);
+            int idUsuario = BD.ObtenerIdUsuarioPorEmail(email);
+            int idPerfil = BD.CrearPerfil(idUsuario, perfil);
             BD.AsignarPerfilAUsuario(usu.Email, idPerfil);
         }
 
@@ -83,11 +92,17 @@ public class UserController : Controller
         }
         else
         {
-            idPerfil = BD.CrearPerfil(perfil);
+            int idUsuario = BD.ObtenerIdUsuarioPorEmail(email);
+            idPerfil = BD.CrearPerfil(idUsuario, perfil);
             BD.AsignarPerfilAUsuario(usu.Email, idPerfil);
         }
 
         TempData["Mensaje"] = "¡Tu rutina fue guardada correctamente!";
         return RedirectToAction("GenerarRutina", "Home", new {IdPerfil = idPerfil});
+    }
+
+    public IActionResult IrInicio()
+    {
+        return RedirectToAction("InicioA", "Home");
     }
 }

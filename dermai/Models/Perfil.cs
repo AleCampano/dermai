@@ -20,6 +20,7 @@ namespace dermai.Models;
         [JsonProperty]
         public string FrecuenciaRutina {get; private set;}
 
+        public Perfil() { }
 
         public Perfil (string CaracteristicasPiel, string PreferenciaProducto, string Presupuesto, string FrecuenciaRutina)
         {
@@ -27,6 +28,7 @@ namespace dermai.Models;
             this.PreferenciaProducto = PreferenciaProducto;
             this.Presupuesto = Presupuesto;
             this.FrecuenciaRutina = FrecuenciaRutina;
+            this.IdUsuario = 0;
         }
         public Perfil(int idUsuario, string caracteristicasPiel, string preferenciaProducto, string presupuesto, string frecuenciaRutina)
         {
