@@ -88,36 +88,6 @@ public class HomeController : Controller
         return RedirectToAction("GuardarRutina", "Home");
     }
 
-    // public IActionResult GuardarRutina()
-    // {
-    //     string rutinaTexto = TempData["RutinaGenerada"]?.ToString();
-    //     string idPerfilStr = TempData["IdPerfil"]?.ToString();    
-    //     if (string.IsNullOrEmpty(rutinaTexto) || string.IsNullOrEmpty(idPerfilStr))
-    //     {
-    //         ViewBag.Error = "No se pudo recuperar la rutina generada.";
-    //         return View("MostrarRutina");
-    //     }
-
-    //     string email = HttpContext.Session.GetString("usu");
-    //     if (string.IsNullOrEmpty(email))
-    //     {
-    //         return RedirectToAction("Login", "Account");
-    //     }
-
-    //     Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
-    //     if (usuario == null)
-    //     {
-    //         ViewBag.Error = "Usuario no encontrado.";
-    //         return View("MostrarRutina");
-    //     }
-
-    //     Rutina rutina = new Rutina(true, rutinaTexto, usuario.IdUsuario);
-    //     BD.GuardarRutina(rutina);
-
-    //     ViewBag.Rutina = rutinaTexto; 
-    //     return View("MostrarRutina");
-    // }
-
     public IActionResult VerRutina()
     {
         string email = HttpContext.Session.GetString("usu");
@@ -188,5 +158,15 @@ public class HomeController : Controller
 
         TempData["Mensaje"] = "¡Perfil actualizado correctamente!";
         return RedirectToAction("InicioA", "Home");
+    }
+
+    public IActionResult IrTipoPiel()
+    {
+        return View ("InfoTipoDePiel");
+    }
+
+    public IActionResult IrRecomendaciones()
+    {
+        return View ("Recomendacion");
     }
 }

@@ -18,9 +18,8 @@ namespace dermai.Models;
                 using(SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     string query = "SELECT * FROM Usuario WHERE Email = @pEmail AND Contraseña = @pContraseña";
-                    usu = connection.QueryFirstOrDefault<Usuario>(query, new {pEmail = Email, pContraseña = Contraseña});
+                    return connection.QueryFirstOrDefault<Usuario>(query, new {pEmail = Email, pContraseña = Contraseña});
                 }
-                return usu;
         }
 
         public static bool ValidarRegistro(string Email)
@@ -29,7 +28,7 @@ namespace dermai.Models;
                 {
                     string query = "SELECT COUNT(*) FROM Usuario WHERE Email = @pEmail";
                     int count = connection.QueryFirstOrDefault<int>(query, new { pEmail = Email});
-                    return count >0;
+                    return count > 0;
                 }
         }
 
@@ -69,6 +68,15 @@ namespace dermai.Models;
                 return connection.QueryFirstOrDefault<int>(query, new { Email = email });
             }
         }
+
+        public static void AsignarPerfilAUsuario(string email, int idPerfil)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "UPDATE Usuario SET IdPerfil = @IdPerfil WHERE Email = @Email";
+                connection.Execute(query, new { IdPerfil = idPerfil, Email = email });
+            }
+        }
         public static int CrearPerfil(int idUsuario, Perfil perfil)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -83,69 +91,21 @@ namespace dermai.Models;
                     FrecuenciaRutina = perfil.FrecuenciaRutina
                 };
                 
-                int idPerfil = connection.QuerySingleOrDefault<int>(sp, parametros, commandType: System.Data.CommandType.StoredProcedure);
-                return idPerfil;
-            }
-        }
+                try
+                {
+                    int idPerfil = connection.QuerySingle<int>(
+                        sp,
+                        parametros,
+                        commandType: System.Data.CommandType.StoredProcedure
+                    );
 
-        public static Perfil ObtenerPerfilPorId(int idPerfil)
-        {
-            using (SqlConnection db = new SqlConnection(_connectionString))
-            {
-                string sql = "SELECT * FROM Perfil WHERE IdPerfil = @idPerfil";
-                return db.QueryFirstOrDefault<Perfil>(sql, new { idPerfil });
-            }
-        }
-
-        public static void GuardarRutina(Rutina rutina)
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                string checkQuery = "SELECT COUNT(*) FROM Rutinas WHERE IdUsuario = @IdUsuario";
-            int count = connection.QueryFirstOrDefault<int>(checkQuery, new { IdUsuario = rutina.IdUsuario });
-
-            if (count > 0)
-            {
-                // Actualizar rutina existente
-                string updateQuery = "UPDATE Rutinas SET Rutinas = @Rutinas, RutinaFinal = @RutinaFinal WHERE IdUsuario = @IdUsuario";
-                connection.Execute(updateQuery, new {
-                    Rutinas = rutina.Rutinas,
-                    RutinaFinal = rutina.RutinaFinal,
-                    IdUsuario = rutina.IdUsuario
-                });
-            }
-            else
-            {
-                // Insertar nueva rutina
-                string insertQuery = "INSERT INTO Rutinas (Rutinas, RutinaFinal, IdUsuario) VALUES (@Rutinas, @RutinaFinal, @IdUsuario)";
-                connection.Execute(insertQuery, new {
-                    Rutinas = rutina.Rutinas,
-                    RutinaFinal = rutina.RutinaFinal,
-                    IdUsuario = rutina.IdUsuario
-                });
-            }
-            }
-        }
-
-        public static Rutina ObtenerRutinaPorUsuario(int idUsuario)
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                string query = "SELECT * FROM Rutina WHERE IdUsuario = @idUsuario";
-                return connection.QueryFirstOrDefault<Rutina>(query, new { idUsuario });
-            }
-        }
-
-        public static void ModificarRutina(Rutina rutina)
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                string query = "UPDATE Rutina SET Rutinas = @Rutinas, RutinaFinal = @RutinaFinal WHERE IdUsuario = @IdUsuario";
-                connection.Execute(query, new {
-                    Rutinas = rutina.Rutinas,
-                    RutinaFinal = rutina.RutinaFinal,
-                    IdUsuario = rutina.IdUsuario
-                });
+                    return idPerfil;
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine($"Error SQL al crear el perfil: {ex.Message}");
+                    return 0; // o podrías lanzar una excepción personalizada
+                }
             }
         }
 
@@ -170,12 +130,67 @@ namespace dermai.Models;
             }
         }
 
-        public static void AsignarPerfilAUsuario(string email, int idPerfil)
+        public static Perfil ObtenerPerfilPorId(int idPerfil)
+        {
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "SELECT * FROM Perfil WHERE IdPerfil = @idPerfil";
+                return db.QueryFirstOrDefault<Perfil>(sql, new { idPerfil });
+            }
+        }
+
+        public static void CrearRutina(Rutina rutina)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "UPDATE Usuario SET IdPerfil = @IdPerfil WHERE Email = @Email";
-                connection.Execute(query, new { IdPerfil = idPerfil, Email = email });
+                string insertQuery = @"INSERT INTO Rutina (Rutinas, RutinaFinal, IdUsuario)
+                                       VALUES (@Rutinas, @RutinaFinal, @IdUsuario)";
+                connection.Execute(insertQuery, new
+                {
+                    Rutinas = rutina.Rutinas,
+                    RutinaFinal = rutina.RutinaFinal,
+                    IdUsuario = rutina.IdUsuario
+                });
+            }
+        }
+
+        public static void ModificarRutina(Rutina rutina)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "UPDATE Rutina SET Rutinas = @Rutinas, RutinaFinal = @RutinaFinal WHERE IdUsuario = @IdUsuario";
+                connection.Execute(query, new {
+                    Rutinas = rutina.Rutinas,
+                    RutinaFinal = rutina.RutinaFinal,
+                    IdUsuario = rutina.IdUsuario
+                });
+            }
+        }
+
+        public static Rutina ObtenerRutinaPorUsuario(int idUsuario)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT * FROM Rutina WHERE IdUsuario = @idUsuario";
+                return connection.QueryFirstOrDefault<Rutina>(query, new { idUsuario });
+            }
+        }
+
+        public static void GuardarRutina(Rutina rutina)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string checkQuery = "SELECT COUNT(*) FROM Rutina WHERE IdUsuario = @IdUsuario";
+                int count = connection.QueryFirstOrDefault<int>(checkQuery, new { IdUsuario = rutina.IdUsuario });
+
+                if (count > 0)
+                {
+                    ModificarRutina(rutina);
+                }
+                else
+                {
+                    CrearRutina(rutina);
+                }
             }
         }
     }

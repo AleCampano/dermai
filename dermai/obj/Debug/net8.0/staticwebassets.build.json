@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8UZAn022y4GdxwBhfzwTGaKGCqTYfn7/4haOyMO2hfQ=",
+  "Hash": "1fSJlNjZUqqShx52mck8RmiG8w48p7dxs/SOrgwnG4o=",
   "Source": "dermai",
   "BasePath": "_content/dermai",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\imagenes\\info.png",
+      "SourceId": "dermai",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\",
+      "BasePath": "_content/dermai",
+      "RelativePath": "imagenes/info.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\info.png"
     },
     {
       "Identity": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\imagenes\\inicio.png",

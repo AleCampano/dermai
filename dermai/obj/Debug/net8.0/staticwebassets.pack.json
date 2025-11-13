@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\imagenes\\Logo.png"
     },
     {
+      "Id": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\imagenes\\info.png",
+      "PackagePath": "staticwebassets\\imagenes\\info.png"
+    },
+    {
       "Id": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\imagenes\\inicio.png",
       "PackagePath": "staticwebassets\\imagenes\\inicio.png"
     },

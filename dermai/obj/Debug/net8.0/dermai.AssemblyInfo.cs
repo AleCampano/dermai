@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("dermai")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+850b68ee0802da4ec7ffbac0f91141c2f6d8483f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6c9fd6dc868d3ddbdc71e16c79cb8062d6eab2df")]
 [assembly: System.Reflection.AssemblyProductAttribute("dermai")]
 [assembly: System.Reflection.AssemblyTitleAttribute("dermai")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
