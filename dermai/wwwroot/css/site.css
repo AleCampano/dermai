@@ -1,47 +1,50 @@
 html {
-  height: 100%; /* CAMBIO CLAVE 2: Asegura que el contenedor raíz tenga toda la altura */
+  height: 100%;
 }
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente más moderna */
-  background: #FFF7E2; /* Un blanco más suave para el fondo */
-  height: 100%; /* Asegura que ocupe toda la altura de la ventana */
-  display: flex; /* Permite centrar el contenido principal si lo necesitas */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #FFF7E2;
+  height: 100%;
+  display: flex;
   flex-direction: column;
 }
 
 main {
   display: flex;
-  flex-grow: 1; /* Permite que main ocupe el espacio restante */
+  flex-grow: 1;
   width: 100%;
-  max-width: 1200px; /* Limita el ancho en pantallas grandes */
-  margin: 0 auto; /* Centra el contenedor principal */
-  justify-content: center; /* Centra horizontalmente (si tienes margen 0 auto, esto no es estrictamente necesario aquí) */
+  max-width: 1200px; 
+  margin: 0 auto;
+  justify-content: center;
   align-items: center;
 }
 
-/* --- Estilos del Header (asumiendo que está fuera de main) --- */
 header {
   border-bottom: 1px solid #E0E0E0;
-  background-color: #FFFFFF; /* Fondo blanco */
+  background-color: rgb(218, 169, 129);
   padding: 15px 30px;
   display: flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra suave */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
 }
 
-header img {
-  width: 35px; /* Tamaño fijo más adecuado */
+.header-logo{
+  display: flex;
+  gap: 10px;  
+}
+
+.header-logo img {
+  width: 6%;
+  height: auto;
   height: auto;
 }
 
-header h3 {
+.header-logo h1{
   margin: 0;
-  font-weight: 500;
-  font-size: 1.1rem;
-  color: #333333;
+  font-size: 2rem;
 }
 
 /* --- Contenedor Principal de Login --- */
@@ -820,7 +823,7 @@ color: rgb(255, 255, 255);
 footer ul li a{
   color: rgb(7, 111, 247);
   }
-/* Recomendación */
+/* Recomendación
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -973,4 +976,4 @@ h1 {
   font-size: 10px;
   color: #666;
   margin-top: 5px;
-}
+} */

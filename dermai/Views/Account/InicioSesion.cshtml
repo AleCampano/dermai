@@ -5,21 +5,21 @@
         <img src="im.jpg" alt="Piel">
     </div>
 
-    <form id="loginForm">
+    <form id="loginForm" method="POST">
         <h2>Te damos la bienvenida a Dermai, porfavor ingrese:</h2>
-    <h1>Email</h1>
-    <input type="text" id="Email" name="Email" placeholder="Correo electrónico" />
+        <h1>Email</h1>
+        <input type="Email" id="Email" name="Email" placeholder="Correo electrónico" required/>
 
-    <h1>Contraseña</h1>
-    <input type="password" id="Contraseña" name="Contraseña" placeholder="Password" />
+        <h1>Contraseña</h1>
+        <input type="password" id="Contraseña" name="Contraseña" placeholder="Password" required/>
 
-    <button type="submit">Iniciar Sesión</button>
+        <button type="submit">Iniciar Sesión</button>
 
-    <div>
-        <p>¿No tenés cuenta? 
-        <a href='@Url.Action("Registro", "Account")'>Registrarse aquí</a>
-        </p>
-    </div>
+        <div>
+            <p>¿No tenés cuenta? 
+            <a href='@Url.Action("Registro", "Account")'>Registrarse aquí</a>
+            </p>
+        </div>
     </form>
     <script src="~/js/validaciones.js"></script>
 </section>

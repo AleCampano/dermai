@@ -40,7 +40,10 @@ public class UserController : Controller
 
         string detalles = $"Tipo: {tipoPiel}. " + $"Alergia a productos: {AlergiaProductos}. " + $"Irritación: {IrritacionFrecuencia}. " + $"Granos: {AparicionGranos}.";
 
+        string email = HttpContext.Session.GetString("usu");
+        var usu = BD.ObtenerUsuarioPorEmail(email);
         var perfil = new Perfil(detalles, "", "", "");
+        int idPerfil = BD.CrearPerfil(usu.IdUsuario, perfil); // MAL, error CS7036: No se ha dado ningún argumento que corresponda al parámetro requerido "perfil" de "BD.CrearPerfil(int, Perfil)"    
         int idPerfil = BD.CrearPerfil(perfil);
 
         TempData["Mensaje"] = "¡Datos de tu piel guardados correctamente!";

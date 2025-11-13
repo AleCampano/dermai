@@ -9,63 +9,63 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = dermai
 build_property.RootNamespace = dermai
-build_property.ProjectDir = C:\Users\48860305\Desktop\gaga\dermai\dermai\
+build_property.ProjectDir = C:\Users\49094340\dermai\dermai\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\48860305\Desktop\gaga\dermai\dermai
+build_property.MSBuildProjectDirectory = C:\Users\49094340\dermai\dermai
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/48860305/Desktop/gaga/dermai/dermai/Views/Account/InicioSesion.cshtml]
+[C:/Users/49094340/dermai/dermai/Views/Account/InicioSesion.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmljaW9TZXNpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/48860305/Desktop/gaga/dermai/dermai/Views/Account/Registrarse.cshtml]
+[C:/Users/49094340/dermai/dermai/Views/Account/Registrarse.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3RyYXJzZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/48860305/Desktop/gaga/dermai/dermai/Views/Home/HacerRutina.cshtml]
+[C:/Users/49094340/dermai/dermai/Views/Home/HacerRutina.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIYWNlclJ1dGluYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/48860305/Desktop/gaga/dermai/dermai/Views/Home/Index.cshtml]
+[C:/Users/49094340/dermai/dermai/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/48860305/Desktop/gaga/dermai/dermai/Views/Home/InfoTipoDePiel.cshtml]
+[C:/Users/49094340/dermai/dermai/Views/Home/InfoTipoDePiel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmZvVGlwb0RlUGllbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/48860305/Desktop/gaga/dermai/dermai/Views/Home/Inicio.cshtml]
+[C:/Users/49094340/dermai/dermai/Views/Home/Inicio.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmljaW8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/48860305/Desktop/gaga/dermai/dermai/Views/Home/MostrarRutina.cshtml]
+[C:/Users/49094340/dermai/dermai/Views/Home/MostrarRutina.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNb3N0cmFyUnV0aW5hLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/48860305/Desktop/gaga/dermai/dermai/Views/Home/Recomendacion.cshtml]
+[C:/Users/49094340/dermai/dermai/Views/Home/Recomendacion.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWNvbWVuZGFjaW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/48860305/Desktop/gaga/dermai/dermai/Views/Shared/_Layout.cshtml]
+[C:/Users/49094340/dermai/dermai/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/48860305/Desktop/gaga/dermai/dermai/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/49094340/dermai/dermai/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/48860305/Desktop/gaga/dermai/dermai/Views/User/IngresoPiel.cshtml]
+[C:/Users/49094340/dermai/dermai/Views/User/IngresoPiel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmdyZXNvUGllbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/48860305/Desktop/gaga/dermai/dermai/Views/_ViewImports.cshtml]
+[C:/Users/49094340/dermai/dermai/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/48860305/Desktop/gaga/dermai/dermai/Views/_ViewStart.cshtml]
+[C:/Users/49094340/dermai/dermai/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

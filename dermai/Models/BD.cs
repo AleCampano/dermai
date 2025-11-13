@@ -27,26 +27,29 @@ namespace dermai.Models;
         {
                 using(SqlConnection connection = new SqlConnection(_connectionString))
                 {
-                    string query = "SELECT COUNT(*) FROM Usuarios WHERE Email = @pEmail";
+                    string query = "SELECT COUNT(*) FROM Usuario WHERE Email = @pEmail";
                     int count = connection.QueryFirstOrDefault<int>(query, new { pEmail = Email});
                     return count >0;
                 }
         }
 
-        public static void Registrarse(Usuario usuario)
+        public static int Registrarse(Usuario usuario)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                var parametros = new
-                        {
-                            Nombre = usuario.Nombre,
-                            Email = usuario.Email,
-                            Contraseña = usuario.Contraseña,
-                            FechaDeNacimiento = usuario.FechaDeNacimiento,
-                            IdPerfil = usuario.IdPerfil
-                        };
+                string sp = "SP_RegistrarUsuario";
 
-                connection.Execute("SP_RegistrarUsuario", parametros, commandType: CommandType.StoredProcedure);
+                var parametros = new
+                {
+                    Nombre = usuario.Nombre,
+                    Email = usuario.Email,
+                    Contraseña = usuario.Contraseña,
+                    FechaDeNacimiento = usuario.FechaDeNacimiento,
+                    IdPerfil = usuario.IdPerfil
+                };
+
+                int idUsuario = connection.QuerySingle<int>(sp, parametros, commandType: CommandType.StoredProcedure);
+                return idUsuario;
             }
         }
 
@@ -60,13 +63,14 @@ namespace dermai.Models;
                 }
             }
 
-        public static int CrearPerfil(Perfil perfil)
+        public static int CrearPerfil(int idUsuario, Perfil perfil)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string sp = "SP_CrearPerfil";
                 var parametros = new
                 {
+                    IdUsuario = idUsuario,
                     CaracteristicasPiel = perfil.CaracteristicasPiel,
                     PreferenciaProducto = perfil.PreferenciaProducto,
                     Presupuesto = perfil.Presupuesto,
@@ -140,6 +144,15 @@ namespace dermai.Models;
                     FrecuenciaRutina = perfil.FrecuenciaRutina,
                     IdPerfil = idPerfil
                 });
+            }
+        }
+
+        public static void AsignarPerfilAUsuario(int idUsuario, int idPerfil)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "UPDATE Usuario SET IdPerfil = @IdPerfil WHERE IdUsuario = @IdUsuario";
+                connection.Execute(query, new { IdPerfil = idPerfil, IdUsuario = idUsuario });
             }
         }
     }

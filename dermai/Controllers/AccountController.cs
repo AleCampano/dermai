@@ -29,7 +29,7 @@ public class AccountController : Controller
     }
 
     [HttpPost]
-    [Route("api/account/login")]
+    [Route("/api/Account/Login")]
     public IActionResult LoginApi([FromBody] UsuarioLoginDTO login)
     {   
         if (string.IsNullOrEmpty(login.Email) || string.IsNullOrEmpty(login.Contraseña))
@@ -75,10 +75,12 @@ public class AccountController : Controller
             return View("InicioSesion");
         }
 
-        Perfil newPerfil = new Perfil (null, null, null, null);
-        int NuevoPerfil = BD.CrearPerfil(newPerfil);
-        Usuario newUser = new Usuario (Nombre, Email, Contraseña, FechaDeNacimiento, NuevoPerfil);
-        BD.Registrarse(newUser);
+        Usuario newUser = new Usuario(Nombre, Email, Contraseña, FechaDeNacimiento, 0);
+        int idUsuario = BD.Registrarse(newUser);
+
+        Perfil newPerfil = new Perfil (idUsuario, null, null, null, null);
+        int idPerfil = BD.CrearPerfil(idUsuario, newPerfil);
+        BD.AsignarPerfilAUsuario(idUsuario, idPerfil);
 
         HttpContext.Session.SetString("usu", Objeto.ObjectToString(newUser));
         return RedirectToAction("CompletarFormularioPiel", "User");

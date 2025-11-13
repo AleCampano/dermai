@@ -19,6 +19,8 @@ namespace dermai.Models;
         [JsonProperty]
         public int IdPerfil {get; private set;}
 
+        public Usuario() { }
+        
         public Usuario (string Nombre, string Email,string Contraseña, DateTime FechaDeNacimiento, int IdPerfil)
         {
             this.Nombre = Nombre;
