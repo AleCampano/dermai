@@ -28,6 +28,7 @@ public class HomeController : Controller
 
     public IActionResult InicioA()
     {
+
         return View("Inicio");
     }
 
@@ -86,6 +87,37 @@ public class HomeController : Controller
 
         ViewBag.Rutina = respuesta.Content;
         return RedirectToAction("GuardarRutina", "Home");
+    }
+
+    public IActionResult VerificarRutina()
+    {
+        string email = HttpContext.Session.GetString("usu");
+        if (string.IsNullOrEmpty(email))
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
+        Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
+        if (usuario == null)
+        {
+            TempData["Error"] = "Usuario no encontrado.";
+            return RedirectToAction("Login", "Account");
+        }
+
+        Perfil perfil = BD.ObtenerPerfilPorId(usuario.IdPerfil);
+        if (perfil == null)
+        {
+            TempData["Error"] = "Perfil no encontrado. Por favor, completa tu perfil primero.";
+            return RedirectToAction("CompletarFormularioRutina", "User");
+        }
+
+        Rutina rutina = BD.ObtenerRutinaPorUsuario(perfil.IdUsuario);
+        if (rutina == null)
+        {
+            return View("HacerRutina", "Home");
+        }
+
+        return RedirectToAction("ModificarRutina", "Home");
     }
 
     public IActionResult VerRutina()
@@ -157,7 +189,15 @@ public class HomeController : Controller
         }
 
         TempData["Mensaje"] = "¡Perfil actualizado correctamente!";
-        return RedirectToAction("InicioA", "Home");
+        var model = new PielFormModel
+        {
+            Caracteristicas = caracteristicas,
+            Preferencias = preferencias,
+            Presupuesto = presupuesto,
+            Frecuencia = frecuencia
+        };
+
+        return View(model);
     }
 
     public IActionResult IrTipoPiel()

@@ -5,7 +5,11 @@
     
   <div class="welcome-text-simple">
         <h2>Tu tipo de piel es: </h2>
-        <div class="tipo-piel-tag">Mixta</div> 
+        <div class="tipo-piel-tag">
+            <button type="button" class="botones" onclick="location.href='@Url.Action("IrTipoPiel", "Home")'">
+                @TempData["Mensaje2"] // no anda
+            </button>
+        </div> 
     </div>
 
         <div class="container">
@@ -31,7 +35,7 @@
                 </button>
               </div>
               <div class="col4">
-                <button type="button" class="botones" onclick = "location.href='@Url.Action("GenerarRutina", "Home")'">
+                <button type="button" class="botones" onclick = "location.href='@Url.Action("VerificarRutina", "Home")'">
                   <h3>¿Queres generar o modificar tu rutina de piel?</h3>
                   <img src="fotos/rutina1.png" alt="Rutina">
                   <p>Una rutina de piel objetiva busca mantenerla sana y equilibrada.</p>

@@ -58,6 +58,7 @@ header {
   border-radius: 15px;
   overflow: hidden; 
   background-color: #F6C7B4; 
+  margin-bottom: 10%;
 }
 
 
@@ -75,11 +76,6 @@ header {
   height: 100%;
   object-fit: cover; 
 }
-
-.Login{
-  margin-bottom: 10%;
-}
-
 
 .Login form {
   width: 55%; 
@@ -160,9 +156,6 @@ header {
   color: #CD7070;
   text-decoration: underline;
 }
-
-
-
 
 @media (max-width: 900px) {
   .Login {
@@ -427,7 +420,7 @@ header {
 .IngresoPiel img {
   width: 30px;
   align-self: center;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }
 
 .IngresoPiel h2 {
@@ -509,18 +502,16 @@ header {
   line-height: 1.2;
 }
 
-/* Redefinimos .tipo-piel-tag para que se alinee bien con text-align: right */
 .tipo-piel-tag {
   display: inline-block; /* Crucial para que siga text-align: right */
-  width: fit-content;
+  width: 70%;
   padding: 10px 25px;
-  background-color: #B2E8BC; 
-  color: #444444;
-  font-weight: bold;
-  font-size: 1.1rem;
+}
+
+.tipo-piel-tag button{
+  background-color: #B2E8BC;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* margin: 0; no se necesita margin: auto aquí */
 }
 
 /* Contenedor de botones: haz que ocupe el espacio restante */

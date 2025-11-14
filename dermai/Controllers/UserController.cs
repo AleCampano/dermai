@@ -64,6 +64,7 @@ public class UserController : Controller
         }
 
         TempData["Mensaje"] = "¡Datos de tu piel guardados correctamente!";
+        TempData["Mensaje2"] = tipoPiel;
         return RedirectToAction("InicioA", "Home");
     }
 

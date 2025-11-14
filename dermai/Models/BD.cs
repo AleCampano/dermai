@@ -43,7 +43,8 @@ namespace dermai.Models;
                     Nombre = usuario.Nombre,
                     Email = usuario.Email,
                     Contraseña = usuario.Contraseña,
-                    FechaDeNacimiento = usuario.FechaDeNacimiento
+                    FechaDeNacimiento = usuario.FechaDeNacimiento,
+                    IdPerfil = usuario.IdPerfil
                 };
 
                 int idUsuario = connection.QuerySingle<int>(sp, parametros, commandType: CommandType.StoredProcedure);
