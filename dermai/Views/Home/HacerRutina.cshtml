@@ -1,8 +1,11 @@
-@model dermai.Models.PielFormModel //PROBLEMA CON ESTO; NO EMPIEZA EL PROGRAMA
-
-<form asp-action="GuardarRutinaModificada" asp-controller="Home" method="post">
+@model dermai.Models.PielFormModel
+@{
+    Layout = null;
+}
+<form asp-action="GuardarFormularioRutina" asp-controller="User" method="post">
+    @Html.AntiForgeryToken()
     <section class="hacerRutina">
-        <div class="características">
+        <div class="caracteristicas">
             <h2>¿Qué características tenés?</h2>
             <h3>(Podés elegir varias opciones)</h3>
             <div>
@@ -11,11 +14,10 @@
                     "Opacidad / falta de luminosidad", "Poros dilatados", "Puntos negros",
                     "Manchas oscuras / hiperpigmentación", "Textura irregular", "Exceso de grasa / brillo",
                     "Líneas de expresión / arrugas"
-                }) {
+                })
+                {
                     <label>
-                        <input type="checkbox" name="Caracteristicas" value="@caracteristica"
-                            @if (Model.Caracteristicas != null && Model.Caracteristicas.Contains(caracteristica)) { @:checked }
-                        /> @caracteristica
+                        <input type="checkbox" name="Caracteristicas" value="@caracteristica" @(Model?.Caracteristicas?.Contains(caracteristica) == true ? "checked=\"checked\"" : "") /> @caracteristica
                     </label>
                 }
             </div>
@@ -28,11 +30,10 @@
                 @foreach (var preferencia in new[] {
                     "Productos sin fragancia", "Sin alcohol", "Silicona",
                     "Ingredientes naturales / orgánicos", "Sin parabenos", "Cruelty-Free", "Vegano"
-                }) {
+                })
+                {
                     <label>
-                        <input type="checkbox" name="Preferencias" value="@preferencia"
-                            @if (Model.Preferencias != null && Model.Preferencias.Contains(preferencia)) { @:checked }
-                        /> @preferencia
+                        <input type="checkbox" name="Preferencias" value="@preferencia" @(Model?.Preferencias?.Contains(preferencia) == true ? "checked=\"checked\"" : "") /> @preferencia
                     </label>
                 }
             </div>
@@ -41,27 +42,33 @@
         <div class="presupuesto">
             <h2>¿Cuál es tu presupuesto estimado?</h2>
             <div>
-                <label><input type="radio" asp-for="Presupuesto" value="Económico"
-                    @if (Model.Presupuesto == "Económico") { @:checked } /> Económico (hasta $50 USD)</label>
-                <label><input type="radio" asp-for="Presupuesto" value="Medio"
-                    @if (Model.Presupuesto == "Medio") { @:checked } /> Medio (hasta $120 USD)</label>
-                <label><input type="radio" asp-for="Presupuesto" value="Premium"
-                    @if (Model.Presupuesto == "Premium") { @:checked } /> Premium (desde $120 USD)</label>
+                <label>
+                    <input asp-for="Presupuesto" type="radio" value="Económico" /> Económico (hasta $50 USD)
+                </label>
+                <label>
+                    <input asp-for="Presupuesto" type="radio" value="Medio" /> Medio (hasta $120 USD)
+                </label>
+                <label>
+                    <input asp-for="Presupuesto" type="radio" value="Premium" /> Premium (desde $120 USD)
+                </label>
             </div>
         </div>
 
         <div class="frecuenciaRutinaria">
             <h2>¿Cuál es tu frecuencia de rutina ideal?</h2>
             <div>
-                <label><input type="radio" asp-for="Frecuencia" value="Simple"
-                    @if (Model.Frecuencia == "Simple") { @:checked } /> Rutina simple (1-3 pasos)</label>
-                <label><input type="radio" asp-for="Frecuencia" value="Intermedia"
-                    @if (Model.Frecuencia == "Intermedia") { @:checked } /> Rutina intermedia (4-5 pasos)</label>
-                <label><input type="radio" asp-for="Frecuencia" value="Completa"
-                    @if (Model.Frecuencia == "Completa") { @:checked } /> Rutina completa (6+ pasos)</label>
+                <label>
+                    <input asp-for="Frecuencia" type="radio" value="Simple" /> Rutina simple (1-3 pasos)
+                </label>
+                <label>
+                    <input asp-for="Frecuencia" type="radio" value="Intermedia" /> Rutina intermedia (4-5 pasos)
+                </label>
+                <label>
+                    <input asp-for="Frecuencia" type="radio" value="Completa" /> Rutina completa (6+ pasos)
+                </label>
             </div>
         </div>
 
-        <input type="submit" value="Enviar" class="btn btn-primary mt-3">
+        <input type="submit" value="Enviar" class="btn btn-primary mt-3" />
     </section>
 </form>

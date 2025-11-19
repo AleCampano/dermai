@@ -195,6 +195,9 @@ header {
       gap: 10px;
   }
 }
+
+
+/* REGISTRO  */
 .Registro {
   display: flex;
   width: 100%;
@@ -223,7 +226,6 @@ header {
   object-fit: cover;
 }
 
-/* REGISTRO  */
 .Registro form {
   width: 55%;
   max-width: none;
@@ -237,7 +239,6 @@ header {
   align-items: flex-start;
   gap: 10px; 
 }
-
 
 .Registro .header-content {
   margin-bottom: 20px;
@@ -474,24 +475,18 @@ header {
 
 /*INICIO*/
 .main-grid-layout {
-  /* Usa Flexbox para colocar los elementos en fila */
   display: flex;
-  /* Centra el conjunto de texto + botones en el centro de la pantalla */
   justify-content: center;
-  /* Alinea verticalmente los elementos (texto y cuadrícula) por el centro */
   align-items: center; 
-  /* Espacio entre el texto y la cuadrícula de botones */
   gap: 50px; 
-  /* Ancho máximo para el layout completo */
   max-width: 1200px;
   margin: 50px auto;
   padding: 20px;
 }
 
 .welcome-text-simple {
-  /* Define el ancho del texto de bienvenida (ajusta este valor si quieres más espacio) */
   width: 30%; 
-  text-align: right; /* Alinea el texto a la derecha */
+  text-align: right; 
 }
 
 .welcome-text-simple h2 { 
@@ -503,7 +498,7 @@ header {
 }
 
 .tipo-piel-tag {
-  display: inline-block; /* Crucial para que siga text-align: right */
+  display: inline-block; 
   width: 70%;
   padding: 10px 25px;
 }
@@ -514,7 +509,6 @@ header {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Contenedor de botones: haz que ocupe el espacio restante */
 .container {
   width: 70%; 
   margin: 0; 
@@ -522,45 +516,37 @@ header {
 }
 .row-cols-2 {
   display: grid;
-  /* Define 2 columnas con espacio igual */
   grid-template-columns: 1fr 1fr; 
-  /* Define 2 filas */
   grid-template-rows: auto auto; 
-  /* Espacio entre los elementos de la cuadrícula */
   gap: 20px; 
 }
 
-/* Para mantener la semántica de la cuadrícula, apuntaremos a los elementos col directamente */
 .row-cols-2 > div {
-  /* Los divs de la cuadrícula no necesitan estilos de columna específicos si usamos grid */
   padding: 0;
 }
 
-/* --- Estilo de los Botones/Tarjetas (botones) --- */
 
 .botones {
   display: flex;
   flex-direction: column;
   text-align: left;
-  height: 100%; /* Asegura que todos los botones ocupen el mismo espacio en su celda */
+  height: 100%; 
   width: 100%;
   
-  /* Fondo azul pastel de la imagen (similar al #C4ECF5 de tu Login, pero más suave) */
   background-color: #DDEEF7; 
   border: none;
   border-radius: 15px;
   padding: 20px;
   cursor: pointer;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada que en Login */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   
-  /* Alineación interna */
   justify-content: space-between;
 }
 
 .botones:hover {
-  background-color: #C1DCEB; /* Un poco más oscuro al pasar el ratón */
-  transform: translateY(-5px); /* Un levantamiento más notable que en Login */
+  background-color: #C1DCEB; 
+  transform: translateY(-5px); 
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -575,14 +561,13 @@ header {
 .botones p {
   font-size: 0.95rem;
   color: #666666;
-  margin-top: 10px; /* Separación del texto de la imagen */
+  margin-top: 10px; 
   margin-bottom: 0;
 }
 
 .botones img {
-  /* Ajustes para las imágenes dentro de los botones */
-  width: 100%; /* Ocupa todo el ancho de la tarjeta */
-  max-height: 150px; /* Limita la altura de la imagen si es necesario */
+  width: 100%; 
+  max-height: 150px; 
   object-fit: cover;
   border-radius: 10px; /* Bordes redondeados para las imágenes */
   margin-top: 10px; /* Separa la imagen del título */

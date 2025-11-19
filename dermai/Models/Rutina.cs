@@ -15,6 +15,8 @@ public class Rutina
     public string RutinaFinal {get; private set;}
     [JsonProperty]
     public int IdUsuario {get; private set;}
+    [JsonProperty]
+    public int Content {get; private set;}
 
 public Rutina() { }
 
@@ -23,5 +25,6 @@ public Rutina (bool Rutinas, string RutinaFinal, int IdUsuario)
     this.Rutinas = Rutinas;
     this.RutinaFinal = RutinaFinal;
     this.IdUsuario = IdUsuario;
+    this.Content = 0;
 }
 }

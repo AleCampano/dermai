@@ -74,15 +74,24 @@ public class UserController : Controller
     }
 
     [HttpPost]
-    public IActionResult GuardarFormularioRutina(string[] caracteristicas, string[] preferencias, string presupuesto, string frecuencia)
+    public IActionResult GuardarFormularioRutina(string[] Caracteristicas, string[] Preferencias, string Presupuesto, string Frecuencia)
     {
         string email = HttpContext.Session.GetString("usu");
         var usu = BD.ObtenerUsuarioPorEmail(email);
     
-        string caracteristicasStr = Objeto.ListToString(caracteristicas.ToList());
-        string preferenciasStr = Objeto.ListToString(preferencias.ToList());
+        if (usu == null)
+        {
+            TempData["Error"] = "Usuario no encontrado";
+            return RedirectToAction("Login", "Account");
+        }
+        
+        var caracteristicasList = Caracteristicas?.ToList() ?? new List<string>();
+        var preferenciasList = Preferencias?.ToList() ?? new List<string>();
+        
+        string caracteristicasStr = Objeto.ListToString(caracteristicasList);
+        string preferenciasStr = Objeto.ListToString(preferenciasList);
 
-        var perfil = new Perfil(caracteristicasStr, preferenciasStr, presupuesto, frecuencia);
+        var perfil = new Perfil(caracteristicasStr, preferenciasStr, Presupuesto, Frecuencia);
 
         int idPerfil = 0;
         
@@ -99,7 +108,7 @@ public class UserController : Controller
         }
 
         TempData["Mensaje"] = "¡Tu rutina fue guardada correctamente!";
-        return RedirectToAction("GenerarRutina", "Home", new {IdPerfil = idPerfil});
+        return RedirectToAction("GenerarRutina", "Home", new { IdPerfil = idPerfil });
     }
 
     public IActionResult IrInicio()
