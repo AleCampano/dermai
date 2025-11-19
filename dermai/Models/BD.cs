@@ -61,15 +61,15 @@ namespace dermai.Models;
             }
         }
 
-        public static int ObtenerIdUsuarioPorEmail(string email)
-        {
-            using(SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                string query = "SELECT IdUsuario FROM Usuario WHERE Email = @Email";
-                return connection.QueryFirstOrDefault<int>(query, new { Email = email });
-            }
+       public static int ObtenerIdUsuarioPorEmail(string email)
+    {
+         using(SqlConnection connection = new SqlConnection(_connectionString))
+    {
+        string query = "SELECT IdUsuario FROM Usuario WHERE Email = @Email";
+        int? idUsuario = connection.QueryFirstOrDefault<int?>(query, new { Email = email });
+        return idUsuario ?? 0; // Retorna 0 si no encuentra el usuario
         }
-
+    }
         public static void AsignarPerfilAUsuario(string email, int idPerfil)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -78,6 +78,7 @@ namespace dermai.Models;
                 connection.Execute(query, new { IdPerfil = idPerfil, Email = email });
             }
         }
+
         public static int CrearPerfil(int idUsuario, Perfil perfil)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -192,6 +193,23 @@ namespace dermai.Models;
                 {
                     CrearRutina(rutina);
                 }
+            }
+        }
+
+        public static void EliminarUsuario(int idUsuario)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                
+            }
+        }
+
+        public static List<Usuario> ObtenerTodosLosUsuarios()
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT * FROM Usuario ORDER BY IdUsuario";
+                return connection.Query<Usuario>(query).ToList();
             }
         }
     }

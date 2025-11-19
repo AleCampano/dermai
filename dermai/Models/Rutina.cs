@@ -10,21 +10,18 @@ namespace dermai.Models;
 public class Rutina
 {
     [JsonProperty]
-    public bool Rutinas {get; private set;}
+    public string Rutinas {get; private set;}
     [JsonProperty]
     public string RutinaFinal {get; private set;}
     [JsonProperty]
     public int IdUsuario {get; private set;}
-    [JsonProperty]
-    public int Content {get; private set;}
 
 public Rutina() { }
 
-public Rutina (bool Rutinas, string RutinaFinal, int IdUsuario)
+public Rutina (string Rutinas, string RutinaFinal, int IdUsuario)
 {
     this.Rutinas = Rutinas;
     this.RutinaFinal = RutinaFinal;
     this.IdUsuario = IdUsuario;
-    this.Content = 0;
 }
 }

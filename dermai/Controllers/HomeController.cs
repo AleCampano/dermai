@@ -37,8 +37,12 @@ public class HomeController : Controller
                 Perfil perfil = BD.ObtenerPerfilPorId(usuario.IdPerfil);
                 if (perfil != null && !string.IsNullOrEmpty(perfil.CaracteristicasPiel))
                 {
-                    var caracteristicas = Objeto.StringToList<string>(perfil.CaracteristicasPiel);
-                    if (caracteristicas != null && caracteristicas.Any())
+                    var caracteristicas = perfil.CaracteristicasPiel?
+                        .Split(',', StringSplitOptions.RemoveEmptyEntries)
+                        .Select(c => c.Trim())
+                        .ToList() ?? new List<string>();
+                    
+                    if (caracteristicas.Any())
                     {
                         TempData["Mensaje2"] = caracteristicas.First();
                     }
@@ -82,8 +86,8 @@ public class HomeController : Controller
             return RedirectToAction("Login", "Account");
         }
 
-        Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
-        if (usuario == null)
+        int idUsuario = BD.ObtenerIdUsuarioPorEmail(email);
+        if (idUsuario == 0)
         {
             TempData["Error"] = "Usuario no encontrado.";
             return RedirectToAction("Login", "Account");
@@ -95,11 +99,18 @@ public class HomeController : Controller
             return NotFound("Perfil no encontrado.");
         }
 
-        var caracteristicasList = Objeto.StringToList<string>(perfil.CaracteristicasPiel);
-        var preferenciasList = Objeto.StringToList<string>(perfil.PreferenciaProducto);
+        var caracteristicasList = perfil.CaracteristicasPiel?
+            .Split(',', StringSplitOptions.RemoveEmptyEntries)
+            .Select(c => c.Trim())
+            .ToList() ?? new List<string>();
 
-        string caracteristicasTxt = string.Join(", ", caracteristicasList ?? new List<string>());
-        string preferenciasTxt = string.Join(", ", preferenciasList ?? new List<string>());
+        var preferenciasList = perfil.PreferenciaProducto?
+            .Split(',', StringSplitOptions.RemoveEmptyEntries)
+            .Select(p => p.Trim())
+            .ToList() ?? new List<string>();
+
+        string caracteristicasTxt = string.Join(", ", caracteristicasList);
+        string preferenciasTxt = string.Join(", ", preferenciasList);
 
         string prompt = $@"Eres un dermatólogo experto. Con los siguientes datos del usuario, crea una rutina de cuidado de la piel personalizada:
         🧴 Características: {caracteristicasTxt}
@@ -124,11 +135,11 @@ public class HomeController : Controller
         var respuesta = await chatService.GetChatMessageContentAsync(history, promptSettings);
 
         Rutina rutina = new Rutina
-        {
-            Rutinas = respuesta.Content,
-            RutinaFinal = respuesta.Content,
-            IdUsuario = usuario.IdUsuario
-        };
+        (
+            Rutinas: respuesta.Content,
+            RutinaFinal: respuesta.Content, 
+            IdUsuario: idUsuario
+        );
 
         BD.GuardarRutina(rutina);
 
@@ -155,15 +166,16 @@ public class HomeController : Controller
         {
             return RedirectToAction("Login", "Account");
         }
-        Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
-
-        if (usuario == null || usuario.IdPerfil == 0)
+        
+        int idUsuario = BD.ObtenerIdUsuarioPorEmail(email);
+        
+        if (idUsuario == 0)
         {
             ViewBag.Mensaje = "No se encontró el perfil del usuario.";
             return RedirectToAction("CompletarFormularioRutina", "User");
         }
         
-        Rutina rutina = BD.ObtenerRutinaPorUsuario(usuario.IdUsuario);
+        Rutina rutina = BD.ObtenerRutinaPorUsuario(idUsuario);
     
         if (rutina == null)
         {
@@ -205,6 +217,7 @@ public class HomeController : Controller
             return RedirectToAction("CompletarFormularioRutina", "User");
         }
 
-        return RedirectToAction("GenerarRutina", "Home");
+        int idUsuario = BD.ObtenerIdUsuarioPorEmail(email);
+        return RedirectToAction("GenerarRutina", "Home", new { IdPerfil = usuario.IdPerfil });
     }
 }

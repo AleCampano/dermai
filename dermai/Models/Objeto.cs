@@ -1,9 +1,4 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using dermai.Models;
 using Newtonsoft.Json;
-using Microsoft.Data.SqlClient;
-using Dapper;
 
 namespace dermai.Models;
 
@@ -12,7 +7,7 @@ namespace dermai.Models;
         public static string ObjectToString<T>(T? obj)
         {
             return JsonConvert.SerializeObject(obj);
-        }
+        }   
         public static T? StringToObject<T>(string txt)
         {
             if (string.IsNullOrEmpty(txt))

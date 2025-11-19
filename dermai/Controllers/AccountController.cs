@@ -69,6 +69,20 @@ public class AccountController : Controller
             return View("Registrarse");
         }
 
+        if (Contraseña.Length < 6)
+        {
+            ViewBag.Error = "La contraseña debe tener al menos 6 caracteres.";
+            return View("Registrarse");
+        }
+
+        int edad = (DateTime.Today - FechaDeNacimiento).Days / 365;
+
+        if (edad < 13)
+        {
+            ViewBag.Error = "Debe tener al menos 13 años para registrarse.";
+            return View("Registrarse");
+        }
+
         if (BD.ValidarRegistro(Email))
         {
             ViewBag.Ya = "Este usuario ya está registrado, inicie sesión.";

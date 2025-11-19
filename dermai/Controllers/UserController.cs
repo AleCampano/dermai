@@ -85,14 +85,10 @@ public class UserController : Controller
             return RedirectToAction("Login", "Account");
         }
         
-        var caracteristicasList = Caracteristicas?.ToList() ?? new List<string>();
-        var preferenciasList = Preferencias?.ToList() ?? new List<string>();
-        
-        string caracteristicasStr = Objeto.ListToString(caracteristicasList);
-        string preferenciasStr = Objeto.ListToString(preferenciasList);
+        string caracteristicasStr = Objeto.ListToString(Caracteristicas?.ToList() ?? new List<string>());
+        string preferenciasStr = Objeto.ListToString(Preferencias?.ToList() ?? new List<string>());
 
         var perfil = new Perfil(caracteristicasStr, preferenciasStr, Presupuesto, Frecuencia);
-
         int idPerfil = 0;
         
         if (usu.IdPerfil > 0)

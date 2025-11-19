@@ -521,9 +521,6 @@ header {
   gap: 20px; 
 }
 
-.row-cols-2 > div {
-  padding: 0;
-}
 
 
 .botones {
