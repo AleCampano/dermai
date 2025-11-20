@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #FFF7E2;
+  background: #FFF7E2 !important;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -21,31 +21,90 @@ main {
   align-items: center;
 }
 
+/*HEADER*/
 header {
   border-bottom: 1px solid #E0E0E0;
   background-color:rgb(241, 211, 186);
-  padding: 15px 30px;
-  display: flex;
-  align-items: center;
   gap: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+  position: sticky;
+  width: 100%;
+  top: 0;
 }
 
-.header-logo{
+.container-text-center{
   display: flex;
-  gap: 10px;  
 }
 
-.header-logo img {
+.container-text-center img {
   width: 6%;
   height: auto;
-  height: auto;
 }
 
-.header-logo h1{
+.botonAparece button {
+  background: transparent;
+  border: none;
+}
+
+.botonAparece img {
+  width: 4%;
+  height: auto;
+  padding: 6%;
+  cursor: pointer;
+}
+
+.container-text-center h1{
   margin: 0;
-  margin-top: 1%;
+  margin-top: 1.5%;
   font-size: 2rem;
+}
+
+header nav {
+  display:flex;
+  margin-top: 1%;
+  background-color: rgb(241, 211, 186);;
+  flex-grow: 1;
+  margin-left: 23%;
+}
+
+header nav ul{
+  background-color: rgb(241, 211, 186);;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+header nav ul li{
+  list-style: none;
+  margin: 1%;
+  padding: 0.5%;
+  float: left;
+  background-color: #c7ebec;
+  min-width: 6%;
+  text-align: center;
+  list-style-type: none;
+  border-radius: 8px;
+}
+
+header nav ul li a{
+  text-decoration: none;
+  list-style-type: none;
+  color: black;
+  font-size: 100%;
+  transition: all 0.5s ease; /*TRANSICIÓN para cuando pone el mouse arriba */
+}
+
+header nav ul li a:hover{
+  color: #2C3E50;
+  background-color: #8fc3c5;
+  font-size: 14px;
+}
+
+.header p,
+.header-frase {
+  text-align: center;
+  font-style: italic;
+  font-weight: 600;
 }
 
 /*INICIO DE SESION*/
@@ -476,74 +535,84 @@ header {
 /*INICIO*/
 .main-grid-layout {
   display: flex;
-  justify-content: center;
-  align-items: center; 
-  gap: 50px; 
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  padding: 2% 5%;
+  width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
 }
 
 .welcome-text-simple {
-  width: 30%; 
-  text-align: right; 
+  text-align: center;
+  width: 100%;
+  padding: 20px 0;
+  background: linear-gradient(135deg, #FFF7E2 0%, #F6C7B4 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-.welcome-text-simple h2 { 
+.welcome-text-simple h2 {
   font-size: 2.2rem;
-  color: #444444; 
-  margin-bottom: 10px;
+  color: #444444;
   font-weight: 600;
-  line-height: 1.2;
 }
 
 .tipo-piel-tag {
-  display: inline-block; 
-  width: 70%;
-  padding: 10px 25px;
+  display: inline-block;
+  width: auto;
+  max-width: 400px;
+  border-radius: 50px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
 }
 
-.tipo-piel-tag button{
-  background-color: #B2E8BC;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.tipo-piel-tag button {
+  background: linear-gradient(135deg, #b2e8bc 0%, #8fd9a8 100%);
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2d5016;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.container {
-  width: 70%; 
-  margin: 0; 
-  padding: 0;
+.inicio-grid-container {
+  width: 100%;
+  box-sizing: border-box;
 }
-.row-cols-2 {
+
+.inicio-grid-botones {
   display: grid;
-  grid-template-columns: 1fr 1fr; 
-  grid-template-rows: auto auto; 
-  gap: 20px; 
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  width: 100%;
 }
-
-
 
 .botones {
   display: flex;
   flex-direction: column;
   text-align: left;
-  height: 100%; 
-  width: 100%;
-  
-  background-color: #DDEEF7; 
+  background: linear-gradient(135deg, #ddeef7 0%, #c1dceb 100%);
   border: none;
-  border-radius: 15px;
-  padding: 20px;
+  border-radius: 20px;
+  padding: 30px 25px;
   cursor: pointer;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
   justify-content: space-between;
+  min-height: 320px;
 }
 
 .botones:hover {
-  background-color: #C1DCEB; 
-  transform: translateY(-5px); 
+  background-color: #c1dceb;
+  transform: translateY(-5px);
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -558,164 +627,145 @@ header {
 .botones p {
   font-size: 0.95rem;
   color: #666666;
-  margin-top: 10px; 
+  margin-top: 10px;
   margin-bottom: 0;
+  flex-grow: 1;
 }
 
 .botones img {
-  width: 100%; 
-  max-height: 150px; 
+  width: 100%;
+  max-height: 150px;
   object-fit: cover;
-  border-radius: 10px; /* Bordes redondeados para las imágenes */
-  margin-top: 10px; /* Separa la imagen del título */
-  /* Las imágenes de la referencia están flotando un poco o son más pequeñas */
-  max-width: 80%; /* Hacerlas un poco más pequeñas */
-  align-self: center; /* Centrar la imagen dentro del botón flex */
+  border-radius: 10px;
+  margin: 10px 0;
+  max-width: 80%;
+  align-self: center;
 }
 
-/* Estilos específicos para ciertos botones si es necesario */
-
-/* El botón de la "Rutina de piel" tiene un borde azul en la imagen */
-.rutina-border {
-  border: 3px solid #74A7B3; /* Borde de color de hover de Login */
-  padding: 17px; /* Ajusta el padding para compensar el borde */
+.botones.tipo-piel-btn {
+  background-color: #b2e8bc;
 }
 
-/* Si necesitas que el primer botón sea diferente (por ejemplo, verde) */
-/*
-.row-cols-2 > div:first-child .botones {
-  background-color: #B2E8BC; 
+.botones.tipo-piel-btn:hover {
+  background-color: #9dd9a8;
 }
-*/
-
-/* --- Media Query para dispositivos móviles (fundamental) --- */
 
 @media (max-width: 900px) {
   .main-grid-layout {
-      flex-direction: column; /* Apila el texto encima de los botones */
-      gap: 20px;
+    padding: 15px;
+    margin: 30px auto;
+    gap: 20px;
   }
 
-  .welcome-text-simple,
-  .container {
-      width: 90%; /* Usa casi todo el ancho disponible */
-      text-align: center; /* Centra el texto */
+  .welcome-text-simple h2 {
+    font-size: 1.8rem;
   }
 
-  .welcome-text-simple {
-      text-align: center; /* Asegura el centrado del texto en modo columna */
+  .inicio-grid-botones {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .botones {
+    min-height: auto;
   }
 }
 
+@media (max-width: 600px) {
+  .welcome-text-simple h2 {
+    font-size: 1.5rem;
+  }
 
-/* HACER RUTINA */
+  .tipo-piel-tag {
+    width: 90%;
+    max-width: none;
+  }
+}
 
-
-
+/*HACER RUTINA*/
 .hacerRutina {
-  width: 95%;
+  width: 90%;
   max-width: 900px;
-  margin: 20px auto;
-  padding: 0; 
-  background-color: transparent; 
+  margin: 5% auto;
+  padding: 0;
+}
+
+.seccion-caja {
+  padding: 4%;
+  margin-bottom: 3%;
   border-radius: 15px;
-  box-shadow: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-.hacerRutina > div {
-  padding: 25px 40px;
-  margin-bottom: 20px; 
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+.caracteristicas, .presupuesto {
+  background-color: #F7F3EA;
 }
 
-.características {
-  background-color: #F7F3EA; 
-}
-
-.preferencias {
-  background-color: #E1F5FE; 
-}
-
-.presupuesto {
-  background-color: #F7F3EA; 
-}
-
-.frecuenciaRutinaria {
-  background-color: #E1F5FE; 
+.preferencias, .frecuenciaRutinaria {
+  background-color: #d1efda;
 }
 
 .hacerRutina h2 {
   color: #333;
-  font-size: 1.6rem;
-  border-bottom: none; 
-  padding-bottom: 0;
+  font-size: x-large;
   margin-top: 0;
-  margin-bottom: 5px;
+  margin-bottom: 0.5%;
   font-weight: bold;
 }
 
+
 .hacerRutina h3 {
   color: #555;
-  font-size: 0.9rem;
-  margin-top: 5px;
-  margin-bottom: 20px;
+  font-size: small;
+  margin-top: 0.5%;
+  margin-bottom: 3%;
 }
 
-
-.características > div, .preferencias > div {
+.opciones-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 15px 30px; 
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px 3%;
 }
 
-.presupuesto > div, .frecuenciaRutinaria > div {
+.opciones-flex {
   display: flex;
-  gap: 40px;
+  gap: 5%;
   justify-content: flex-start;
 }
 
 .hacerRutina label {
-  display: flex; 
+  display: flex;
   align-items: center;
-  margin-bottom: 0; 
-  font-size: 1rem;
+  font-size: medium;
   color: #333;
-}
-
-.hacerRutina input[type="checkbox"], 
-.hacerRutina input[type="radio"] {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-  margin-bottom: 0;
-  appearance: none; 
-  border: 2px solid #d2a67a; 
-  border-radius: 4px; 
-  background-color: white;
-  position: relative;
   cursor: pointer;
 }
 
-.hacerRutina input[type="checkbox"]:checked {
-  background-color: #ebad7a; 
-  border-color: #ebad7a;
+.hacerRutina input {
+  width: 20px;
+  height: 20px;
+  margin-right: 1%;
+  appearance: none;
+  border: 2px solid #EBCBC4;
+  background-color: white;
+  position: relative;
+  flex-shrink: 0;
 }
 
-.hacerRutina input[type="radio"] {
+.input-radio {
   border-radius: 50%;
 }
-.hacerRutina input[type="radio"]:checked {
-  background-color: #ebad7a;
-  border-color: #ebad7a;
+
+.hacerRutina input:checked {
+  background-color: #EBCBC4;
+  border-color: #EBCBC4;
 }
 
-
-.hacerRutina input[type="radio"]:checked::before {
+.input-radio:checked::before {
   content: '';
   display: block;
-  width: 8px;
-  height: 8px;
+  width: 35%;
+  height: 35%;
   background-color: white;
   border-radius: 50%;
   position: absolute;
@@ -724,60 +774,317 @@ header {
   transform: translate(-50%, -50%);
 }
 
-
-.hacerRutina .btn-primary {
+.btn-submit {
   width: auto;
-  min-width: 120px;
-  padding: 8px 20px;
-  align-self: flex-end; 
-  margin-top: 10px;
-  margin-bottom: 20px;
-  margin-right: 40px; 
-  border-radius: 20px;  
-  background-color: #ebad7a;
-  border-color: #ebad7a;
-  font-size: 1rem;
+  padding: 1% 3%;
+  margin-top: 2%;
+  margin-right: 4%;
+  margin-left: auto;
+  display: block;
+  border-radius: 25px;
+  background-color: #EBCBC4;
+  border: 1px solid #EBCBC4;
+  font-size: medium;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  text-transform: uppercase;
 }
 
- 
 @media (max-width: 768px) {
-  .características > div, .preferencias > div {
-    grid-template-columns: 1fr;  
-    gap: 10px;
-  }
-  .presupuesto > div, .frecuenciaRutinaria > div {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .hacerRutina > div {
-    padding: 20px;
-  }
-}
-
-footer{
-  background-color: rgb(241, 211, 186);
-  border: 1px solid black;
-  clear: both;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-  margin-top: -50px;
-}
-
-footer ul {
-  padding-left: 0;
-  margin: 0;
-  list-style: none;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-footer ul li{
-text-align: center;
-color: rgb(255, 255, 255);
-}
-footer ul li a{
-  color: rgb(7, 111, 247);
+  .seccion-caja { /* Usando la clase genérica */
+      padding: 5%;
   }
  
+  /* Checkboxes y Preferencias a 1 columna */
+  .opciones-grid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+  }
+ 
+  /* Presupuesto y Frecuencia apilados */
+  .opciones-flex {
+      flex-direction: column;
+      gap: 10px;
+  }
+ 
+  .btn-submit {
+      margin-right: 5%;
+  }
+}
+
+/*InfoTipoPiel*/
+.contenedor-principal {
+  display: flex;
+  width: 90%;
+  margin: 3% auto;
+  background-color: #F6C7B4;
+  margin-bottom: 6%;
+}
+
+.ImagenInfo {
+  width: 50%;
+  position: relative;
+}
+
+.ImagenInfo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.InfoPiel {
+  width: 50%;
+  padding: 5%;
+  box-sizing: border-box;
+}
+
+.InfoPiel h2 {
+  background-color: #d1efda;
+  padding: 2% 5%;
+  border-radius: 15px;
+  width: 35%;
+  margin:5% auto;
+  text-align: center;
+  font-size: xx-large;
+  color: #333;
+}
+
+.InfoPiel h3 {
+  margin-top: 4%;
+  margin-bottom: 2%;
+  color: #222;
+  font-size: 120%;
+}
+
+.InfoPiel ul {
+  margin-bottom: 4%;
+  font-size: 100%;
+}
+
+.btn-volver {
+  background-color: #f1e1dd;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-top: 8%;
+  font-size: 100%;
+}
+
+
+@media (max-width: 768px) {
+  .contenedor-principal {
+      flex-direction: column;
+  }
+  .ImagenInfo, .InfoPiel {
+      width: 100%;
+  }
+  .ImagenInfo {
+      height: 300px;
+      position: relative;
+  }
+}
+
+/*RECOMENDACION*/
+.recomendacion {
+  width: 90%;
+  margin: 2% auto 5% auto;
+}
+
+.recomendacion h1 {
+  text-align: center;
+  font-size: xx-large;
+  margin-bottom: 4%;
+}
+
+.recomendacion h2 {
+  text-align: center;
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: large;
+  margin-top: 3%;
+  margin-bottom: 1%;
+  font-weight: normal;
+}
+
+.recomendacion ul {
+  list-style-position: inside;
+  text-align: center;
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.recomendacion li {
+  margin-bottom: 0.8%;
+  font-size: medium;
+  line-height: 1.4;
+}
+
+.productos-imagenes {
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+  margin-top: 6%;
+  margin-bottom: 4%;
+}
+
+.imagen-box {
+  width: 18%;
+  border: 1px solid #555;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1%;
+}
+
+.imagen-box img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+.feedback-boton {
+  background-color: #EBCBC4;
+  border: none;
+  padding: 3%;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-top: 5%;
+  font-size: medium;
+}
+
+@media (max-width: 768px) {
+  .productos-imagenes {
+      flex-direction: column;
+      align-items: center;
+  }
+  .imagen-box {
+      width: 60%;
+      margin-bottom: 5%;
+  }
+  h1 {
+      font-size: x-large;
+  }
+}
+
+/*MOSTRAR RUTINA*/
+.contenedor {
+  width: 100%;
+  padding-top: 3%;
+  color: #333;
+  text-align: center;
+}
+
+.contenedor h1 {
+  font-size: 150%;
+  font-weight: 600;
+  text-align: center;
+  color: #5a3e35;    
+  letter-spacing: 0.5%;
+  margin: 5% 0 3% 0;
+}
+
+/* BLOQUES DE PREFERENCIAS Y CONSEJOS */
+.bloque {
+  width: 70%;                
+  background-color: #fff4ec;  
+  border: 2% solid #f5c9b8;
+  border-radius: 2%;        
+  padding: 3%;              
+  margin: 2% auto 4% auto;    
+  text-align: left;  
+}
+
+.bloque ul {
+  list-style: disc;
+  padding-left: 5%;
+  font-size: 95%;
+  line-height: 150%;
+  color: #333;
+}
+
+/* CUADROS DE RUTINAS */
+.cuadro {
+  width: 50%;
+  background-color: #ffe9df;  
+  border: 10% solid #f5c9b8;
+  border-radius: 2%;                  
+  font-size: 130%;          
+  line-height: 160%;
+  text-align: center;
+  margin: 5% auto;
+  padding: 2%;  
+}
+
+/* BOTÓN FEEDBACK */
+.feedback-boton {
+  margin-top: 3%;
+}
+
+.feedback-boton button {
+  width: 15%;
+  height: 5%;
+  background-color: #ffe9df;
+  border: none;
+  border-radius: 20px;
+  font-size: 90%;
+  box-shadow: 1% solid rgb(71, 69, 69);
+}
+.feedback-boton button:hover{
+  background-color: #c09683;
+  cursor: pointer;
+}
+
+@media (max-width: 400px) {
+  .cuadro {
+      width: 95%;
+      padding: 6%;
+      font-size: 105%;
+  }
+
+
+  .logo-img {
+      width: 30%;
+  }
+
+
+  .feedback-boton button {
+      width: 60%;
+      height: 10%;
+      font-size: 75%;
+  }
+
+
+  h1 {
+      font-size: 105%;
+  }
+}
+
+/*FOOTER*/
+footer {
+  background: #ebad7a;
+  color: white;
+  text-align: center;
+  padding:2%;
+  margin-top: 0.5%;
+}
+
+footer a {
+  color: #B2E8BC;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
