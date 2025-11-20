@@ -496,3 +496,4 @@ C:\Users\48860305\dermai\dermai\obj\Debug\net8.0\scopedcss\bundle\dermai.styles.
 C:\Users\48860305\dermai\dermai\obj\Debug\net8.0\dermai.csproj.Up2Date
 C:\Users\48860305\dermai\dermai\obj\Debug\net8.0\dermai.genruntimeconfig.cache
 C:\Users\48860305\dermai\dermai\obj\Debug\net8.0\ref\dermai.dll
+C:\Users\49094340\dermai\dermai\bin\Debug\net8.0\Dapper.Contrib.dll

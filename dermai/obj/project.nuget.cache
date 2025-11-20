@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "s28JXFISxEheHs0xS9JDfmesVAPGlBQlFcup/rKXmuBzuhCKWv4ZqAHfnDH1tWFGKZTuuqzvnYd1GziSuMzRyw==",
+  "dgSpecHash": "LhIMp4R3abDTAe4l2Tpks+mDGjc52ADWBHPTyo60eWrvnzc1JruaVARX44W4Nz/mIaXMJD/GgGJS0cRItMVHeQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\49094340\\dermai\\dermai\\dermai.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\49094340\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\49094340\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
     "C:\\Users\\49094340\\.nuget\\packages\\dapper\\2.1.66\\dapper.2.1.66.nupkg.sha512",
+    "C:\\Users\\49094340\\.nuget\\packages\\dapper.contrib\\2.0.78\\dapper.contrib.2.0.78.nupkg.sha512",
     "C:\\Users\\49094340\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\2.3.0\\microsoft.aspnetcore.cryptography.internal.2.3.0.nupkg.sha512",
     "C:\\Users\\49094340\\.nuget\\packages\\microsoft.aspnetcore.dataprotection\\2.3.0\\microsoft.aspnetcore.dataprotection.2.3.0.nupkg.sha512",
     "C:\\Users\\49094340\\.nuget\\packages\\microsoft.aspnetcore.dataprotection.abstractions\\2.3.0\\microsoft.aspnetcore.dataprotection.abstractions.2.3.0.nupkg.sha512",

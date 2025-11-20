@@ -71,11 +71,9 @@ public class AccountController : Controller
 
         if (Contraseña.Length < 6)
         {
-            // ViewBag.Error = "La contraseña debe tener al menos 6 caracteres.";
-            
+            ViewBag.Error = "La contraseña debe tener al menos 6 caracteres.";
             return View("Registrarse");
         }
-        return Ok(new { mensaje = "La contraseña debe tener al menos 6 caracteres.", redireccion = Url.Action("CompletarRegistrarse", "Account") });
 
         int edad = (DateTime.Today - FechaDeNacimiento).Days / 365;
 
@@ -101,6 +99,7 @@ public class AccountController : Controller
         HttpContext.Session.SetString("usu", Objeto.ObjectToString(newUser));
         return RedirectToAction("CompletarFormularioPiel", "User");
     }
+
      public IActionResult CompletarRegistrarse()
     {
         return View("Registrarse");

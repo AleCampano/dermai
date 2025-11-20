@@ -1,20 +1,19 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using dermai.Models;
 using Newtonsoft.Json;
-using Microsoft.Data.SqlClient;
-using Dapper;
+using Dapper.Contrib.Extensions;
 
 namespace dermai.Models;
 
 public class Rutina
 {
+    // 🛑 AGREGAR ESTO: Marca la PK como clave, Dapper la ignorará en INSERT
+    [Key]
+    public int IdRutina { get; set; }
     [JsonProperty]
-    public string Rutinas {get; private set;}
+    public string Rutinas {get; set;}
     [JsonProperty]
-    public string RutinaFinal {get; private set;}
+    public string RutinaFinal {get; set;}
     [JsonProperty]
-    public int IdUsuario {get; private set;}
+    public int IdUsuario {get; set;}
 
 public Rutina() { }
 

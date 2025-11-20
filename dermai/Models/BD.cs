@@ -141,18 +141,14 @@ namespace dermai.Models;
             }
         }
 
-        public static void CrearRutina(Rutina rutina)
+        public static int CrearRutina(Rutina rutina)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string insertQuery = @"INSERT INTO Rutina (Rutinas, RutinaFinal, IdUsuario)
-                                       VALUES (@Rutinas, @RutinaFinal, @IdUsuario)";
-                connection.Execute(insertQuery, new
-                {
-                    Rutinas = rutina.Rutinas,
-                    RutinaFinal = rutina.RutinaFinal,
-                    IdUsuario = rutina.IdUsuario
-                });
+                                       VALUES (@Rutinas, @RutinaFinal, @IdUsuario);
+                SELECT CAST(SCOPE_IDENTITY() AS INT);";
+                return connection.QuerySingle<int>(insertQuery, rutina);
             }
         }
 

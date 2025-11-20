@@ -17,7 +17,13 @@
         
         <p>¿Ya eres miembro? <a href='@Url.Action("Login","Account")' alt = "Login"> Inicia Sesion</a></p>
         <p>Al tener una cuenta, podrás recibir notificaciones de DERMAI.COM</p>
-        </form>
+    </form>
+    @if (ViewBag.Error != null)
+    {
+    <script>
+        alert("@ViewBag.Error");
+    </script>
+    }
         <script src="~/js/validaciones.js"></script>
 </section>
     
