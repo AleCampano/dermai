@@ -17,7 +17,11 @@ namespace dermai.Models;
         }
         public static string ListToString<T>(List<T> lista)
         {
-            return JsonConvert.SerializeObject(lista);
+            if (lista == null || !lista.Any())
+            {
+                return string.Empty;
+            }
+            return string.Join(", ", lista);
         }
         public static List<T>? StringToList<T>(string json)
         {

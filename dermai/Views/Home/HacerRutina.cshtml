@@ -5,6 +5,15 @@
 <form asp-action="GuardarFormularioRutina" asp-controller="User" method="post">
     @Html.AntiForgeryToken()
     <section class="hacerRutina">
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger">@TempData["Error"]</div>
+        }
+        @if (TempData["Mensaje"] != null)
+        {
+            <div class="alert alert-success">@TempData["Mensaje"]</div>
+        }
+
         <div class="caracteristicas">
             <h2>¿Qué características tenés?</h2>
             <h3>(Podés elegir varias opciones)</h3>
@@ -43,14 +52,11 @@
             <h2>¿Cuál es tu presupuesto estimado?</h2>
             <div>
                 <label>
-                    <input asp-for="Presupuesto" type="radio" value="Económico" /> Económico (hasta $50 USD)
-                </label>
+                    <input type="radio" name="Presupuesto" value="Económico" required @(Model?.Presupuesto == "Económico" ? "checked" : "") /> Económico (hasta $50 USD)                </label>
                 <label>
-                    <input asp-for="Presupuesto" type="radio" value="Medio" /> Medio (hasta $120 USD)
-                </label>
+                    <input type="radio" name="Presupuesto" value="Medio" required @(Model?.Presupuesto == "Medio" ? "checked" : "") /> Medio (hasta $120 USD)                </label>
                 <label>
-                    <input asp-for="Presupuesto" type="radio" value="Premium" /> Premium (desde $120 USD)
-                </label>
+                    <input type="radio" name="Presupuesto" value="Premium" required @(Model?.Presupuesto == "Premium" ? "checked" : "") /> Premium (desde $120 USD)                </label>
             </div>
         </div>
 
@@ -58,14 +64,11 @@
             <h2>¿Cuál es tu frecuencia de rutina ideal?</h2>
             <div>
                 <label>
-                    <input asp-for="Frecuencia" type="radio" value="Simple" /> Rutina simple (1-3 pasos)
-                </label>
+                    <input type="radio" name="Frecuencia" value="Simple" required @(Model?.Frecuencia == "Simple" ? "checked" : "") /> Rutina simple (1-3 pasos)                </label>
                 <label>
-                    <input asp-for="Frecuencia" type="radio" value="Intermedia" /> Rutina intermedia (4-5 pasos)
-                </label>
+                    <input type="radio" name="Frecuencia" value="Intermedia" required @(Model?.Frecuencia == "Intermedia" ? "checked" : "") /> Rutina intermedia (4-5 pasos)                </label>
                 <label>
-                    <input asp-for="Frecuencia" type="radio" value="Completa" /> Rutina completa (6+ pasos)
-                </label>
+                    <input type="radio" name="Frecuencia" value="Completa" required @(Model?.Frecuencia == "Completa" ? "checked" : "") /> Rutina completa (6+ pasos)                </label>
             </div>
         </div>
 

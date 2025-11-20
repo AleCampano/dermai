@@ -21,6 +21,34 @@ public class HomeController : Controller
         _kernel = kernel;
     }
 
+    private int ObtenerIdUsuarioActual()
+    {
+        string email = HttpContext.Session.GetString("usu");
+        if (string.IsNullOrEmpty(email))
+        {
+            return 0;
+        }
+        return BD.ObtenerIdUsuarioPorEmail(email);
+    }
+
+    // Método de ayuda para verificar la sesión y redirigir si es necesario.
+    private IActionResult VerificarSesionYRedirigir(int idUsuario)
+    {
+        string email = HttpContext.Session.GetString("usu");
+
+        if (string.IsNullOrEmpty(email))
+        {
+            return RedirectToAction("Login", "Account");
+        }
+        
+        if (idUsuario == 0)
+        {
+            TempData["Error"] = "Usuario no encontrado.";
+            return RedirectToAction("Login", "Account");
+        }
+        return null; // Retorna null si la verificación es exitosa
+    }
+
     public IActionResult Index()
     { 
         return RedirectToAction("Login", "Account");
@@ -52,22 +80,24 @@ public class HomeController : Controller
         return View("Inicio");
     }
 
+    // Acciones para generar la rutina (POST y GET unificadas)
     [HttpPost]
     public async Task<IActionResult> GenerarRutina(int IdPerfil)
     {
         return await GenerarRutinaInternal(IdPerfil);
     }
 
-    // Método GET alternativo por si se accede directamente
+    [HttpGet]
     public async Task<IActionResult> GenerarRutina()
     {
-        string email = HttpContext.Session.GetString("usu");
-        if (string.IsNullOrEmpty(email))
+        int idUsuario = ObtenerIdUsuarioActual();
+        var redirect = VerificarSesionYRedirigir(idUsuario);
+        if (redirect != null)
         {
-            return RedirectToAction("Login", "Account");
+            return redirect;
         }
-
-        Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
+        
+        Usuario usuario = BD.ObtenerUsuarioPorEmail(HttpContext.Session.GetString("usu"));
         if (usuario == null || usuario.IdPerfil == 0)
         {
             TempData["Error"] = "Primero debes completar tu perfil.";
@@ -77,20 +107,14 @@ public class HomeController : Controller
         return await GenerarRutinaInternal(usuario.IdPerfil);
     }
 
-    // Método interno para reutilizar la lógica
+    // Método interno para reutilizar la lógica de generación
     private async Task<IActionResult> GenerarRutinaInternal(int idPerfil)
     {
-        string email = HttpContext.Session.GetString("usu");
-        if (string.IsNullOrEmpty(email))
+        int idUsuario = ObtenerIdUsuarioActual();
+        var redirect = VerificarSesionYRedirigir(idUsuario);
+        if (redirect != null)
         {
-            return RedirectToAction("Login", "Account");
-        }
-
-        int idUsuario = BD.ObtenerIdUsuarioPorEmail(email);
-        if (idUsuario == 0)
-        {
-            TempData["Error"] = "Usuario no encontrado.";
-            return RedirectToAction("Login", "Account");
+            return redirect;
         }
 
         Perfil perfil = BD.ObtenerPerfilPorId(idPerfil);
@@ -98,7 +122,8 @@ public class HomeController : Controller
         {
             return NotFound("Perfil no encontrado.");
         }
-
+        
+        // ... (Lógica de obtención de características y preferencias) ...
         var caracteristicasList = perfil.CaracteristicasPiel?
             .Split(',', StringSplitOptions.RemoveEmptyEntries)
             .Select(c => c.Trim())
@@ -119,7 +144,7 @@ public class HomeController : Controller
         ⏰ Frecuencia: {perfil.FrecuenciaRutina}
 
         Devuelve una rutina dividida en pasos de mañana y noche, con recomendaciones de tipos de productos (no marcas).";
-
+        
         var chatService = _kernel.GetRequiredService<IChatCompletionService>();
 
         var history = new ChatHistory();
@@ -144,52 +169,42 @@ public class HomeController : Controller
         BD.GuardarRutina(rutina);
 
         TempData["RutinaGenerada"] = respuesta.Content;
-        return RedirectToAction("MostrarRutina", "Home");
+        return RedirectToAction("VerRutinaGuardada", "Home"); 
     }
 
-    public IActionResult MostrarRutina()
+    // Método unificado para ver la rutina (ya sea recién generada o guardada)
+    // Reemplaza a MostrarRutina() y VerRutina().
+    public IActionResult VerRutinaGuardada() 
     {
-        string rutinaTexto = TempData["RutinaGenerada"]?.ToString() ?? "";
-        if (string.IsNullOrEmpty(rutinaTexto))
+        string rutinaTexto = TempData["RutinaGenerada"]?.ToString();
+        if (!string.IsNullOrEmpty(rutinaTexto))
         {
-            ViewBag.Error = "No se pudo recuperar la rutina generada.";
-            return RedirectToAction("CompletarFormularioRutina", "User");
+            ViewBag.Rutina = rutinaTexto;
+            return View("MostrarRutina");
         }
 
-        ViewBag.Rutina = rutinaTexto;
-        return View();
-    }
-    public IActionResult VerRutina()
-    {
-        string email = HttpContext.Session.GetString("usu");
-        if (string.IsNullOrEmpty(email))
+        int idUsuario = ObtenerIdUsuarioActual();
+        var redirect = VerificarSesionYRedirigir(idUsuario);
+        if (redirect != null)
         {
-            return RedirectToAction("Login", "Account");
-        }
-        
-        int idUsuario = BD.ObtenerIdUsuarioPorEmail(email);
-        
-        if (idUsuario == 0)
-        {
-            ViewBag.Mensaje = "No se encontró el perfil del usuario.";
-            return RedirectToAction("CompletarFormularioRutina", "User");
+            return redirect;
         }
         
         Rutina rutina = BD.ObtenerRutinaPorUsuario(idUsuario);
     
         if (rutina == null)
         {
-            ViewBag.Mensaje = "No se encontró una rutina guardada.";
-            return View("MostrarRutina");
+            ViewBag.Mensaje = "No se encontró una rutina guardada. ¡Crea la tuya!";
+        } else {
+             ViewBag.Rutina = rutina.RutinaFinal;
         }
 
-        ViewBag.Rutina = rutina.RutinaFinal;
         return View("MostrarRutina");
     }
 
     public IActionResult ModificarRutina()
     {
-        return RedirectToAction("CompletarFormularioRutina", "User");
+        return View("HacerRutina");
     }
 
     public IActionResult IrTipoPiel()
@@ -200,24 +215,5 @@ public class HomeController : Controller
     public IActionResult IrRecomendaciones()
     {
         return View ("Recomendacion");
-    }
-
-    public IActionResult VerificarRutina()
-    {
-        string email = HttpContext.Session.GetString("usu");
-        if (string.IsNullOrEmpty(email))
-        {
-            return RedirectToAction("Login", "Account");
-        }
-
-        Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
-        if (usuario == null || usuario.IdPerfil == 0)
-        {
-            TempData["Error"] = "Primero debes completar tu perfil.";
-            return RedirectToAction("CompletarFormularioRutina", "User");
-        }
-
-        int idUsuario = BD.ObtenerIdUsuarioPorEmail(email);
-        return RedirectToAction("GenerarRutina", "Home", new { IdPerfil = usuario.IdPerfil });
     }
 }

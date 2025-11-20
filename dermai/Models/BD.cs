@@ -67,7 +67,7 @@ namespace dermai.Models;
     {
         string query = "SELECT IdUsuario FROM Usuario WHERE Email = @Email";
         int? idUsuario = connection.QueryFirstOrDefault<int?>(query, new { Email = email });
-        return idUsuario ?? 0; // Retorna 0 si no encuentra el usuario
+        return idUsuario ?? 0;
         }
     }
         public static void AsignarPerfilAUsuario(string email, int idPerfil)
@@ -106,7 +106,7 @@ namespace dermai.Models;
                 catch (SqlException ex)
                 {
                     Console.WriteLine($"Error SQL al crear el perfil: {ex.Message}");
-                    return 0; // o podrías lanzar una excepción personalizada
+                    return 0;
                 }
             }
         }

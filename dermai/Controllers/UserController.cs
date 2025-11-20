@@ -21,6 +21,8 @@ public class UserController : Controller
         return View("IngresoPiel");
     }
 
+   
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult GuardarFormularioPiel(int NivelGrasaPiel, string AlergiaProductos, string IrritacionFrecuencia, string AparicionGranos)
@@ -68,13 +70,9 @@ public class UserController : Controller
         return RedirectToAction("InicioA", "Home");
     }
 
-    public IActionResult CompletarFormularioRutina()
-    {
-        return View("HacerRutina");
-    }
-
     [HttpPost]
-    public IActionResult GuardarFormularioRutina(string[] Caracteristicas, string[] Preferencias, string Presupuesto, string Frecuencia)
+    [ValidateAntiForgeryToken]
+    public IActionResult GuardarFormularioRutina(PielFormModel model)
     {
         string email = HttpContext.Session.GetString("usu");
         var usu = BD.ObtenerUsuarioPorEmail(email);
@@ -85,10 +83,10 @@ public class UserController : Controller
             return RedirectToAction("Login", "Account");
         }
         
-        string caracteristicasStr = Objeto.ListToString(Caracteristicas?.ToList() ?? new List<string>());
-        string preferenciasStr = Objeto.ListToString(Preferencias?.ToList() ?? new List<string>());
+        string caracteristicasStr = Objeto.ListToString(model.Caracteristicas ?? new List<string>());
+        string preferenciasStr = Objeto.ListToString(model.Preferencias ?? new List<string>());
 
-        var perfil = new Perfil(caracteristicasStr, preferenciasStr, Presupuesto, Frecuencia);
+        var perfil = new Perfil(caracteristicasStr, preferenciasStr, model.Presupuesto, model.Frecuencia);
         int idPerfil = 0;
         
         if (usu.IdPerfil > 0)
