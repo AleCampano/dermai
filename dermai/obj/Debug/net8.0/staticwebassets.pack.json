@@ -37,6 +37,14 @@
       "PackagePath": "staticwebassets\\imagenes\\rutina3.png"
     },
     {
+      "Id": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\imagenes\\settings.png",
+      "PackagePath": "staticwebassets\\imagenes\\settings.png"
+    },
+    {
+      "Id": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\imagenes\\settings2.png",
+      "PackagePath": "staticwebassets\\imagenes\\settings2.png"
+    },
+    {
       "Id": "C:\\Users\\49094340\\dermai\\dermai\\wwwroot\\imagenes\\skincare.jfif",
       "PackagePath": "staticwebassets\\imagenes\\skincare.jfif"
     },

@@ -1,6 +1,6 @@
 @model dermai.Models.PielFormModel
 @{
-    Layout = null;
+    ViewData["Title"] = "Hacer Mi Rutina";
 }
 <form asp-action="GuardarFormularioRutina" asp-controller="User" method="post">
     @Html.AntiForgeryToken()
@@ -8,10 +8,6 @@
         @if (TempData["Error"] != null)
         {
             <div class="alert alert-danger">@TempData["Error"]</div>
-        }
-        @if (TempData["Mensaje"] != null)
-        {
-            <div class="alert alert-success">@TempData["Mensaje"]</div>
         }
 
         <div class="caracteristicas">
@@ -50,6 +46,7 @@
 
         <div class="presupuesto">
             <h2>¿Cuál es tu presupuesto estimado?</h2>
+            <h3>(Podés elegir solo una opción)</h3>
             <div>
                 <label>
                     <input type="radio" name="Presupuesto" value="Económico" required @(Model?.Presupuesto == "Económico" ? "checked" : "") /> Económico (hasta $50 USD)                </label>
@@ -61,7 +58,8 @@
         </div>
 
         <div class="frecuenciaRutinaria">
-            <h2>¿Cuál es tu frecuencia de rutina ideal?</h2>
+            <h2>¿Cuál es tu frecuencia de rutina ideal? Elige solo una opcion</h2>
+            <h3>(Podés elegir solo una opción)</h3>
             <div>
                 <label>
                     <input type="radio" name="Frecuencia" value="Simple" required @(Model?.Frecuencia == "Simple" ? "checked" : "") /> Rutina simple (1-3 pasos)                </label>
@@ -72,6 +70,9 @@
             </div>
         </div>
 
+
+      
         <input type="submit" value="Enviar" class="btn btn-primary mt-3" />
+      
     </section>
 </form>

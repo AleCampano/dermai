@@ -41,7 +41,7 @@ public class UserController : Controller
             tipoPiel = "Piel grasa";
         }
 
-        string detalles = $"Tipo: {tipoPiel}. " + $"Alergia a productos: {AlergiaProductos}. " + $"Irritación: {IrritacionFrecuencia}. " + $"Granos: {AparicionGranos}.";
+        string detalles = $"{tipoPiel}, Alergia a productos: {AlergiaProductos}, Irritación: {IrritacionFrecuencia}, Granos: {AparicionGranos}";
 
         string email = HttpContext.Session.GetString("usu");
         var usu = BD.ObtenerUsuarioPorEmail(email);

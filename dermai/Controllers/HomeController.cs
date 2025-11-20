@@ -76,6 +76,10 @@ public class HomeController : Controller
                     }
                 }
             }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
         return View("Inicio");
     }
@@ -101,7 +105,7 @@ public class HomeController : Controller
         if (usuario == null || usuario.IdPerfil == 0)
         {
             TempData["Error"] = "Primero debes completar tu perfil.";
-            return RedirectToAction("CompletarFormularioRutina", "User");
+            return RedirectToAction("ModificarRutina", "Home");
         }
 
         return await GenerarRutinaInternal(usuario.IdPerfil);
@@ -145,31 +149,41 @@ public class HomeController : Controller
 
         Devuelve una rutina dividida en pasos de mañana y noche, con recomendaciones de tipos de productos (no marcas).";
         
-        var chatService = _kernel.GetRequiredService<IChatCompletionService>();
+        try
+        {   var chatService = _kernel.GetRequiredService<IChatCompletionService>();
 
-        var history = new ChatHistory();
-        history.AddSystemMessage("Eres un dermatólogo experto en cuidado de la piel.");
-        history.AddUserMessage(prompt);
+            var history = new ChatHistory();
+            history.AddSystemMessage("Eres un dermatólogo experto en cuidado de la piel.");
+            history.AddUserMessage(prompt);
 
-        var promptSettings = new GeminiPromptExecutionSettings
-        {
-            Temperature = 0.7,
-            TopP = 0.95
-        };
+            var promptSettings = new GeminiPromptExecutionSettings
+            {
+                Temperature = 0.7,
+                TopP = 0.95
+            };
 
-        var respuesta = await chatService.GetChatMessageContentAsync(history, promptSettings);
+            var respuesta = await chatService.GetChatMessageContentAsync(history, promptSettings);
 
-        Rutina rutina = new Rutina
-        (
-            Rutinas: respuesta.Content,
-            RutinaFinal: respuesta.Content, 
-            IdUsuario: idUsuario
-        );
+            Rutina rutina = new Rutina
+            (
+                Rutinas: respuesta.Content,
+                RutinaFinal: respuesta.Content, 
+                IdUsuario: idUsuario
+            );
 
-        BD.GuardarRutina(rutina);
+            BD.GuardarRutina(rutina);
 
-        TempData["RutinaGenerada"] = respuesta.Content;
-        return RedirectToAction("VerRutinaGuardada", "Home"); 
+            TempData["RutinaGenerada"] = respuesta.Content;
+            return RedirectToAction("VerRutinaGuardada", "Home"); 
+        }
+        catch (Exception ex)
+        {// MUY IMPORTANTE: Captura cualquier error de la IA o de la DB.
+            _logger.LogError(ex, "Error al generar la rutina de IA o al guardar en BD.");
+            TempData["Error"] = "Error al generar la rutina (falla de IA/servidor). Intenta de nuevo. Detalles: " + ex.Message;
+                
+            // Redirige al formulario para que el usuario pueda intentarlo de nuevo.
+            return RedirectToAction("ModificarRutina", "Home");
+        }
     }
 
     // Método unificado para ver la rutina (ya sea recién generada o guardada)
