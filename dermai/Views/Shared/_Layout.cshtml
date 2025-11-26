@@ -17,7 +17,7 @@
       <ul>
         <li><a asp-controller="Home" asp-action="InicioA">Inicio</a></li>
         <li><a asp-controller="Home" asp-action="IrTipoPiel">Tipo De Piel</a></li>
-        <li><a asp-controller="User" asp-action="CompletarFormularioRutina">Rutina</a></li>
+        <li><a asp-controller="Home" asp-action="HacerRutina">Rutina</a></li>
         <li><a asp-controller="Home" asp-action="IrRecomendaciones">Recomendaciones</a></li>
         <li><a asp-controller="Home" asp-action="IrTipoPiel">Feedback</a></li>
       </ul>
@@ -67,12 +67,18 @@
           </a>
         </li>
 
+        <li class="list-group-item">
+          <a asp-controller="Account" asp-action="BorrarPerfilYUsuario" class="text-danger fw-bold">
+            Borrar Perfil (Y usuario)
+          </a>
+        </li>
+
 
       </ul>
     </div>
   </div>
 
-  <p class="header-frase">En dermai no solo cuidamos la piel, cuidamos a las personas.</p>
+  <p class="header-frase">En Dermai no solo cuidamos la piel, cuidamos a las personas.</p>
 </header>
 
 <body>

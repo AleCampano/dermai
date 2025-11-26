@@ -216,11 +216,18 @@ namespace dermai.Models;
             }
         }
 
-        public static void EliminarUsuario(int idUsuario)
+        public static void EliminarUsuarioYPerfilCompleto(string email)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 
+                string deletePerfilQuery = @"
+                DELETE FROM Perfil 
+                WHERE IdPerfil IN (SELECT IdPerfil FROM Usuario WHERE Email = @Email)";
+                connection.Execute(deletePerfilQuery, new { Email = email });
+            
+                string deleteUsuarioQuery = "DELETE FROM Usuario WHERE Email = @Email";
+                connection.Execute(deleteUsuarioQuery, new { Email = email });
             }
         }
 

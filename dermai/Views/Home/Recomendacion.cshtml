@@ -1,68 +1,100 @@
- @{
+@{
     ViewData["Title"] = "Recomendación";
 }
 <section class="recomendacion">
     <h1>Recomendaciones de productos específicos:</h1>
-    <div>
-        <h2>Limpiadores</h2>
-        <ul>
-            <li><strong>CeraVe Foaming Facial Cleanser</strong> — sin fragancia ni alcohol, ideal para piel mixta.</li>
-            <li><strong>Youth to the People Superfood Cleanser</strong> — fórmula vegana con kale y té verde; limpia sin resecar.</li>
-            <li>• Opción genérica: Gel limpiador con aloe vera o centella asiática (sin sulfatos).</li>
-        </ul>
-    </div>
-
-
-    <div>
-        <h2>Tónicos / Esencias</h2>
-        <ul>
-            <li><strong>Klairs Supple Preparation Unscented Toner</strong> — calmante, sin fragancia ni alcohol.</li>
-            <li><strong>COSRX Centella Water Alcohol-Free Toner</strong> — refresca y ayuda con rojeces.</li>
-            <li>• Opción genérica: Tónico con agua de rosas o hamamelis (sin alcohol).</li>
-        </ul>
-    </div>
-
-
-    <div>
-        <h2>Hidratantes</h2>
-        <ul>
-            <li><strong>Neutrogena Hydro Boost Gel-Cream (Fragrance-Free)</strong> — textura ligera y no comedogénica.</li>
-            <li><strong>Dr. Jart+ Cicapair Calming Gel Cream</strong> — con centella asiática para calmar irritaciones.</li>
-            <li>• Opción genérica: Gel hidratante con ácido hialurónico o niacinamida.</li>
-        </ul>
-    </div>
-
-
-    <div>
-        <h2>Sérums</h2>
-        <ul>
-            <li><strong>The Ordinary Niacinamide 10% + Zinc 1%</strong> — controla el exceso de grasa y ayuda con manchas.</li>
-            <li><strong>Naturium Vitamin C Complex Serum</strong> — antioxidante, sin fragancia ni siliconas.</li>
-            <li>• Opción genérica: Suero antioxidante con vitamina C estable o niacinamida (5–10%).</li>
-        </ul>
-    </div>
-
-
-    <div>
-        <h2>Protector solar</h2>
-        <ul>
-            <li><strong>Eucerin Oil Control Dry Touch SPF 50+</strong> — matificante y apto para piel sensible.</li>
-            <li><strong>Beauty of Joseon Relief Sun: Rice + Probiotics SPF 50+</strong> — vegano, sin fragancia.</li>
-            <li>• Opción genérica: Protector solar mineral con óxido de zinc y textura ligera.</li>
-        </ul>
-    </div>
-
-
-    <div class="productos-imagenes">
-        <div class="imagen-box">
-            <img src="~/imagenes/image19.png" alt="Neutrogena">
-            <img src="~/imagenes/image18.png" alt="The Ordinary">
-            <img src="~/imagenes/image17.png" alt="Eucerin">
+    
+    @if (ViewBag.MensajeSinRutina != null)
+    {
+        <div class="alert alert-info">
+            @Html.Raw(ViewBag.MensajeSinRutina)
+            <div class="mt-2">
+                <a href="@Url.Action("ModificarRutina", "Home")" class="btn btn-primary">Crear Mi Rutina</a>
+            </div>
         </div>
-    </div>
+    }
+    
+    @if (ViewBag.MensajeConRutina != null)
+    {
+        <div class="alert alert-success">
+            @Html.Raw(ViewBag.MensajeConRutina)
+        </div>
+    }
+    
+    @if (ViewBag.MensajeError != null)
+    {
+        <div class="alert alert-warning">
+            @Html.Raw(ViewBag.MensajeError)
+        </div>
+    }
+
+    @if (ViewBag.TieneRutinaPersonalizada != null && ViewBag.TieneRutinaPersonalizada == true)
+    {
+        <!-- Mostrar recomendaciones personalizadas generadas por IA -->
+        <div class="recomendaciones-personalizadas">
+            @Html.Raw(ViewBag.RecomendacionesPersonalizadas)
+        </div>
+    }
+    else
+    {
+        <!-- Mostrar recomendaciones generales (tu contenido original) -->
+        <div class="recomendaciones-generales">
+            <div>
+                <h2>Limpiadores</h2>
+                <ul>
+                    <li><strong>CeraVe Foaming Facial Cleanser</strong> — sin fragancia ni alcohol, ideal para piel mixta.</li>
+                    <li><strong>Youth to the People Superfood Cleanser</strong> — fórmula vegana con kale y té verde; limpia sin resecar.</li>
+                    <li>• Opción genérica: Gel limpiador con aloe vera o centella asiática (sin sulfatos).</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>Tónicos / Esencias</h2>
+                <ul>
+                    <li><strong>Klairs Supple Preparation Unscented Toner</strong> — calmante, sin fragancia ni alcohol.</li>
+                    <li><strong>COSRX Centella Water Alcohol-Free Toner</strong> — refresca y ayuda con rojeces.</li>
+                    <li>• Opción genérica: Tónico con agua de rosas o hamamelis (sin alcohol).</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>Hidratantes</h2>
+                <ul>
+                    <li><strong>Neutrogena Hydro Boost Gel-Cream (Fragrance-Free)</strong> — textura ligera y no comedogénica.</li>
+                    <li><strong>Dr. Jart+ Cicapair Calming Gel Cream</strong> — con centella asiática para calmar irritaciones.</li>
+                    <li>• Opción genérica: Gel hidratante con ácido hialurónico o niacinamida.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>Sérums</h2>
+                <ul>
+                    <li><strong>The Ordinary Niacinamide 10% + Zinc 1%</strong> — controla el exceso de grasa y ayuda con manchas.</li>
+                    <li><strong>Naturium Vitamin C Complex Serum</strong> — antioxidante, sin fragancia ni siliconas.</li>
+                    <li>• Opción genérica: Suero antioxidante con vitamina C estable o niacinamida (5–10%).</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>Protector solar</h2>
+                <ul>
+                    <li><strong>Eucerin Oil Control Dry Touch SPF 50+</strong> — matificante y apto para piel sensible.</li>
+                    <li><strong>Beauty of Joseon Relief Sun: Rice + Probiotics SPF 50+</strong> — vegano, sin fragancia.</li>
+                    <li>• Opción genérica: Protector solar mineral con óxido de zinc y textura ligera.</li>
+                </ul>
+            </div>
+
+            <div class="productos-imagenes">
+                <div class="imagen-box">
+                    <img src="~/imagenes/image19.png" alt="Neutrogena">
+                    <img src="~/imagenes/image18.png" alt="The Ordinary">
+                    <img src="~/imagenes/image17.png" alt="Eucerin">
+                </div>
+            </div>
+        </div>
+    }
 
     <div class="feedback-boton">
-    <button class="feedback-boton">Dejar feedback</button>
+        <button class="feedback-boton">Dejar feedback</button>
     </div>
 </section>
-

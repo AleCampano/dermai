@@ -53,6 +53,22 @@ public class AccountController : Controller
         HttpContext.Session.Clear();
         return RedirectToAction("Login");
     }
+
+    public IActionResult BorrarPerfilYUsuario()
+    {
+        string email = HttpContext.Session.GetString("usu");
+        
+        if (string.IsNullOrEmpty(email))
+        {
+            return RedirectToAction("Login");
+        }
+        
+        BD.EliminarUsuarioYPerfilCompleto(email);
+     
+        HttpContext.Session.Clear();
+
+        return RedirectToAction("Registro");
+    }
     
     [HttpGet]
     public IActionResult Registro()

@@ -2702,23 +2702,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\49094340\\.nuget\\packages\\": {},
+    "C:\\Users\\48860305\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\49094340\\dermai\\dermai\\dermai.csproj",
+      "projectUniqueName": "C:\\Users\\48860305\\dermai\\dermai\\dermai.csproj",
       "projectName": "dermai",
-      "projectPath": "C:\\Users\\49094340\\dermai\\dermai\\dermai.csproj",
-      "packagesPath": "C:\\Users\\49094340\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\49094340\\dermai\\dermai\\obj\\",
+      "projectPath": "C:\\Users\\48860305\\dermai\\dermai\\dermai.csproj",
+      "packagesPath": "C:\\Users\\48860305\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\48860305\\dermai\\dermai\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\49094340\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\48860305\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

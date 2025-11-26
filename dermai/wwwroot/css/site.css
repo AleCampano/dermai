@@ -134,7 +134,7 @@ header > i { /* Incluyo selectores comunes por si acaso */
   font-style: italic;
   font-weight: 600;
   padding-top: 15px; 
-  margin: 0;
+  margin-top: 1%;
 }
 
 /*INICIO DE SESION*/
@@ -1027,13 +1027,35 @@ header > i { /* Incluyo selectores comunes por si acaso */
 }
 
 .contenedor h1 {
-  font-size: 150%;
-  font-weight: 600;
+  font-size: 190%;
+  font-weight: 650;
   text-align: center;
   color: #5a3e35;    
   letter-spacing: 0.5%;
-  margin: 5% 0 3% 0;
+  margin: 1% 0 3% 0;
 }
+
+.rutina-generada-ia{
+  white-space: pre-wrap;
+  background-color: #edf8ef;
+  padding: 15px;
+  border: 2px solid #b2e8bc;
+  font-style: italic;
+  font-size: large;
+}
+
+/*RECOMENDACION*/
+.recomendaciones-personalizadas
+{
+  white-space: pre-wrap;
+  background-color: #edf8ef;
+  padding: 15px;
+  border: 2px solid #b2e8bc;
+  font-style: italic;
+  font-size: large;
+}
+
+
 
 /* BLOQUES DE PREFERENCIAS Y CONSEJOS */
 .bloque{
@@ -1062,8 +1084,8 @@ header > i { /* Incluyo selectores comunes por si acaso */
 
 /* BOTÓN FEEDBACK */
 .feedback-boton {
-  margin-top: 8%;
-  margin-bottom: 5%;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .feedback-boton button {
@@ -1110,13 +1132,6 @@ header > i { /* Incluyo selectores comunes por si acaso */
 }
 .list-group-item{
   background: #f4fdff;
-}
-.rutina-generada-ia{
-  white-space: pre-wrap;
-  background-color: #edf8ef;
-  padding: 15px;
-  border: 2px solid #b2e8bc;
-  font-style: italic;
 }
 
 /*FOOTER*/

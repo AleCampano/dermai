@@ -13,7 +13,7 @@
 
 <form action='@Url.Action("GuardarFormularioPiel", "User")' method="post">
     @Html.AntiForgeryToken()
-    <h3>1. ¿Cómo se siente tu piel justo después de lavarla sin aplicar ningún producto?</h3>
+    <h3>1. ¿Qué tan grasa se siente tu piel justo después de lavarla sin aplicar ningún producto? Minimo siendo 0, máximo siendo 10</h3>
     <input type="range" name="NivelGrasaPiel" max="100" min="0" step="1" value="50" oninput="updateRangeValue(this.value)"/>
 
     <h3>2. ¿Has tenido alguna vez problemas de alergia con productos cosméticos?</h3>

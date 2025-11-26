@@ -87,5 +87,7 @@ namespace dermai.Controllers
         {
             return RedirectToAction("InicioA", "Home");
         }
+
+        
     }
 }
