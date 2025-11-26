@@ -3,7 +3,7 @@
 }
 
 <section class="contenedor">
-    <h1>✨ Mi Rutina Personalizada ✨</h1>
+    <h1>Mi Rutina Personalizada</h1>
 
     @if (ViewBag.Mensaje != null)
     {
@@ -17,7 +17,7 @@
     {
         <div class="rutina-generada-ia">
             @* La rutina viene en formato de texto plano, se usa un pre-formato o se procesa el texto *@
-            <pre style="white-space: pre-wrap; font-family: inherit; background-color: #f8f9fa; padding: 15px; border-radius: 5px; border: 1px solid #dee2e6;">@ViewBag.Rutina</pre>
+            <p>@ViewBag.Rutina</p>
         </div>
     }
     else if (ViewBag.Mensaje == null)

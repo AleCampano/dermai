@@ -141,6 +141,30 @@ namespace dermai.Models;
             }
         }
 
+        public static string ObtenerTipoPielPorUsuario(string email)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = @"SELECT CaracteristicasPiel FROM Perfil
+                    INNER JOIN Usuario ON Perfil.IdPerfil = Usuario.IdPerfil 
+                    WHERE Usuario.Email = @Email";
+
+                string caracteristicasPiel = connection.QueryFirstOrDefault<string>(query, new { Email = email });
+                
+                if (string.IsNullOrEmpty(caracteristicasPiel))
+                    return "No definido";
+
+                if (caracteristicasPiel.Contains("Piel seca"))
+                    return "Piel seca";
+                else if (caracteristicasPiel.Contains("Piel grasa"))
+                    return "Piel grasa";
+                else if (caracteristicasPiel.Contains("Piel mixta"))
+                    return "Piel mixta";
+        
+        return "No definido";
+            }
+        }
+
         public static int CrearRutina(Rutina rutina)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))

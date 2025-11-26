@@ -21,201 +21,93 @@ main {
   align-items: center;
 }
 
-/*HEADER*/
-/* header {
-  border-bottom: 1px solid #E0E0E0;
-  background-color:rgb(241, 211, 186);
-  gap: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
-  position: sticky;
-  width: 100%;
-  top: 0;
-} */
-/* header {
-  border-bottom: 1px solid rgb(243, 202, 168);;
+header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
   background-color: rgb(243, 202, 168);
-  gap: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
-  position: sticky;
+  border-bottom: 1px solid rgb(243, 202, 168);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); 
   width: 100%;
   top: 0;
   z-index: 9999;
+  padding: 10px 25px; 
 }
 
-.container-text-center{
+/* --- 1. IZQUIERDA (Logo y Texto) --- */
+/* TRUCO: Le damos flex: 1 para que ocupe el mismo espacio que la derecha */
+.container-text-center {
+  flex: 1; 
   display: flex;
-  align-items: center;
-  padding:1%;
-}
-
-.container-text-center img {
-  width: 100px;
-  height: 100px;
-  margin-right: 20px;
-}
-
-.container-text-center h1{
-  font-size: 2rem;
-  margin-right: 1%;
-}
-
-header nav {
-  display:flex;
-  background-color: rgb(243, 202, 168);;
-  flex-grow: 1;
-}
-
-header nav ul{
-  background-color: rgb(243, 202, 168);;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 0;
+  align-items: center; 
+  justify-content: flex-start; /* Alineado a la izquierda */
+  gap: 15px;
   margin: 0;
 }
 
-header nav ul li{
-  list-style: none;
-  margin: 0 1%;
-  padding: 1% 1.5%;
-  float: left;
-  background-color: #c7ebec;
-  min-width: 6%;
- align-items: center;
-  list-style-type: none;
-  border-radius: 8px;
-}
-
-header nav ul li a{
-  text-decoration: none;
-  list-style-type: none;
-  color: black;
-  font-size: 110%;
-  transition: all 0.5s ease;
-}
-
-header nav ul li a:hover{
-  background-color: #8fc3c5;
-  font-size: 14px;
-}
-
-.botonAparece {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-}
-
-.botonAparece button {
-  background: transparent;
-  border: none;
-  padding: 0;
-  height: auto;
-}
-
-.botonAparece button:hover {
-  background-color: transparent;
-  opacity: 0.8; 
-}
-
-.botonAparece img {
-  width: 60px;
-  height: 60px;
-  padding: 1%;
-  cursor: pointer;
-}
-
-.header p,
-.header-frase {
-  text-align: center;
-  font-style: italic;
-  font-weight: 600;
-} */
-/* --- ESTILOS GENERALES DEL HEADER --- */
-header {
-  background-color: rgb(243, 202, 168);
-  border-bottom: 1px solid rgb(243, 202, 168);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Sombra un poco más suave */
-  position: sticky;
-  width: 100%;
-  top: 0;
-  z-index: 9999;
-  padding: 10px 25px; /* Añade espacio de aire arriba/abajo y a los lados */
-}
-
-/* --- CONTENEDOR PRINCIPAL (Logo, Título, Nav, Ajustes) --- */
-.container-text-center {
-  display: flex;
-  align-items: center; /* Centra verticalmente todos los elementos */
-  width: 100%;
-  max-width: 1400px; /* Limita el ancho en pantallas muy grandes */
-  margin: 0 auto; /* Centra el contenedor en la página */
-  gap: 15px; /* Espacio entre los elementos (logo, título, nav) */
-}
-
-/* --- LOGO Y TÍTULO --- */
 .container-text-center img {
-  width: 50px;  /* Reducido para un look más fino */
-  height: 50px; /* Reducido de 100px */
-  margin-right: 5px; /* Menos espacio entre logo y título */
+  width: 50px;  
+  height: 50px; 
+  margin-right: 5px; 
 }
 
 .container-text-center h1 {
-  font-size: 1.8rem; /* Ligeramente más pequeño */
-  margin: 0; /* Quitamos márgenes para que 'gap' funcione */
-  white-space: nowrap; /* Evita que "dermai" se parta */
+  font-size: 1.8rem; 
+  margin: 0; 
+  white-space: nowrap; 
 }
 
-/* --- NAVEGACIÓN (Los botones azules) --- */
 header nav {
-  flex-grow: 1; /* Correcto: hace que la nav ocupe el espacio central */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); 
+  flex-grow: 0; 
+  margin: 0;
   display: flex;
-  justify-content: center; /* ¡CLAVE! Centra la lista 'ul' dentro del 'nav' */
+  justify-content: center;
 }
 
 header nav ul {
   display: flex;
   align-items: center;
-  justify-content: center; /* ¡CLAVE! Centra los 'li' (botones) */
+  justify-content: center;
   padding: 0;
   margin: 0;
   list-style: none;
-  gap: 12px; /* ¡NUEVO! Espacio uniforme entre botones */
+  gap: 12px;
 }
 
 header nav ul li {
   background-color: #c7ebec;
   border-radius: 8px;
-  padding: 8px 15px; /* Cambiado de % a píxeles para control total */
+  padding: 8px 15px; 
   list-style-type: none;
-  transition: all 0.3s ease-out; /* Transición más suave */
-  
-  /* --- ¡ELIMINADOS! --- */
-  /* float: left; (Esto rompía el centrado de flexbox) */
-  /* margin: 0 1%; (Reemplazado por 'gap' en el 'ul') */
+  transition: all 0.3s ease-out; 
 }
 
-/* --- ENLACES (Texto dentro de los botones) --- */
 header nav ul li a {
   text-decoration: none;
   color: black;
-  font-size: 1rem; /* Tamaño de fuente estándar */
-  font-weight: 600; /* Texto un poco más grueso */
-  transition: none; /* La transición ya está en el 'li' */
+  font-size: 1rem; 
+  font-weight: 600; 
 }
 
-/* --- HOVER DE LOS BOTONES --- */
-/* Aplicamos el hover al 'li' (el botón) en lugar del 'a' (el texto) */
 header nav ul li:hover {
-  background-color: #8fc3c5; /* Mantenemos tu color de hover */
-  transform: translateY(-2px); /* Efecto sutil de "levantar" */
+  background-color: #8fc3c5; 
+  transform: translateY(-2px); 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* --- BOTÓN DE AJUSTES (Engranaje) --- */
 .botonAparece {
-  margin-left: auto; /* Correcto: empuja el botón al final */
+  flex: 1;
   display: flex;
+  justify-content: flex-end; 
   align-items: center;
+  margin: 0; 
 }
 
 .botonAparece button {
@@ -223,30 +115,26 @@ header nav ul li:hover {
   border: none;
   padding: 0;
   cursor: pointer;
-  border-radius: 50%; /* Hace el área de click circular */
-  transition: opacity 0.3s ease;
-}
-
-.botonAparece button:hover {
-  background-color: transparent;
-  opacity: 0.7;
+  border-radius: 50%; 
 }
 
 .botonAparece img {
-  width: 35px;  /* Reducido de 60px para balancear */
-  height: 35px; /* Reducido de 60px */
-  padding: 0;
+  width: 35px;  
+  height: 35px; 
 }
 
-/* --- FRASE INFERIOR --- */
+/* --- 4. LA FRASE DE ABAJO --- */
+/* Forzamos que ocupe el 100% para que caiga a la línea de abajo */
 .header p,
-.header-frase {
+.header-frase,
+header > i { /* Incluyo selectores comunes por si acaso */
+  flex-basis: 100%;
+  width: 100%;
   text-align: center;
   font-style: italic;
   font-weight: 600;
-  padding-top: 10px; /* Espacio entre la barra principal y la frase */
+  padding-top: 15px; 
   margin: 0;
-  width: 100%;
 }
 
 /*INICIO DE SESION*/
@@ -924,7 +812,7 @@ header nav ul li:hover {
   transform: translate(-50%, -50%);
 }
 
-.hacerRutina .btn-primary {
+.hacerRutina .btn-primary{
   width: 250px;
   height: auto;
   padding: 1% 3%;
@@ -1215,6 +1103,20 @@ header nav ul li:hover {
   h1 {
       font-size: 105%;
   }
+}
+
+.offcanvas-body, .offcanvas-title, .offcanvas-start{
+  background: #f0dac7;
+}
+.list-group-item{
+  background: #f4fdff;
+}
+.rutina-generada-ia{
+  white-space: pre-wrap;
+  background-color: #edf8ef;
+  padding: 15px;
+  border: 2px solid #b2e8bc;
+  font-style: italic;
 }
 
 /*FOOTER*/

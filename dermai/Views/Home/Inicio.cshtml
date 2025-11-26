@@ -6,7 +6,7 @@
     <h2>Tu tipo de piel es: </h2>
     <div class="tipo-piel-tag">
       <button type="button" class="botones" onclick="location.href='@Url.Action("IrTipoPiel", "Home")'">
-        @(TempData["Mensaje2"]?.ToString() ?? "No definido")
+        @(ViewBag.TipoPiel?.ToString() ?? "No definido")
       </button>
     </div> 
   </div>
@@ -15,7 +15,7 @@
     <div class="row row-cols-2">
         <div class="col">
           <button type="button" class="botones" onclick = "location.href='@Url.Action("IrTipoPiel", "Home")'">
-            <h3>¿Queres saber más sobre tu tipo de piel?</h3>
+            <h3>¿Querés saber más sobre tu tipo de piel?</h3>
             <img src="/imagenes/rutina1.png" alt="Rutina">
             <p>Saber tu tipo de piel te ayuda a crear una rutina de skincare personalizada, previene problemas y detecta anomalías de forma más precisa, contribuyendo a la salud y belleza natural de tu piel.</p>
           </button>
@@ -23,7 +23,7 @@
         
         <div class="col">
           <button type="button" class="botones" onclick = "location.href='@Url.Action("IrRecomendaciones", "Home")'">
-            <h3>¿Queres ver recomendaciones de productos?</h3>
+            <h3>¿Querés ver recomendaciones de productos?</h3>
             <img src="/imagenes/rutina2.png" alt="Rutina">
             <p>Algunos productos no funcionan porque no son adecuados para tu tipo de piel, están mal aplicados, caducados, o porque contienen ingredientes que irritan o no interactúan bien entre sí.</p>
           </button>
@@ -31,16 +31,18 @@
         
         <div class="col">
           <button type="button" class="botones" onclick = "location.href='@Url.Action("VerRutinaGuardada", "Home")'">
-            <h3>¿Queres ver tu rutina de piel?</h3>
-            </button>
+            <h3>¿Querés ver tu rutina de piel?</h3>
+            <img src="/imagenes/rutina4.png" alt="Rutina">
+            <p>Consulta la rutina de cuidado facial personalizada que hemos creado para ti.</p>
+          </button>
         </div>
         
         <div class="col">
-            <button type="button" class="botones" onclick = "location.href='@Url.Action("ModificarRutina", "Home")'">            <h3>¿Queres generar o modificar tu rutina de piel?</h3>
+            <button type="button" class="botones" onclick = "location.href='@Url.Action("ModificarRutina", "Home")'">
+            <h3>¿Querés generar o modificar tu rutina de piel?</h3>
             <img src="/imagenes/rutina3.png" alt="Rutina">
             <p>Una rutina de piel objetiva busca mantenerla sana y equilibrada.</p>
           </button>
         </div>
   </div>
 </section>
-

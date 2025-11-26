@@ -5,21 +5,28 @@
         <img src="~/imagenes/inicio.png" alt="Piel">
     </div>
 
-    <form id="loginForm" method="POST">
-        <h2>Te damos la bienvenida a Dermai, porfavor ingrese:</h2>
-        <h1>Email</h1>
-        <input type="Email" id="Email" name="Email" placeholder="Correo electrónico" required/>
+    <form id="loginForm">
+        @Html.AntiForgeryToken()
+            <h2>Te damos la bienvenida a Dermai, porfavor ingrese:</h2>
+            <div class="form-group">
+                <h1>Email</h1>
+                <input type="Email" id="Email" name="Email" placeholder="Correo electrónico" required class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label for="Contraseña">Contraseña:</label>
+                <input type="password" id="Contraseña" name="Contraseña" required class="form-control">
+            </div>
 
-        <h1>Contraseña</h1>
-        <input type="password" id="Contraseña" name="Contraseña" placeholder="Password" required/>
+            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
 
-        <button type="submit">Iniciar Sesión</button>
-
-        <div>
-            <p>¿No tenés cuenta? 
-            <a href='@Url.Action("Registro", "Account")'>Registrarse aquí</a>
-            </p>
-        </div>
-    </form>
-    <script src="~/js/validaciones.js"></script>
+            <div>
+                <p>¿No tenés cuenta? 
+                <a href='@Url.Action("Registro", "Account")'>Registrarse aquí</a>
+                </p>
+            </div>
+        </form>
+        @section Scripts {
+        <script src="~/js/login.js"></script>
+    }
 </section>

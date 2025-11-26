@@ -1,36 +1,89 @@
 @{
     ViewData["Title"] = "InfoTipoDePiel";
+    string tipoPiel = ViewBag.TipoPiel ?? "Piel normal";
 }
-
 
 <section class="contenedor-principal">
   <section class="ImagenInfo">
     <img src="~/imagenes/inicio.png" alt="Piel">
   </section>
 
-
   <div class="InfoPiel">
-    <h2>Piel Mixta</h2>
-    <p>La piel mixta combina zonas grasas (especialmente la zona T: frente, nariz y barbilla) con zonas secas o normales (como las mejillas). Se caracteriza por brillo, poros dilatados e impurezas en la zona T, y tirantez o descamación en otras áreas.</p>
-    <h3>Factores que influyen:</h3>
-      <ul>
-        <li>Genética</li>
-        <li>Cambios hormonales</li>
-        <li>Clima y ambiente</li>
-      </ul>
+    @if (tipoPiel == "Piel mixta")
+    {
+        <h2>Piel Mixta</h2>
+        <p>La piel mixta combina zonas grasas (especialmente la zona T: frente, nariz y barbilla) con zonas secas o normales (como las mejillas). Se caracteriza por brillo, poros dilatados e impurezas en la zona T, y tirantez o descamación en otras áreas.</p>
+        <h3>Factores que influyen:</h3>
+        <ul>
+            <li>Genética</li>
+            <li>Cambios hormonales</li>
+            <li>Clima y ambiente</li>
+        </ul>
 
+        <h3>Rutina de cuidado recomendada:</h3>
+        <ul>
+            <li>Limpieza: Con geles o productos oil-free, usando agua tibia.</li>
+            <li>Exfoliación: Una vez por semana.</li>
+            <li>Hidratación: Con texturas ligeras o en gel que no obstruyan poros.</li>
+            <li>Protección solar: FPS 30 o más, oil-free y de rápida absorción.</li>
+            <li>Productos específicos: Formulados para piel mixta, sin alcohol y equilibrantes.</li>
+        </ul>
 
-    <h3>Rutina de cuidado recomendada:</h3>
-      <ul>
-        <li>Limpieza: Con geles o productos oil-free, usando agua tibia.</li>
-        <li>Exfoliación: Una vez por semana.</li>
-        <li>Hidratación: Con texturas ligeras o en gel que no obstruyan poros.</li>
-        <li>Protección solar: FPS 30 o más, oil-free y de rápida absorción.</li>
-        <li>Productos específicos: Formulados para piel mixta, sin alcohol y equilibrantes.</li>
-      </ul>
+        <p>Este tipo de piel requiere un cuidado equilibrado que atienda tanto las zonas grasas como las secas sin agravar ninguna de ellas.</p>
+    }
+    else if (tipoPiel == "Piel grasa")
+    {
+        <h2>Piel Grasa</h2>
+        <p>La piel grasa se caracteriza por una producción excesiva de sebo, lo que resulta en brillo, poros dilatados y tendencia al acné. Es común en adolescentes y adultos jóvenes, pero puede persistir en la edad adulta.</p>
+        <h3>Factores que influyen:</h3>
+        <ul>
+            <li>Factores genéticos y hormonales</li>
+            <li>Estrés y ansiedad</li>
+            <li>Alimentación rica en grasas</li>
+            <li>Humedad y calor ambiental</li>
+        </ul>
 
+        <h3>Rutina de cuidado recomendada:</h3>
+        <ul>
+            <li>Limpieza: Dos veces al día con limpiadores específicos para piel grasa.</li>
+            <li>Exfoliación: 2-3 veces por semana con productos suaves.</li>
+            <li>Hidratación: Con texturas ligeras, gel o agua, oil-free.</li>
+            <li>Protección solar: FPS 50+ en gel o textura ultraligera.</li>
+            <li>Productos específicos: Que regulen la producción de sebo sin resecar.</li>
+        </ul>
 
-    <p>Este tipo de piel requiere un cuidado equilibrado que atienda tanto las zonas grasas como las secas sin agravar ninguna de ellas.</p>
+        <p>Evita productos comedogénicos y busca fórmulas que matifiquen y controlen el brillo durante el día.</p>
+    }
+    else if (tipoPiel == "Piel seca")
+    {
+        <h2>Piel Seca</h2>
+        <p>La piel seca carece de la humedad y los lípidos necesarios, lo que resulta en tirantez, descamación, aspereza y sensibilidad. Puede sentirse incómoda y mostrar líneas de expresión más marcadas.</p>
+        <h3>Factores que influyen:</h3>
+        <ul>
+            <li>Factores genéticos</li>
+            <li>Envejecimiento natural</li>
+            <li>Climas fríos y secos</li>
+            <li>Baños con agua muy caliente</li>
+            <li>Productos de limpieza agresivos</li>
+        </ul>
+
+        <h3>Rutina de cuidado recomendada:</h3>
+        <ul>
+            <li>Limpieza: Con leches o aceites limpiadores que no alteren el manto hidrolipídico.</li>
+            <li>Exfoliación: Una vez por semana con productos muy suaves.</li>
+            <li>Hidratación: Con cremas ricas en ceramidas, ácido hialurónico y mantecas.</li>
+            <li>Protección solar: FPS 30+ en textura cremosa.</li>
+            <li>Productos específicos: Que repongan lípidos y retengan la humedad.</li>
+        </ul>
+
+        <p>Prioriza la nutrición y la protección de la barrera cutánea para evitar la pérdida de humedad.</p>
+    }
+    else
+    {
+        <h2>Información sobre tipos de piel</h2>
+        <p>Completa tu perfil para obtener información personalizada sobre tu tipo de piel.</p>
+        <p>Los tipos de piel principales son: seca, grasa y mixta. Cada una requiere cuidados específicos para mantenerse saludable.</p>
+    }
        
     <a href='@Url.Action("InicioA", "Home")'>Volver</a>
   </div>

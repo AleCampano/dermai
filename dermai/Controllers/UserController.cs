@@ -14,7 +14,7 @@ namespace dermai.Controllers
 
         public IActionResult CompletarFormularioPiel()
         {
-            return View("HacerMiRutina");
+            return View("IngresoPiel");
         }
 
         [HttpPost]

@@ -1,28 +1,25 @@
 using Microsoft.AspNetCore.Mvc;
 using dermai.Models;
-using Microsoft.SemanticKernel.ChatCompletion;
+using System.Text;
+using System.Text.Json;
 
 namespace dermai.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IChatCompletionService _chat;
+        private readonly HttpClient _httpClient;
+        private readonly string _geminiApiKey = "AIzaSyDlCPMG-_7TjIDlY5dRkktpqPL7iPO2Q88";
 
-        public HomeController(ILogger<HomeController> logger, IChatCompletionService chat)
+        public HomeController(ILogger<HomeController> logger, IHttpClientFactory httpClientFactory)
         {
             _logger = logger;
-            _chat = chat;
-        }
-
-        private string GetEmail()
-        {
-            return HttpContext.Session.GetString("usu");
+            _httpClient = httpClientFactory.CreateClient();
         }
 
         private IActionResult RedirectIfNoSession()
         {
-            string email = GetEmail();
+            string email = HttpContext.Session.GetString("usu");
             if (email == null)
                 return RedirectToAction("Login", "Account");
 
@@ -39,19 +36,17 @@ namespace dermai.Controllers
             IActionResult redirect = RedirectIfNoSession();
             if (redirect != null) return redirect;
 
-            string email = GetEmail();
+            string email = HttpContext.Session.GetString("usu");
             Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
 
+            string tipoPiel = "No definido";
             if (usuario != null && usuario.IdPerfil > 0)
             {
-                Perfil perfil = BD.ObtenerPerfilPorId(usuario.IdPerfil);
-                if (perfil != null && perfil.CaracteristicasPiel != null && perfil.CaracteristicasPiel != "")
-                {
-                    string[] arr = perfil.CaracteristicasPiel.Split(',');
-                    if (arr.Length > 0) TempData["Mensaje2"] = arr[0].Trim();
-                }
+                tipoPiel = BD.ObtenerTipoPielPorUsuario(email);
+
             }
 
+            ViewBag.TipoPiel = tipoPiel;
             return View("Inicio");
         }
 
@@ -61,7 +56,8 @@ namespace dermai.Controllers
             IActionResult redirect = RedirectIfNoSession();
             if (redirect != null) return redirect;
 
-            Usuario usuario = BD.ObtenerUsuarioPorEmail(GetEmail());
+            string email = HttpContext.Session.GetString("usu");
+            Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
             if (usuario == null || usuario.IdPerfil == 0)
             {
                 TempData["Error"] = "Primero completa tu perfil.";
@@ -75,6 +71,44 @@ namespace dermai.Controllers
         public Task<IActionResult> GenerarRutina(int IdPerfil)
         {
             return GenerarRutinaInternal(IdPerfil);
+        }
+
+        [HttpPost]
+        [Route("/api/Home/GenerarRutina")]
+        public async Task<IActionResult> GenerarRutinaApi()
+        {
+            try
+            {
+                IActionResult redirect = RedirectIfNoSession();
+                if (redirect != null) return Unauthorized(new { error = "Sesión expirada" });
+
+                string email = HttpContext.Session.GetString("usu");
+                Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
+                
+                if (usuario == null || usuario.IdPerfil == 0)
+                    return BadRequest(new { error = "Primero completa tu perfil." });
+
+                Perfil perfil = BD.ObtenerPerfilPorId(usuario.IdPerfil);
+                if (perfil == null) 
+                    return NotFound(new { error = "Perfil no encontrado." });
+
+                string prompt = CrearPrompt(perfil);
+                string respuesta = await LlamarIA(prompt);
+
+                // Guardar rutina en base de datos
+                Rutina r = new Rutina(respuesta, respuesta, BD.ObtenerIdUsuarioPorEmail(email));
+                BD.GuardarRutina(r);
+
+                return Ok(new { 
+                    rutina = respuesta,
+                    mensaje = "Rutina generada exitosamente" 
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error en GenerarRutinaApi");
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
 
         private async Task<IActionResult> GenerarRutinaInternal(int idPerfil)
@@ -91,7 +125,8 @@ namespace dermai.Controllers
             {
                 string respuesta = await LlamarIA(prompt);
 
-                Rutina r = new Rutina(respuesta, respuesta, BD.ObtenerIdUsuarioPorEmail(GetEmail()));
+                string email = HttpContext.Session.GetString("usu");
+                Rutina r = new Rutina(respuesta, respuesta, BD.ObtenerIdUsuarioPorEmail(email));
                 BD.GuardarRutina(r);
 
                 TempData["RutinaGenerada"] = respuesta;
@@ -107,21 +142,74 @@ namespace dermai.Controllers
 
         private async Task<string> LlamarIA(string prompt)
         {
-            var history = new ChatHistory();
-            history.AddSystemMessage("Eres un dermatólogo experto.");
-            history.AddUserMessage(prompt);
-
-            var settings = new GeminiPromptExecutionSettings
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+            
+            try
             {
-                Temperature = 0.7f
-            };
+                var requestBody = new
+                {
+                    contents = new[]
+                    {
+                        new
+                        {
+                            parts = new[]
+                            {
+                                new { text = prompt }
+                            }
+                        }
+                    },
+                    generationConfig = new
+                    {
+                        temperature = 0.7,
+                        maxOutputTokens = 1000,
+                        topP = 0.8,
+                        topK = 40
+                    }
+                };
 
-            string respuesta = await _chat.GetChatMessageContentAsync(history, settings);
+                var json = JsonSerializer.Serialize(requestBody);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            if (respuesta == null || respuesta == "")
-                throw new Exception("Gemini no devolvió contenido.");
+                var url = $"https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash-001:generateContent?key={_geminiApiKey}";
+                
+                var response = await _httpClient.PostAsync(url, content, cts.Token);
+                
+                if (!response.IsSuccessStatusCode)
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    throw new Exception($"Error de API: {response.StatusCode} - {errorContent}");
+                }
 
-            return respuesta;
+                var responseContent = await response.Content.ReadAsStringAsync();
+                var jsonResponse = JsonSerializer.Deserialize<JsonElement>(responseContent);
+
+                if (jsonResponse.TryGetProperty("candidates", out var candidates) &&
+                    candidates.GetArrayLength() > 0)
+                {
+                    var candidate = candidates[0];
+                    if (candidate.TryGetProperty("content", out var contentObj) &&
+                        contentObj.TryGetProperty("parts", out var parts) &&
+                        parts.GetArrayLength() > 0)
+                    {
+                        var part = parts[0];
+                        if (part.TryGetProperty("text", out var text))
+                        {
+                            return text.GetString() ?? throw new Exception("Respuesta vacía de la IA");
+                        }
+                    }
+                }
+
+                throw new Exception("No se pudo extraer la respuesta de la IA");
+            }
+            catch (OperationCanceledException)
+            {
+                throw new Exception("Timeout: La IA tardó demasiado en responder");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error llamando a Gemini. Prompt: {Prompt}", prompt);
+                throw new Exception($"Error al comunicarse con la IA: {ex.Message}");
+            }
         }
 
         public IActionResult VerRutinaGuardada()
@@ -136,7 +224,8 @@ namespace dermai.Controllers
                 return View("MostrarRutina");
             }
 
-            int idUsuario = BD.ObtenerIdUsuarioPorEmail(GetEmail());
+            string email = HttpContext.Session.GetString("usu");
+            int idUsuario = BD.ObtenerIdUsuarioPorEmail(email);
             Rutina r = BD.ObtenerRutinaPorUsuario(idUsuario);
 
             if (r != null)
@@ -154,6 +243,14 @@ namespace dermai.Controllers
 
         public IActionResult IrTipoPiel()
         {
+            IActionResult redirect = RedirectIfNoSession();
+            if (redirect != null) return redirect;
+
+            string email = HttpContext.Session.GetString("usu");
+            
+            string tipoPiel = BD.ObtenerTipoPielPorUsuario(email);
+            ViewBag.TipoPiel = tipoPiel;
+
             return View("InfoTipoDePiel");
         }
 
@@ -164,12 +261,22 @@ namespace dermai.Controllers
 
         private string CrearPrompt(Perfil p)
         {
-            return "Genera una rutina de piel con: " +
-                   "\nCaracterísticas: " + p.CaracteristicasPiel +
-                   "\nPreferencias: " + p.PreferenciaProducto +
-                   "\nPresupuesto: " + p.Presupuesto +
-                   "\nFrecuencia: " + p.FrecuenciaRutina +
-                   "\nDivide en mañana y noche (sin marcas).";
+            return @$"Eres un dermatólogo experto. Genera una rutina de cuidado facial personalizada con las siguientes características:
+
+            CARACTERÍSTICAS DE PIEL: {p.CaracteristicasPiel}
+            PREFERENCIAS DE PRODUCTOS: {p.PreferenciaProducto}
+            PRESUPUESTO: {p.Presupuesto}
+            FRECUENCIA: {p.FrecuenciaRutina}
+
+            INSTRUCCIONES:
+            1. Divide la rutina en MAÑANA y NOCHE
+            2. Incluye productos específicos según el presupuesto
+            3. Considera las preferencias del usuario
+            4. No recomiendes marcas específicas, solo tipos de productos
+            5. Sé conciso pero completo
+            6. Formato claro con puntos
+
+            RESPONDE SOLO CON LA RUTINA, sin introducciones ni conclusiones.";
         }
     }
 }
