@@ -2,11 +2,10 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "Azure.AI.OpenAI/1.0.0-beta.17": {
+      "Azure.AI.OpenAI/1.0.0-beta.12": {
         "type": "package",
         "dependencies": {
-          "Azure.Core": "1.39.0",
-          "System.ClientModel": "1.0.0",
+          "Azure.Core": "1.36.0",
           "System.Text.Json": "4.7.2"
         },
         "compile": {
@@ -756,19 +755,19 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.SemanticKernel/1.16.1": {
+      "Microsoft.SemanticKernel/1.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.SemanticKernel.Connectors.OpenAI": "1.16.1",
-          "Microsoft.SemanticKernel.Core": "1.16.1"
+          "Microsoft.SemanticKernel.Connectors.OpenAI": "1.0.1",
+          "Microsoft.SemanticKernel.Core": "1.0.1"
         },
         "compile": {
-          "lib/net8.0/Microsoft.SemanticKernel.dll": {
+          "lib/netstandard2.0/Microsoft.SemanticKernel.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/Microsoft.SemanticKernel.dll": {
+          "lib/netstandard2.0/Microsoft.SemanticKernel.dll": {
             "related": ".xml"
           }
         }
@@ -808,19 +807,19 @@
           }
         }
       },
-      "Microsoft.SemanticKernel.Connectors.OpenAI/1.16.1": {
+      "Microsoft.SemanticKernel.Connectors.OpenAI/1.0.1": {
         "type": "package",
         "dependencies": {
-          "Azure.AI.OpenAI": "1.0.0-beta.17",
-          "Microsoft.SemanticKernel.Core": "1.16.1"
+          "Azure.AI.OpenAI": "1.0.0-beta.12",
+          "Microsoft.SemanticKernel.Core": "1.0.1"
         },
         "compile": {
-          "lib/net8.0/Microsoft.SemanticKernel.Connectors.OpenAI.dll": {
+          "lib/netstandard2.0/Microsoft.SemanticKernel.Connectors.OpenAI.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/Microsoft.SemanticKernel.Connectors.OpenAI.dll": {
+          "lib/netstandard2.0/Microsoft.SemanticKernel.Connectors.OpenAI.dll": {
             "related": ".xml"
           }
         }
@@ -1192,16 +1191,16 @@
     }
   },
   "libraries": {
-    "Azure.AI.OpenAI/1.0.0-beta.17": {
-      "sha512": "cYTqSHxST4+xyXWa+J0TFid8r5/pX/qLxQ22jynSHY2ACe93rnZ5GPiNtZ06c4pWvm1TPX5aJntED6im6xnzCA==",
+    "Azure.AI.OpenAI/1.0.0-beta.12": {
+      "sha512": "0ol0OMj9UnwyJ5d45nq3CH2moND2qvK4BRFE4PW+krsLySR4RS7wOuGlThgqRdl3bwYs8TJwTaUDE3X9jmrt+A==",
       "type": "package",
-      "path": "azure.ai.openai/1.0.0-beta.17",
+      "path": "azure.ai.openai/1.0.0-beta.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "CHANGELOG.md",
         "README.md",
-        "azure.ai.openai.1.0.0-beta.17.nupkg.sha512",
+        "azure.ai.openai.1.0.0-beta.12.nupkg.sha512",
         "azure.ai.openai.nuspec",
         "azureicon.png",
         "lib/netstandard2.0/Azure.AI.OpenAI.dll",
@@ -2207,20 +2206,18 @@
         "version.txt"
       ]
     },
-    "Microsoft.SemanticKernel/1.16.1": {
-      "sha512": "Zl8h/iBPQTcUkSEK+h5dOgK704Kjr1oGFxPUSkUjHqFzblCWJTMHCUPBaEAmZ4ZcKnEW+SwNuyD5yY0DjGjvvQ==",
+    "Microsoft.SemanticKernel/1.0.1": {
+      "sha512": "qWK/onYpzOBiC82PuGC7ELXxD6TzTJsN/g5yvtzcOuA7LwmMtiGdDcN0Rl9LWdMjz2tLLULtXw2od7b6BPZTNQ==",
       "type": "package",
-      "path": "microsoft.semantickernel/1.16.1",
+      "path": "microsoft.semantickernel/1.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "NUGET.md",
         "icon.png",
-        "lib/net8.0/Microsoft.SemanticKernel.dll",
-        "lib/net8.0/Microsoft.SemanticKernel.xml",
         "lib/netstandard2.0/Microsoft.SemanticKernel.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.xml",
-        "microsoft.semantickernel.1.16.1.nupkg.sha512",
+        "microsoft.semantickernel.1.0.1.nupkg.sha512",
         "microsoft.semantickernel.nuspec"
       ]
     },
@@ -2258,20 +2255,18 @@
         "microsoft.semantickernel.connectors.google.nuspec"
       ]
     },
-    "Microsoft.SemanticKernel.Connectors.OpenAI/1.16.1": {
-      "sha512": "S4iMvx7qiuA+mKZN/9sFB96zmlj/C8vi5ke0Z3XOTbnq5HGILeTH6SVZPYtPK1A1cNMLwYPtzH+ov20NzS7Hrg==",
+    "Microsoft.SemanticKernel.Connectors.OpenAI/1.0.1": {
+      "sha512": "kJn+r234quwnfxShaRRuKnvM+N/P/QOo7AExqsgnnBzc7aNWiQYmAIgOSz7cdE7qjsLDi3HeD9/ia5j1eB3dcA==",
       "type": "package",
-      "path": "microsoft.semantickernel.connectors.openai/1.16.1",
+      "path": "microsoft.semantickernel.connectors.openai/1.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "NUGET.md",
         "icon.png",
-        "lib/net8.0/Microsoft.SemanticKernel.Connectors.OpenAI.dll",
-        "lib/net8.0/Microsoft.SemanticKernel.Connectors.OpenAI.xml",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Connectors.OpenAI.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Connectors.OpenAI.xml",
-        "microsoft.semantickernel.connectors.openai.1.16.1.nupkg.sha512",
+        "microsoft.semantickernel.connectors.openai.1.0.1.nupkg.sha512",
         "microsoft.semantickernel.connectors.openai.nuspec"
       ]
     },
@@ -2936,7 +2931,7 @@
       "Dapper.Contrib >= 2.0.78",
       "Microsoft.AspNetCore.Session >= 2.3.0",
       "Microsoft.Data.SqlClient >= 6.1.2",
-      "Microsoft.SemanticKernel >= 1.16.1",
+      "Microsoft.SemanticKernel >= 0.22.3",
       "Microsoft.SemanticKernel.Connectors.Google >= 1.66.0-alpha",
       "NewtonSoft.Json >= 13.0.4"
     ]
@@ -2984,8 +2979,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.200"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -3009,7 +3003,7 @@
           },
           "Microsoft.SemanticKernel": {
             "target": "Package",
-            "version": "[1.16.1, )"
+            "version": "[0.22.3, )"
           },
           "Microsoft.SemanticKernel.Connectors.Google": {
             "target": "Package",
@@ -3039,8 +3033,20 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "dermai depende de Microsoft.SemanticKernel (>= 0.22.3), pero no se encontró Microsoft.SemanticKernel 0.22.3. Se resolvió una mejor coincidencia aproximada de Microsoft.SemanticKernel 1.0.1.",
+      "libraryId": "Microsoft.SemanticKernel",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

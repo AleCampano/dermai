@@ -97,7 +97,7 @@ public class AccountController : Controller
         BD.AsignarPerfilAUsuario(Email, idPerfil);
 
         HttpContext.Session.SetString("usu", Objeto.ObjectToString(newUser));
-        return RedirectToAction("CompletarFormularioPiel", "User");
+        return RedirectToAction("Login");
     }
 
      public IActionResult CompletarRegistrarse()

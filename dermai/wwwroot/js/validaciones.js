@@ -1,40 +1,37 @@
 document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById("loginForm");
 
-    if (loginForm) {
-        loginForm.addEventListener("submit", function (event) {
-            event.preventDefault(); // Evita recargar y mostrar los datos en la URL
+    if (!loginForm) return;
 
-            const email = document.getElementById("Email").value.trim();
-            const contraseña = document.getElementById("Contraseña").value.trim();
+    loginForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-            if (!email || !contraseña) {
-                alert("Por favor, complete todos los campos.");
-                return;
-            }
+        const email = document.getElementById("Email").value.trim();
+        const contraseña = document.getElementById("Contraseña").value.trim();
 
-            fetch("/api/Account/Login", {
+        if (!email || !contraseña) {
+            alert("Por favor, complete todos los campos.");
+            return;
+        }
+
+        try {
+            const response = await fetch("/api/Account/Login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ Email: email, Contraseña: contraseña })
-            })
-            .then(async response => {
-                const result = await response.json();
-
-                if (response.ok) {
-                    alert(result.mensaje);
-                    if (result.redireccion) {
-                        window.location.href = result.redireccion;
-                    } else {
-                        window.location.href = "/User/CompletarFormularioPiel"; // ✅ Fallback
-                    }
-                } else {
-                    alert(result.error || "Error al iniciar sesión.");
-                }
-            })
-            .catch(error => {
-                alert("Error al conectar con el servidor: " + error.message);
             });
-        });
-    }
+            
+            if (!response.ok) {
+                const errResult = await response.json().catch(() => ({}));
+                alert(errResult.error || "Error al iniciar sesión.");
+                return;
+            }
+            
+            const result = await response.json();
+            alert(result.mensaje);
+            window.location.href = result.redireccion || "/User/CompletarFormularioPiel";
+        } catch (error) {
+            alert("Error al conectar con el servidor: " + error.message);
+        }
+    });
 });

@@ -1,112 +1,91 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using dermai.Models;
-using Newtonsoft.Json;
-using Microsoft.Data.SqlClient;
-using Dapper;
 
-namespace dermai.Controllers;
-
-public class UserController : Controller
+namespace dermai.Controllers
 {
-    private readonly ILogger<UserController> _logger;
-
-    public UserController(ILogger<UserController> logger)
+    public class UserController : Controller
     {
-        _logger = logger;
-    }
+        private readonly ILogger<UserController> _logger;
 
-    public IActionResult CompletarFormularioPiel()
-    {
-        return View("IngresoPiel");
-    }
-
-   
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public IActionResult GuardarFormularioPiel(int NivelGrasaPiel, string AlergiaProductos, string IrritacionFrecuencia, string AparicionGranos)
-    {
-        string tipoPiel;
-        if (NivelGrasaPiel < 33)
+        public UserController(ILogger<UserController> logger)
         {
-            tipoPiel = "Piel seca";
-        }
-        else if (NivelGrasaPiel < 66)
-        {
-            tipoPiel = "Piel mixta";
-        }
-        else
-        {
-            tipoPiel = "Piel grasa";
+            _logger = logger;
         }
 
-        string detalles = $"{tipoPiel}, Alergia a productos: {AlergiaProductos}, Irritación: {IrritacionFrecuencia}, Granos: {AparicionGranos}";
-
-        string email = HttpContext.Session.GetString("usu");
-        var usu = BD.ObtenerUsuarioPorEmail(email);
-
-        if (usu == null)
+        public IActionResult CompletarFormularioPiel()
         {
-            TempData["Error"] = "Usuario no encontrado";
-            return RedirectToAction("Login", "Account");
+            return View("HacerMiRutina");
         }
 
-        var perfil = new Perfil(detalles, "", "", "");
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult GuardarFormularioPiel(int NivelGrasaPiel, string AlergiaProductos, string IrritacionFrecuencia, string AparicionGranos)
+        {
+            string tipoPiel = "Piel grasa";
+            if (NivelGrasaPiel < 33) tipoPiel = "Piel seca";
+            else if (NivelGrasaPiel < 66) tipoPiel = "Piel mixta";
 
-        if (usu.IdPerfil > 0)
-        {
-            BD.ModificarPerfil(usu.IdPerfil, perfil);
-        }
-        else
-        {
-            int idUsuario = BD.ObtenerIdUsuarioPorEmail(email);
-            int idPerfil = BD.CrearPerfil(idUsuario, perfil);
-            BD.AsignarPerfilAUsuario(usu.Email, idPerfil);
-        }
+            string detalles = tipoPiel + ", Alergia: " + AlergiaProductos +
+                              ", Irritación: " + IrritacionFrecuencia +
+                              ", Granos: " + AparicionGranos;
 
-        TempData["Mensaje"] = "¡Datos de tu piel guardados correctamente!";
-        TempData["Mensaje2"] = tipoPiel;
-        return RedirectToAction("InicioA", "Home");
-    }
+            string email = HttpContext.Session.GetString("usu");
+            Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
 
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public IActionResult GuardarFormularioRutina(PielFormModel model)
-    {
-        string email = HttpContext.Session.GetString("usu");
-        var usu = BD.ObtenerUsuarioPorEmail(email);
-    
-        if (usu == null)
-        {
-            TempData["Error"] = "Usuario no encontrado";
-            return RedirectToAction("Login", "Account");
-        }
-        
-        string caracteristicasStr = Objeto.ListToString(model.Caracteristicas ?? new List<string>());
-        string preferenciasStr = Objeto.ListToString(model.Preferencias ?? new List<string>());
+            if (usuario == null)
+                return RedirectToAction("Login", "Account");
 
-        var perfil = new Perfil(caracteristicasStr, preferenciasStr, model.Presupuesto, model.Frecuencia);
-        int idPerfil = 0;
-        
-        if (usu.IdPerfil > 0)
-        {
-            BD.ModificarPerfil(usu.IdPerfil, perfil);
-            idPerfil = usu.IdPerfil;
-        }
-        else
-        {
-            int idUsuario = BD.ObtenerIdUsuarioPorEmail(email);
-            idPerfil = BD.CrearPerfil(idUsuario, perfil);
-            BD.AsignarPerfilAUsuario(usu.Email, idPerfil);
+            Perfil perfil = new Perfil(detalles, "", "", "");
+
+            if (usuario.IdPerfil > 0)
+                BD.ModificarPerfil(usuario.IdPerfil, perfil);
+            else
+            {
+                int idUsuario = BD.ObtenerIdUsuarioPorEmail(usuario.Email);
+                int idPerfil = BD.CrearPerfil(idUsuario, perfil);
+                BD.AsignarPerfilAUsuario(usuario.Email, idPerfil);
+            }
+
+            TempData["Mensaje"] = "Datos guardados correctamente";
+            TempData["Mensaje2"] = tipoPiel;
+
+            return RedirectToAction("InicioA", "Home");
         }
 
-        TempData["Mensaje"] = "¡Tu rutina fue guardada correctamente!";
-        return RedirectToAction("GenerarRutina", "Home", new { IdPerfil = idPerfil });
-    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult GuardarFormularioRutina(PielFormModel model)
+        {
+            string email = HttpContext.Session.GetString("usu");
+            Usuario usuario = BD.ObtenerUsuarioPorEmail(email);
 
-    public IActionResult IrInicio()
-    {
-        return RedirectToAction("InicioA", "Home");
+            if (usuario == null)
+                return RedirectToAction("Login", "Account");
+
+            string carac = Objeto.ListToString(model.Caracteristicas);
+            string pref = Objeto.ListToString(model.Preferencias);
+
+            Perfil perfil = new Perfil(carac, pref, model.Presupuesto, model.Frecuencia);
+
+            int idPerfil;
+            if (usuario.IdPerfil > 0)
+            {
+                BD.ModificarPerfil(usuario.IdPerfil, perfil);
+                idPerfil = usuario.IdPerfil;
+            }
+            else
+            {
+                int idUsuario = BD.ObtenerIdUsuarioPorEmail(usuario.Email);
+                idPerfil = BD.CrearPerfil(idUsuario, perfil);
+                BD.AsignarPerfilAUsuario(usuario.Email, idPerfil);
+            }
+
+            return RedirectToAction("GenerarRutina", "Home", new { IdPerfil = idPerfil });
+        }
+
+        public IActionResult IrInicio()
+        {
+            return RedirectToAction("InicioA", "Home");
+        }
     }
 }

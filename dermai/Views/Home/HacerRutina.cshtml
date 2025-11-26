@@ -2,13 +2,13 @@
 @{
     ViewData["Title"] = "Hacer Mi Rutina";
 }
+
+<h1>@ViewData["Title"]</h1>
+
 <form asp-action="GuardarFormularioRutina" asp-controller="User" method="post">
     @Html.AntiForgeryToken()
+
     <section class="hacerRutina">
-        @if (TempData["Error"] != null)
-        {
-            <div class="alert alert-danger">@TempData["Error"]</div>
-        }
 
         <div class="caracteristicas">
             <h2>¿Qué características tenés?</h2>
@@ -22,7 +22,8 @@
                 })
                 {
                     <label>
-                        <input type="checkbox" name="Caracteristicas" value="@caracteristica" @(Model?.Caracteristicas?.Contains(caracteristica) == true ? "checked=\"checked\"" : "") /> @caracteristica
+                        <input type="checkbox" name="Caracteristicas" value="@caracteristica" @(Model != null && Model.Caracteristicas.Contains(caracteristica) ? "checked" : "") />
+                        @caracteristica
                     </label>
                 }
             </div>
@@ -38,7 +39,8 @@
                 })
                 {
                     <label>
-                        <input type="checkbox" name="Preferencias" value="@preferencia" @(Model?.Preferencias?.Contains(preferencia) == true ? "checked=\"checked\"" : "") /> @preferencia
+                        <input type="checkbox" name="Preferencias" value="@preferencia" @(Model != null && Model.Preferencias.Contains(preferencia) ? "checked" : "") />
+                        @preferencia
                     </label>
                 }
             </div>
@@ -46,33 +48,37 @@
 
         <div class="presupuesto">
             <h2>¿Cuál es tu presupuesto estimado?</h2>
-            <h3>(Podés elegir solo una opción)</h3>
             <div>
                 <label>
-                    <input type="radio" name="Presupuesto" value="Económico" required @(Model?.Presupuesto == "Económico" ? "checked" : "") /> Económico (hasta $50 USD)                </label>
+                    <input type="radio" name="Presupuesto" value="Económico" required @(Model?.Presupuesto == "Económico" ? "checked" : "") /> Económico (hasta $50 USD)
+                </label>
                 <label>
-                    <input type="radio" name="Presupuesto" value="Medio" required @(Model?.Presupuesto == "Medio" ? "checked" : "") /> Medio (hasta $120 USD)                </label>
+                    <input type="radio" name="Presupuesto" value="Medio" required @(Model?.Presupuesto == "Medio" ? "checked" : "") /> Medio (hasta $120 USD)
+                </label>
                 <label>
-                    <input type="radio" name="Presupuesto" value="Premium" required @(Model?.Presupuesto == "Premium" ? "checked" : "") /> Premium (desde $120 USD)                </label>
+                    <input type="radio" name="Presupuesto" value="Premium" required @(Model?.Presupuesto == "Premium" ? "checked" : "") /> Premium (desde $120 USD)
+                </label>
             </div>
         </div>
 
         <div class="frecuenciaRutinaria">
-            <h2>¿Cuál es tu frecuencia de rutina ideal? Elige solo una opcion</h2>
-            <h3>(Podés elegir solo una opción)</h3>
+            <h2>¿Cuál es tu frecuencia de rutina ideal?</h2>
             <div>
                 <label>
-                    <input type="radio" name="Frecuencia" value="Simple" required @(Model?.Frecuencia == "Simple" ? "checked" : "") /> Rutina simple (1-3 pasos)                </label>
+                    <input type="radio" name="Frecuencia" value="Diaria" required @(Model?.Frecuencia == "Diaria" ? "checked" : "") /> Diaria
+                </label>
                 <label>
-                    <input type="radio" name="Frecuencia" value="Intermedia" required @(Model?.Frecuencia == "Intermedia" ? "checked" : "") /> Rutina intermedia (4-5 pasos)                </label>
+                    <input type="radio" name="Frecuencia" value="3 veces por semana" required @(Model?.Frecuencia == "3 veces por semana" ? "checked" : "") /> 3 veces por semana
+                </label>
                 <label>
-                    <input type="radio" name="Frecuencia" value="Completa" required @(Model?.Frecuencia == "Completa" ? "checked" : "") /> Rutina completa (6+ pasos)                </label>
+                    <input type="radio" name="Frecuencia" value="1 vez por semana" required @(Model?.Frecuencia == "1 vez por semana" ? "checked" : "") /> 1 vez por semana
+                </label>
             </div>
         </div>
 
+        <div class="submitButton">
+            <button type="submit">Guardar Rutina</button>
+        </div>
 
-      
-        <input type="submit" value="Enviar" class="btn btn-primary mt-3" />
-      
     </section>
 </form>

@@ -11,7 +11,7 @@
     <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.3.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.2" />
-    <PackageReference Include="Microsoft.SemanticKernel" Version="1.16.1" />
+    <PackageReference Include="Microsoft.SemanticKernel" Version="0.22.3" />
     <PackageReference Include="Microsoft.SemanticKernel.Connectors.Google" Version="1.66.0-alpha" />
     <PackageReference Include="NewtonSoft.Json" Version="13.0.4" />
   </ItemGroup>
