@@ -9,7 +9,7 @@
   </section>
 
   <div class="InfoPiel">
-    @if (tipoPiel == "Piel mixta")
+    @if (ViewBag.TipoPiel == "Piel mixta")
     {
         <h2>Piel Mixta</h2>
         <p>La piel mixta combina zonas grasas (especialmente la zona T: frente, nariz y barbilla) con zonas secas o normales (como las mejillas). Se caracteriza por brillo, poros dilatados e impurezas en la zona T, y tirantez o descamación en otras áreas.</p>
@@ -31,7 +31,7 @@
 
         <p>Este tipo de piel requiere un cuidado equilibrado que atienda tanto las zonas grasas como las secas sin agravar ninguna de ellas.</p>
     }
-    else if (tipoPiel == "Piel grasa")
+    else if (ViewBag.TipoPiel == "Piel grasa")
     {
         <h2>Piel Grasa</h2>
         <p>La piel grasa se caracteriza por una producción excesiva de sebo, lo que resulta en brillo, poros dilatados y tendencia al acné. Es común en adolescentes y adultos jóvenes, pero puede persistir en la edad adulta.</p>
@@ -54,7 +54,7 @@
 
         <p>Evita productos comedogénicos y busca fórmulas que matifiquen y controlen el brillo durante el día.</p>
     }
-    else if (tipoPiel == "Piel seca")
+    else if (ViewBag.TipoPiel == "Piel seca")
     {
         <h2>Piel Seca</h2>
         <p>La piel seca carece de la humedad y los lípidos necesarios, lo que resulta en tirantez, descamación, aspereza y sensibilidad. Puede sentirse incómoda y mostrar líneas de expresión más marcadas.</p>

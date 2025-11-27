@@ -9,7 +9,7 @@ namespace dermai.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly HttpClient _httpClient;
-        private readonly string _geminiApiKey = "AIzaSyACkRib56gafNaylNef2jfSiBWC06xwAI8";
+        private readonly string _geminiApiKey = "AIzaSyDvyu3mslsgWteDVXGf5ZSO3-U-df5QMME";
 
         public HomeController(ILogger<HomeController> logger, IHttpClientFactory httpClientFactory)
         {
@@ -258,17 +258,24 @@ namespace dermai.Controllers
         
 
         public IActionResult IrTipoPiel()
-        {
-            IActionResult redirect = RedirectIfNoSession();
-            if (redirect != null) return redirect;
+{
+    IActionResult redirect = RedirectIfNoSession();
+    if (redirect != null) return redirect;
 
-            string email = HttpContext.Session.GetString("usu");
-            
-            string tipoPiel = BD.ObtenerTipoPielPorUsuario(email);
-            ViewBag.TipoPiel = tipoPiel;
+    string tipoPiel = ViewBag.TipoPiel as string;  // Usamos ViewBag.TipoPiel que ya está disponible
+    if (string.IsNullOrEmpty(tipoPiel))
+    {
+        tipoPiel = "No definido";  // Valor por defecto en caso de que no esté configurado
+    }
 
-            return View("InfoTipoDePiel");
-        }
+    // Si quieres asegurar que sea de la base de datos, puedes obtenerlo de aquí, pero no es necesario
+    // string email = HttpContext.Session.GetString("usu");
+    // tipoPiel = BD.ObtenerTipoPielPorUsuario(email);
+
+    ViewBag.TipoPiel = tipoPiel;  // Reasignamos el valor a ViewBag.TipoPiel
+
+    return View("InfoTipoDePiel");
+}
 
         public async Task<IActionResult> IrRecomendaciones()
         {

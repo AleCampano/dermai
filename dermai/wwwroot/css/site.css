@@ -37,13 +37,11 @@ header {
   padding: 10px 25px; 
 }
 
-/* --- 1. IZQUIERDA (Logo y Texto) --- */
-/* TRUCO: Le damos flex: 1 para que ocupe el mismo espacio que la derecha */
 .container-text-center {
   flex: 1; 
   display: flex;
   align-items: center; 
-  justify-content: flex-start; /* Alineado a la izquierda */
+  justify-content: flex-start;
   gap: 15px;
   margin: 0;
 }
@@ -123,11 +121,10 @@ header nav ul li:hover {
   height: 35px; 
 }
 
-/* --- 4. LA FRASE DE ABAJO --- */
-/* Forzamos que ocupe el 100% para que caiga a la línea de abajo */
+
 .header p,
 .header-frase,
-header > i { /* Incluyo selectores comunes por si acaso */
+header > i { 
   flex-basis: 100%;
   width: 100%;
   text-align: center;
@@ -137,6 +134,21 @@ header > i { /* Incluyo selectores comunes por si acaso */
   margin-top: 1%;
 }
 
+@media (max-width: 768px) {
+
+  header {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 10px;
+  }
+
+  .container-text-center {
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+}
 /*INICIO DE SESION*/
 .Login { 
   display: flex;
@@ -707,11 +719,11 @@ header > i { /* Incluyo selectores comunes por si acaso */
   padding: 0;
   
   display: flex;
-  flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea */
-  justify-content: space-between; /* Distribuye el espacio entre los elementos */
+  flex-wrap: wrap; 
+  justify-content: space-between; 
 }
 
-/* Estilo común para las 4 secciones */
+
 .caracteristicas, .presupuesto, .preferencias, .frecuenciaRutinaria {
   background-color: #F7F3EA;
   padding: 5%;
@@ -720,17 +732,14 @@ header > i { /* Incluyo selectores comunes por si acaso */
   text-align: left;
   align-items: flex-start;
   text-transform: none;
-  margin-bottom: 30px; /* Espacio entre filas */
+  margin-bottom: 30px; 
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 
-  /* PROPIEDADES PARA DISEÑO 2X2 */
   width: 48.5%; 
   box-sizing: border-box;
 }
 
-/* Contenedor de las opciones dentro de las secciones de Checkbox (Características/Preferencias) */
-/* El div es el contenedor inmediato de los labels, lo seleccionamos por nombre de etiqueta */
 .caracteristicas div, 
 .preferencias div {
   display: flex;
@@ -741,7 +750,7 @@ header > i { /* Incluyo selectores comunes por si acaso */
 
 .caracteristicas label,
 .preferencias label {
-  width: 48%; /* Dos etiquetas por fila (casi 50% con espacio) */
+  width: 48%; 
   margin-bottom: 8px;
   box-sizing: border-box;
 }
@@ -829,7 +838,6 @@ header > i { /* Incluyo selectores comunes por si acaso */
   cursor: pointer;
   color: #333;
   text-transform: uppercase;
-  /* Necesario para asegurar que el botón aparezca debajo de los elementos flotantes o flex */
   clear: both; 
 }
 
@@ -844,7 +852,6 @@ header > i { /* Incluyo selectores comunes por si acaso */
       margin-bottom: 20px;
   }
   
-  /* En móviles, las opciones van en columna única */
   .caracteristicas div, 
   .preferencias div {
       flex-direction: column;
@@ -991,18 +998,6 @@ header > i { /* Incluyo selectores comunes por si acaso */
   object-fit: contain;
 }
 
-/* .feedback-boton {
-  background-color: #000000;
-  border: none;
-  padding: 3%;
-  border-radius: 25px;
-  font-weight: bold;
-  cursor: pointer;
-  display: block;
-  margin-left: auto;
-  margin-top: 5%;
-  font-size: medium;
-} */
 
 @media (max-width: 768px) {
   .productos-imagenes {
