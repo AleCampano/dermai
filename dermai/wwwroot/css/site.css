@@ -1129,6 +1129,127 @@ header > i {
   background: #f4fdff;
 }
 
+
+/* MI PERFIL 		  */
+
+.contenedor-principal {
+	border-radius: 15px; /* Bordes redondeados para el contenedor principal */
+	padding: 30px; 		/* Espaciado interno */
+	gap: 25px; 			/* Espacio entre el título y las tarjetas */
+	align-items: flex-start; /* Alinea las tarjetas arriba */
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* El título "Mi Perfil" que actúa como columna izquierda */
+.contenedor-principal > h1 {
+	flex-basis: 20%; /* Le da un ancho base del 20% */
+	font-size: 2.8rem; /* Tamaño de fuente grande */
+	color: #444;
+	font-weight: 600;
+	margin: 0;
+	padding-top: 15px; /* Pequeño ajuste vertical */
+	text-align: left;
+}
+
+/* Cada una de las tarjetas: Info, Perfil, Rutina */
+.info-section {
+	flex: 1; /* Hace que las 3 tarjetas compartan el espacio restante */
+	background-color: #F7F3EA; /* El color beige claro de tus formularios */
+	border-radius: 15px;
+	padding: 25px;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+	min-height: 280px; /* Altura mínima para que se vean parejas */
+	display: flex;
+	flex-direction: column; /* Ordena el contenido interno verticalmente */
+}
+
+.info-section h2 {
+	font-size: 1.4rem;
+	color: #333;
+	font-weight: 600;
+	margin-top: 0;
+	margin-bottom: 20px;
+	border-bottom: 2px solid #EBCBC4; /* Separador sutil */
+	padding-bottom: 10px;
+}
+
+/* Cada línea de "Nombre: sofi" */
+.info-item {
+	margin-bottom: 12px;
+	font-size: 1rem;
+	color: #555;
+	line-height: 1.4;
+}
+
+.info-item strong {
+	color: #333;
+	margin-right: 5px;
+	font-weight: 600;
+}
+
+/* El texto de "No tienes una rutina..." */
+.info-section p {
+	font-size: 0.95rem;
+	color: #666;
+	flex-grow: 1; /* Empuja el botón hacia abajo */
+	margin-top: 5px;
+}
+
+/* Estilo para los botones (links) 'Crear Rutina', 'Completar Perfil', etc. */
+.btn {
+	display: inline-block;
+	background-color: #c7ebec; /* El color celeste de tu navegación */
+	color: black;
+	padding: 12px 20px;
+	border-radius: 8px;
+	text-decoration: none;
+	font-weight: 600;
+	text-align: center;
+	transition: all 0.3s ease-out;
+	margin-top: 15px;
+	border: none;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background-color: #8fc3c5;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor de los botones "Ver Rutina" y "Modificar" */
+.acciones {
+	display: flex;
+	flex-direction: column; /* Apila los botones */
+	gap: 10px;
+	margin-top: 0.5%; /* Empuja esta sección al fondo de la tarjeta */
+}
+
+
+
+
+
+/* --- Adaptación para móviles --- */
+@media (max-width: 900px) {
+	.contenedor-principal {
+		flex-direction: column; /* Apila todo verticalmente */
+		align-items: stretch;
+		width: 95%;
+		padding: 20px;
+	}
+
+	.contenedor-principal > h1 {
+		text-align: center; /* Centra el título principal */
+		margin-bottom: 20px;
+		font-size: 2.2rem;
+		padding-top: 0;
+	}
+
+	.info-section {
+		min-height: auto; /* Quita la altura mínima */
+	}
+}
+
 /*FOOTER*/
 footer {
   background: #ebad7a;

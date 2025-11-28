@@ -49,12 +49,6 @@
         <h2>Rutina Actual</h2>
         @if (tieneRutina)
         {
-            <div class="rutina-preview">
-                <strong>Tu rutina:</strong>
-                <div class="rutina-content">
-                    @datos.RutinaFinal
-                </div>
-            </div>
             <div class="acciones">
                 <a href='@Url.Action("VerRutinaGuardada", "Home")' class="btn">Ver Rutina Completa</a>
                 <a href='@Url.Action("ModificarRutina", "Home")' class="btn">Modificar Rutina</a>
