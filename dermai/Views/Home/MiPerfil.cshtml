@@ -1,0 +1,69 @@
+@{
+    ViewData["Title"] = "Mi Perfil";
+    dynamic datos = ViewBag.DatosUsuario;
+    bool tienePerfil = ViewBag.TienePerfil;
+    bool tieneRutina = ViewBag.TieneRutina;
+}
+
+<section class="contenedor-principal">
+    <h1>Mi Perfil</h1>
+
+    <div class="info-section">
+        <h2>Información Personal</h2>
+        <div class="info-item">
+            <strong>Nombre:</strong> @datos.Nombre
+        </div>
+        <div class="info-item">
+            <strong>Email:</strong> @datos.Email
+        </div>
+        <div class="info-item">
+            <strong>Fecha de Nacimiento:</strong> @datos.FechaDeNacimiento.ToString("dd/MM/yyyy")
+        </div>
+    </div>
+
+    <div class="info-section">
+        <h2>Perfil de Piel</h2>
+        @if (tienePerfil)
+        {
+            <div class="info-item">
+                <strong>Características:</strong> @datos.CaracteristicasPiel
+            </div>
+            <div class="info-item">
+                <strong>Preferencias:</strong> @datos.PreferenciaProducto
+            </div>
+            <div class="info-item">
+                <strong>Presupuesto:</strong> @datos.Presupuesto
+            </div>
+            <div class="info-item">
+                <strong>Frecuencia:</strong> @datos.FrecuenciaRutina
+            </div>
+        }
+        else
+        {
+            <p>No has completado tu perfil de piel</p>
+            <a href='@Url.Action("CompletarFormularioPiel", "User")' class="btn">Completar Perfil</a>
+        }
+    </div>
+
+    <div class="info-section">
+        <h2>Rutina Actual</h2>
+        @if (tieneRutina)
+        {
+            <div class="rutina-preview">
+                <strong>Tu rutina:</strong>
+                <div class="rutina-content">
+                    @datos.RutinaFinal
+                </div>
+            </div>
+            <div class="acciones">
+                <a href='@Url.Action("VerRutinaGuardada", "Home")' class="btn">Ver Rutina Completa</a>
+                <a href='@Url.Action("ModificarRutina", "Home")' class="btn">Modificar Rutina</a>
+            </div>
+        }
+        else
+        {
+            <p>No tienes una rutina personalizada</p>
+            <a href='@Url.Action("ModificarRutina", "Home")' class="btn">Crear Rutina</a>
+        }
+    </div>
+</section>

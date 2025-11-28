@@ -1,16 +1,18 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using dermai.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// MVC
+builder.Services.Configure<GeminiConfig>(builder.Configuration.GetSection("GeminiApi"));
+
+builder.Services.AddHttpClient();
+
 builder.Services.AddControllersWithViews();
 
-// Cache para Session
 builder.Services.AddDistributedMemoryCache();
 
-// Session
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromHours(1);
@@ -18,12 +20,8 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-// Agregar HttpClient para llamadas a la API de Gemini
-builder.Services.AddHttpClient();
-
 var app = builder.Build();
 
-// Error handling
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

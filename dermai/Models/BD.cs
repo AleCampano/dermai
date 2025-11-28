@@ -239,4 +239,27 @@ namespace dermai.Models;
                 return connection.Query<Usuario>(query).ToList();
             }
         }
+
+        public static dynamic ObtenerDatosUsuarioCompleto(string email)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = @"SELECT 
+                        Usuario.Nombre, 
+                        Usuario.Email, 
+                        Usuario.FechaDeNacimiento,
+                        Usuario.IdPerfil,
+                        Perfil.CaracteristicasPiel, 
+                        Perfil.PreferenciaProducto, 
+                        Perfil.Presupuesto, 
+                        Perfil.FrecuenciaRutina,
+                        Rutina.RutinaFinal
+                    FROM Usuario
+                    LEFT JOIN Perfil ON Usuario.IdPerfil = Perfil.IdPerfil 
+                    LEFT JOIN Rutina ON Usuario.IdUsuario = Rutina.IdUsuario 
+                    WHERE Usuario.Email = @Email";
+                
+                return connection.QueryFirstOrDefault<dynamic>(query, new { Email = email });
+            }
+        }
     }
